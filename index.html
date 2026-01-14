@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>MIRED — Red Transaccional Líder</title>
+  <title>MIRED — Red Transaccional Líder en RD</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root { --navy: #00558c; --blue-tech: #00aef0; --orange-mired: #f89420; --black-bg: #001a2c; --white: #ffffff; --green-wa: #25d366; }
@@ -30,10 +30,15 @@
     .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(248,148,32,0.6); }
 
     /* BANDA DE ALIADOS (CLIENTES) */
-    .aliados-slider { background: rgba(255, 255, 255, 0.03); padding: 30px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); overflow: hidden; white-space: nowrap; margin-bottom: 60px; }
+    .aliados-slider { background: rgba(255, 255, 255, 0.03); padding: 30px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); overflow: hidden; white-space: nowrap; margin-bottom: 20px; }
     .aliados-track { display: inline-flex; animation: scroll-left 35s linear infinite; align-items: center; }
     .aliado-item { font-size: 20px; font-weight: 800; color: rgba(255, 255, 255, 0.3); margin: 0 40px; text-transform: uppercase; letter-spacing: 3px; }
     @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECCIÓN DE ESTADÍSTICAS */
+    .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding: 60px 0 100px; text-align: center; max-width: 1200px; margin: 0 auto; }
+    .stat-item h2 { font-size: 52px; font-weight: 800; color: var(--orange-mired); margin-bottom: 5px; }
+    .stat-item p { font-size: 14px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 
     /* SECCIÓN SERVICIOS */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -82,14 +87,13 @@
     <a href="clientes.html" onclick="toggleMenu()">Clientes</a>
     <a href="noticias.html" onclick="toggleMenu()">Noticias</a>
     <a href="empleos.html" onclick="toggleMenu()">Empleos</a>
-    <a href="https://wa.me/TuNumero" class="btn-main" style="font-size: 14px; padding: 12px; margin-top: 10px;">WhatsApp</a>
   </div>
 
   <main class="container">
     <section class="hero">
       <div class="hero-text">
         <h1>Lidere la inclusión financiera</h1>
-        <p>Somos la red de subagentes bancarios más completa de RD, con presencia en todas las provincias.</p>
+        <p>Somos la red de subagentes bancarios más completa de la República Dominicana, con presencia en todas las provincias del país.</p>
         <a href="#servicios" class="btn-main">Quiero ser subagente</a>
       </div>
       <div style="border-radius: 40px; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.5);"><img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" style="width: 100%; display: block;"></div>
@@ -97,10 +101,29 @@
 
     <div class="aliados-slider">
       <div class="aliados-track">
-        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">POPULAR</span><span class="aliado-item">BHD</span><span class="aliado-item">CARIBE</span><span class="aliado-item">ADOPEM</span><span class="aliado-item">SANTA CRUZ</span>
-        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">POPULAR</span><span class="aliado-item">BHD</span><span class="aliado-item">CARIBE</span><span class="aliado-item">ADOPEM</span><span class="aliado-item">SANTA CRUZ</span>
+        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">BANCO POPULAR</span><span class="aliado-item">BANCO BHD</span><span class="aliado-item">BANCO CARIBE</span><span class="aliado-item">BANCO ADOPEM</span><span class="aliado-item">SANTA CRUZ</span>
+        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">BANCO POPULAR</span><span class="aliado-item">BANCO BHD</span><span class="aliado-item">BANCO CARIBE</span><span class="aliado-item">BANCO ADOPEM</span><span class="aliado-item">SANTA CRUZ</span>
       </div>
     </div>
+
+    <section class="stats-container">
+      <div class="stat-item">
+        <h2>+5,000</h2>
+        <p>Subagentes en RD</p>
+      </div>
+      <div class="stat-item">
+        <h2>32</h2>
+        <p>Provincias cubiertas</p>
+      </div>
+      <div class="stat-item">
+        <h2>+1M</h2>
+        <p>Transacciones mensuales</p>
+      </div>
+      <div class="stat-item">
+        <h2>24/7</h2>
+        <p>Soporte especializado</p>
+      </div>
+    </section>
 
     <h2 id="servicios" style="text-align: center; margin-bottom: 50px; font-size: 36px; font-weight: 800;">Nuestras Soluciones</h2>
     <div class="services-grid">
@@ -108,7 +131,7 @@
         <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800');"></div>
         <div class="service-content">
           <h3>SubAgentes Bancarios</h3>
-          <p>Realice operaciones permitidas en nombre del Banco Participante en sus establecimientos.</p>
+          <p>Realice operaciones bancarias habilitadas en sus establecimientos físicos o jurídicos en nombre de bancos participantes.</p>
           <a href="#" class="btn-outline">Conocer Servicio</a>
         </div>
       </div>
@@ -116,7 +139,7 @@
         <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1512428559083-a4051ba836c5?auto=format&fit=crop&q=80&w=800');"></div>
         <div class="service-content">
           <h3>Soluciones de Movilidad</h3>
-          <p>Habilitación de servicios bancarios mediante dispositivos móviles con soporte tecnológico integral.</p>
+          <p>Habilitación de servicios bancarios mediante dispositivos móviles con soporte tecnológico y operativo integral.</p>
           <a href="#" class="btn-outline">Conocer Servicio</a>
         </div>
       </div>
@@ -124,7 +147,7 @@
         <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=800');"></div>
         <div class="service-content">
           <h3>Ecosistema TAT</h3>
-          <p>Conecta proveedores con retail para optimizar la rentabilidad y el inventario de pequeños negocios.</p>
+          <p>Plataforma para conectar proveedores con retail, optimizando rentabilidad e inventarios de colmados y cafeterías.</p>
           <a href="#" class="btn-outline">Conocer Servicio</a>
         </div>
       </div>
@@ -132,7 +155,7 @@
         <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80&w=800');"></div>
         <div class="service-content">
           <h3>Bancarización Masiva</h3>
-          <p>Servicio integral utilizando tecnología avanzada y nuevos medios de autenticación para procesos masivos.</p>
+          <p>Servicio integral para procesos masivos de bancarización utilizando alta tecnología y autenticación moderna.</p>
           <a href="#" class="btn-outline">Conocer Servicio</a>
         </div>
       </div>
