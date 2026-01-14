@@ -3,78 +3,62 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Carreras y Vacantes — MIRED</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <title>MIRED — Empleos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --navy: #00558c; --blue-tech: #00aef0; --green-success: #50B940;
-      --black-auth: #001a2c; --white: #ffffff;
-    }
-    body {
-      font-family: 'Inter', sans-serif; background-color: var(--black-auth);
-      color: var(--white); margin: 0; padding: 0; overflow-x: hidden;
-    }
-    .aurora-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: var(--black-auth); }
-    .blob { position: absolute; width: 500px; height: 500px; border-radius: 50%; filter: blur(120px); opacity: 0.15; }
-    .blob-1 { background: var(--green-success); bottom: -10%; left: -10%; }
-    
-    .container { max-width: 1140px; margin: 0 auto; padding: 120px 24px; }
-    .back-link { color: var(--blue-tech); text-decoration: none; font-weight: 700; font-size: 14px; display: inline-block; margin-bottom: 30px; }
-    
-    h1 { font-size: 48px; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; }
-    .subtitle { color: rgba(255,255,255,0.6); margin-bottom: 60px; font-size: 18px; max-width: 600px; }
-    
-    /* Lista de Vacantes */
-    .jobs-list { display: flex; flex-direction: column; gap: 20px; }
-    .job-card {
-      background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px; padding: 30px; display: flex; justify-content: space-between; align-items: center;
-      backdrop-filter: blur(10px); transition: all 0.3s ease;
-    }
-    .job-card:hover { border-color: var(--green-success); background: rgba(255, 255, 255, 0.06); transform: scale(1.01); }
-    
-    .job-info h3 { margin: 0 0 8px 0; font-size: 20px; }
-    .job-info span { font-size: 13px; color: var(--blue-tech); font-weight: 700; text-transform: uppercase; }
-    
-    .btn-apply {
-      background: var(--green-success); color: white; padding: 12px 24px; 
-      border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 14px;
-    }
+    /* Estilos idénticos al index */
+    :root { --navy: #00558c; --blue-tech: #00aef0; --orange-mired: #f89420; --black-bg: #001a2c; --white: #ffffff; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--black-bg); color: var(--white); overflow-x: hidden; }
+    .aurora-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: var(--black-bg); overflow: hidden; }
+    .blob { position: absolute; width: min(100vw, 800px); height: min(100vw, 800px); border-radius: 50%; filter: blur(140px); opacity: 0.45; animation: move 25s infinite alternate; }
+    .blob-blue { background: var(--navy); top: -10%; left: -10%; }
+    .blob-orange { background: var(--orange-mired); top: 15%; right: -5%; opacity: 0.45; }
+    .blob-cyan { background: var(--blue-tech); bottom: -10%; left: 15%; opacity: 0.3; }
+    @keyframes move { from { transform: translate(0, 0) scale(1); } to { transform: translate(60px, 100px) scale(1.1); } }
+    .header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 26, 44, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 140px; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .brand img { height: 110px; width: auto; display: block; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4)); }
+    .menu-desktop { display: none; }
+    @media (min-width: 900px) { .menu-desktop { display: flex; gap: 30px; } .menu-desktop a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 15px; font-weight: 600; } }
+    .mobile-nav { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: rgba(0, 10, 20, 0.98); backdrop-filter: blur(20px); display: flex; flex-direction: column; padding: 120px 30px; gap: 20px; transition: 0.4s ease; z-index: 1050; }
+    .mobile-nav.active { right: 0; }
+    .mobile-nav a { color: white; text-decoration: none; font-size: 18px; font-weight: 600; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .content-area { padding: 250px 24px 100px; max-width: 1200px; margin: 0 auto; text-align: center; }
+    h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 800; letter-spacing: -2px; margin-bottom: 25px; }
+    .btn-main { background: var(--orange-mired); color: white; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 800; display: inline-block; }
   </style>
 </head>
 <body>
-  <div class="aurora-bg"><div class="blob blob-1"></div></div>
-  
-  <div class="container">
-    <a href="index.html" class="back-link">← Volver al Inicio</a>
-    <h1>Únete a nuestro equipo</h1>
-    <p class="subtitle">En MIRED impulsamos el talento dominicano. Descubre las posiciones disponibles y forma parte de la red financiera más innovadora.</p>
-    
-    <div class="jobs-list">
-      <div class="job-card">
-        <div class="job-info">
-          <span>Tecnología / Remoto</span>
-          <h3>Desarrollador Backend Senior</h3>
-        </div>
-        <a href="https://www.linkedin.com" target="_blank" class="btn-apply">Aplicar en LinkedIn</a>
-      </div>
-
-      <div class="job-card">
-        <div class="job-info">
-          <span>Operaciones / Santo Domingo</span>
-          <h3>Gestor de Canales de Servicio</h3>
-        </div>
-        <a href="https://www.linkedin.com" target="_blank" class="btn-apply">Aplicar en LinkedIn</a>
-      </div>
-
-      <div class="job-card">
-        <div class="job-info">
-          <span>Ventas / Santiago</span>
-          <h3>Ejecutivo de Afiliaciones</h3>
-        </div>
-        <a href="https://www.linkedin.com" target="_blank" class="btn-apply">Aplicar en LinkedIn</a>
+  <div class="aurora-bg"><div class="blob blob-blue"></div><div class="blob blob-orange"></div><div class="blob blob-cyan"></div></div>
+  <header class="header">
+    <div class="nav">
+      <a href="index.html" class="brand"><img src="logo.png" alt="MIRED"></a>
+      <nav class="menu-desktop">
+        <a href="index.html">Inicio</a>
+        <a href="clientes.html">Clientes</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="empleos.html">Empleos</a>
+      </nav>
+      <button class="mobile-toggle" onclick="toggleMenu()" style="background:none; border:none; color:white; cursor:pointer;"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobileMenu">
+    <a href="index.html" onclick="toggleMenu()">Inicio</a>
+    <a href="clientes.html" onclick="toggleMenu()">Clientes</a>
+    <a href="noticias.html" onclick="toggleMenu()">Noticias</a>
+    <a href="empleos.html" onclick="toggleMenu()">Empleos</a>
+  </div>
+  <main class="content-area">
+    <h1>Únete a MIRED</h1>
+    <p style="margin-bottom: 60px; color: rgba(255,255,255,0.6);">Sé parte de la revolución de los servicios financieros.</p>
+    <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+      <div style="background: rgba(255,255,255,0.05); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
+        <div style="text-align: left;"><h3 style="margin: 0;">Gestor de Canales</h3><span style="color: var(--blue-tech);">Operaciones</span></div>
+        <a href="#" class="btn-main">Aplicar</a>
       </div>
     </div>
-  </div>
+  </main>
+  <script>function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }</script>
 </body>
 </html>
