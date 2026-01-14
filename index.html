@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>MIRED — Red Transaccional</title>
+  <title>MIRED — Red Transaccional Innovadora</title>
+  <meta name="description" content="La red transaccional líder en RD. Únete como subagente bancario hoy mismo." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +17,7 @@
       --orange-mired: #f89420;
       --black-bg: #001a2c;
       --white: #ffffff;
+      --green-wa: #25d366;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,9 +26,10 @@
       background-color: var(--black-bg);
       color: var(--white);
       overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    /* --- FONDO AURORA CON DEGRADADO NARANJA --- */
+    /* --- FONDO AURORA CON NARANJA VIBRANTE --- */
     .aurora-bg {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       z-index: -1; background: var(--black-bg); overflow: hidden;
@@ -36,7 +39,7 @@
       filter: blur(140px); opacity: 0.4; animation: move 25s infinite alternate;
     }
     .blob-blue { background: var(--navy); top: -20%; left: -10%; }
-    .blob-orange { background: var(--orange-mired); top: 15%; right: -5%; opacity: 0.35; animation-duration: 20s; }
+    .blob-orange { background: var(--orange-mired); top: 15%; right: -5%; opacity: 0.45; animation-duration: 20s; }
     .blob-cyan { background: var(--blue-tech); bottom: -10%; left: 15%; opacity: 0.25; }
 
     @keyframes move {
@@ -44,7 +47,7 @@
       to { transform: translate(80px, 120px) scale(1.15); }
     }
 
-    /* --- HEADER CON LOGO FIEL AL PDF --- */
+    /* --- HEADER --- */
     .header {
       position: fixed; top: 0; width: 100%; z-index: 1000;
       background: rgba(0, 26, 44, 0.75); backdrop-filter: blur(25px);
@@ -55,11 +58,12 @@
       height: 90px; max-width: 1200px; margin: 0 auto; padding: 0 24px; 
     }
     
-    .brand { display: flex; align-items: center; gap: 4px; text-decoration: none; }
-    /* Logo recreado del manual */
-    .logo-m {
-      height: 40px;
+    /* LOGO USANDO TU ARCHIVO SUBIDO */
+    .brand img {
+      height: 50px;
       width: auto;
+      display: block;
+      filter: drop-shadow(0 4px 15px rgba(0,0,0,0.3));
     }
 
     .menu { display: none; }
@@ -71,14 +75,18 @@
 
     /* --- HERO SECTION --- */
     .hero { padding: 180px 24px 100px; max-width: 1200px; margin: 0 auto; display: grid; gap: 60px; }
-    @media (min-width: 900px) { .hero { grid-template-columns: 1.2fr 1fr; align-items: center; } }
+    @media (min-width: 900px) { .hero { grid-template-columns: 1.2fr 1fr; align-items: center; text-align: left; } }
+    @media (max-width: 899px) { .hero { text-align: center; } }
     
     h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 800; letter-spacing: -2px; line-height: 1.05; margin-bottom: 25px; }
-    
+    .hero p { font-size: 20px; color: rgba(255,255,255,0.6); margin-bottom: 40px; }
+
+    /* BOTÓN "QUIERO SER SUBAGENTE" */
     .btn-main {
-      background: var(--orange-mired); color: white; padding: 18px 36px; 
-      border-radius: 14px; text-decoration: none; font-weight: 700;
+      background: var(--orange-mired); color: white; padding: 20px 40px; 
+      border-radius: 16px; text-decoration: none; font-weight: 800;
       box-shadow: 0 10px 30px rgba(248,148,32,0.4); display: inline-block; transition: 0.3s;
+      text-transform: uppercase; letter-spacing: 0.5px;
     }
     .btn-main:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(248,148,32,0.6); }
 
@@ -88,12 +96,13 @@
     }
     .hero-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
 
-    /* WhatsApp */
+    /* WHATSAPP FLOAT */
     .wa-btn {
-      position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px;
+      position: fixed; bottom: 30px; right: 30px; background: var(--green-wa); width: 65px; height: 65px;
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3); z-index: 2000;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3); z-index: 2000; transition: 0.3s;
     }
+    .wa-btn:hover { transform: scale(1.1); }
   </style>
 </head>
 <body>
@@ -107,11 +116,7 @@
   <header class="header">
     <div class="nav">
       <a href="index.html" class="brand">
-        <svg width="150" height="40" viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 25C10 18 14 14 20 14C26 14 30 18 30 25" stroke="#00558c" stroke-width="6" stroke-linecap="round"/>
-          <path d="M22 25C22 18 26 14 32 14C38 14 42 18 42 25" stroke="#00aef0" stroke-width="6" stroke-linecap="round"/>
-          <text x="48" y="28" font-family="Inter, sans-serif" font-weight="800" font-size="28" fill="white" letter-spacing="-1.5">mired</text>
-        </svg>
+        <img src="Logo%20MiRed.png" alt="MIRED">
       </a>
       <div class="menu">
         <a href="index.html">Inicio</a>
@@ -119,19 +124,19 @@
         <a href="noticias.html">Noticias</a>
         <a href="empleos.html">Empleos</a>
       </div>
-      <a href="https://wa.me/TuNumero" class="btn-main" style="padding: 12px 24px; font-size: 14px;">Contacto</a>
+      <a href="https://wa.me/TuNumero" class="btn-main" style="padding: 12px 24px; font-size: 13px;">Contacto</a>
     </div>
   </header>
 
   <main class="hero">
     <div class="hero-text">
-      <span style="color: var(--blue-tech); font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 3px; display: block; margin-bottom: 15px;">Red Transaccional #1 de RD</span>
-      <h1>Lidere la inclusión financiera</h1>
-      <p style="font-size: 20px; color: rgba(255,255,255,0.6); margin-bottom: 40px;">Empoderamos su negocio con tecnología transaccional de vanguardia.</p>
-      <a href="clientes.html" class="btn-main">Conocer Aliados</a>
+      <span style="color: var(--blue-tech); font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 3px; display: block; margin-bottom: 15px;">Red Transaccional Líder</span>
+      <h1>Lidere la inclusión financiera en su zona</h1>
+      <p>Transforme su local en un punto de servicios bancarios de alta eficiencia con el respaldo de MIRED.</p>
+      <a href="clientes.html" class="btn-main">Quiero ser subagente</a>
     </div>
     <div class="hero-img">
-      <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" alt="Fintech RD">
+      <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" alt="Subagente MIRED">
     </div>
   </main>
 
