@@ -26,34 +26,28 @@
     @media (min-width: 900px) { .menu-desktop { display: flex; gap: 30px; } .menu-desktop a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 15px; font-weight: 600; } }
 
     /* BOTONES */
-    .btn-main { background: var(--orange-mired); color: white; padding: 18px 36px; border-radius: 14px; text-decoration: none; font-weight: 800; box-shadow: 0 10px 30px rgba(248,148,32,0.4); transition: 0.3s; display: inline-block; border: none; }
+    .btn-main { background: var(--orange-mired); color: white; padding: 18px 36px; border-radius: 14px; text-decoration: none; font-weight: 800; box-shadow: 0 10px 30px rgba(248,148,32,0.4); transition: 0.3s; display: inline-block; border: none; text-align: center; }
     .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(248,148,32,0.6); }
 
+    /* SECCIÓN SERVICIOS CON IMÁGENES */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 100px; }
+    .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
+    .service-card:hover { border-color: var(--orange-mired); transform: translateY(-10px); }
+    .service-img { height: 180px; width: 100%; background-size: cover; background-position: center; }
+    .service-content { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; }
+    .service-content h3 { color: var(--blue-tech); margin-bottom: 15px; font-size: 20px; font-weight: 800; }
+    .service-content p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
+    
+    .btn-outline { border: 2px solid var(--orange-mired); color: var(--orange-mired); padding: 10px 20px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 13px; text-align: center; transition: 0.3s; }
+    .btn-outline:hover { background: var(--orange-mired); color: white; }
+
     /* MOBILE NAV */
-    .mobile-toggle { display: block; background: none; border: none; color: white; cursor: pointer; }
-    @media (min-width: 900px) { .mobile-toggle { display: none; } }
     .mobile-nav { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: rgba(0, 10, 20, 0.98); backdrop-filter: blur(20px); display: flex; flex-direction: column; padding: 120px 30px; gap: 20px; transition: 0.4s ease; z-index: 1050; border-left: 1px solid rgba(255,255,255,0.1); }
     .mobile-nav.active { right: 0; }
     .mobile-nav a { color: white; text-decoration: none; font-size: 18px; font-weight: 600; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-    /* SECCIONES */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .hero { padding: 250px 0 100px; display: grid; gap: 60px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: center; }
-    .hero-text h1 { font-size: clamp(34px, 6vw, 64px); line-height: 1.1; margin-bottom: 24px; font-weight: 800; }
-    
-    /* SECCIÓN SOMOS MIRED */
-    .about-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 50px; border-radius: 30px; backdrop-filter: blur(10px); margin: 60px 0; text-align: center; }
-    .about-box p { font-size: 22px; line-height: 1.6; color: rgba(255,255,255,0.9); }
-    .about-box strong { color: var(--blue-tech); font-weight: 800; }
-
-    /* SERVICIOS GRID */
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 100px; }
-    .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 40px; border-radius: 24px; transition: 0.3s; }
-    .service-card:hover { border-color: var(--orange-mired); transform: translateY(-5px); }
-    .service-card h3 { color: var(--blue-tech); margin-bottom: 15px; font-size: 20px; font-weight: 800; }
-    .service-card p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.6; }
-
-    .wa-btn { position: fixed; bottom: 30px; right: 30px; background: var(--green-wa); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 2000; }
+    .wa-btn { position: fixed; bottom: 30px; right: 30px; background: var(--green-wa); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; }
   </style>
 </head>
 <body>
@@ -68,7 +62,9 @@
         <a href="noticias.html">Noticias</a>
         <a href="empleos.html">Empleos</a>
       </div>
-      <button class="mobile-toggle" onclick="toggleMenu()"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      <button onclick="toggleMenu()" style="background:none; border:none; color:white; cursor:pointer;" class="mobile-toggle">
+        <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
     </div>
   </header>
 
@@ -77,40 +73,55 @@
     <a href="clientes.html" onclick="toggleMenu()">Clientes</a>
     <a href="noticias.html" onclick="toggleMenu()">Noticias</a>
     <a href="empleos.html" onclick="toggleMenu()">Empleos</a>
-    <a href="https://wa.me/TuNumero" class="btn-main" style="font-size: 14px; padding: 12px; margin-top: 10px;">WhatsApp</a>
   </div>
 
   <main class="container">
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Lidere la inclusión financiera</h1>
-        <p>Potencie su negocio con la red de subagentes bancarios más completa y tecnológica del país.</p>
+    <section style="padding: 250px 0 100px; display: grid; gap: 60px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: center;">
+      <div>
+        <h1 style="font-size: clamp(34px, 6vw, 64px); line-height: 1.1; margin-bottom: 24px; font-weight: 800;">Lidere la inclusión financiera</h1>
+        <p style="font-size: 20px; color: rgba(255,255,255,0.6); margin-bottom: 40px;">Puntos estratégicos de servicios bancarios con tecnología de vanguardia.</p>
         <a href="#servicios" class="btn-main">Quiero ser subagente</a>
       </div>
       <div style="border-radius: 40px; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.5);"><img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" style="width: 100%; display: block;"></div>
     </section>
 
-    <section class="about-box">
-      <p>Somos la red de <strong>SUBAGENTES BANCARIOS</strong> más completa de la República Dominicana, con puntos en todas las provincias del país y con la más amplia gama de transacciones y servicios <strong>MiRed</strong>.</p>
-    </section>
-
-    <h2 id="servicios" style="text-align: center; margin-bottom: 50px; font-size: 32px; font-weight: 800;">Nuestros Servicios</h2>
+    <h2 id="servicios" style="text-align: center; margin-bottom: 50px; font-size: 36px; font-weight: 800;">Soluciones MiRed</h2>
+    
     <div class="services-grid">
       <div class="service-card">
-        <h3>SubAgentes Bancarios</h3>
-        <p>Realice operaciones bancarias habilitadas en sus establecimientos en nombre del Banco Participante.</p>
+        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800');"></div>
+        <div class="service-content">
+          <h3>SubAgentes Bancarios</h3>
+          <p>Personas físicas o jurídicas gestionadas por MiRed para realizar operaciones bancarias habilitadas en nombre de bancos participantes.</p>
+          <a href="#" class="btn-outline">Conocer Servicio</a>
+        </div>
       </div>
+
       <div class="service-card">
-        <h3>Soluciones de Movilidad</h3>
-        <p>Habilitación de servicios bancarios a través de dispositivos móviles con plataforma tecnológica propia.</p>
+        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1512428559083-a4051ba836c5?auto=format&fit=crop&q=80&w=800');"></div>
+        <div class="service-content">
+          <h3>Soluciones de Movilidad</h3>
+          <p>Habilitación de servicios bancarios mediante dispositivos móviles, incluyendo desarrollo tecnológico y soporte procesal.</p>
+          <a href="#" class="btn-outline">Conocer Servicio</a>
+        </div>
       </div>
+
       <div class="service-card">
-        <h3>Ecosistema TAT</h3>
-        <p>Plataforma para conectar proveedores con retail, optimizando inventarios y rentabilidad en negocios pequeños.</p>
+        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=800');"></div>
+        <div class="service-content">
+          <h3>Ecosistema TAT</h3>
+          <p>Conecta proveedores con el sector retail para gestionar colmados y tiendas al detalle, optimizando rentabilidad e inventarios.</p>
+          <a href="#" class="btn-outline">Conocer Servicio</a>
+        </div>
       </div>
+
       <div class="service-card">
-        <h3>Bancarización Masiva</h3>
-        <p>Servicio integral para procesos masivos de bancarización utilizando tecnología y nuevos medios de autenticación.</p>
+        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80&w=800');"></div>
+        <div class="service-content">
+          <h3>Bancarización Masiva</h3>
+          <p>Servicio integral para procesos masivos de bancarización utilizando nuevos medios de autenticación y alta tecnología.</p>
+          <a href="#" class="btn-outline">Conocer Servicio</a>
+        </div>
       </div>
     </div>
   </main>
