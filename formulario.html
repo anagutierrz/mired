@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Registro de Subagente — MIRED</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --navy: #00558c; --blue-tech: #00aef0; --orange-mired: #f89420; --black-bg: #001a2c; --white: #ffffff; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--black-bg); color: var(--white); min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* FONDO AURORA */
+    .aurora-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: var(--black-bg); overflow: hidden; }
+    .blob { position: absolute; width: 60vw; height: 60vw; border-radius: 50%; filter: blur(100px); opacity: 0.2; }
+    .blob-orange { background: var(--orange-mired); top: -10%; right: -10%; }
+
+    /* HEADER COMPACTO */
+    .header { background: rgba(0, 26, 44, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 20px; }
+    .nav { max-width: 800px; margin: 0 auto; display: flex; justify-content: center; }
+    .brand img { height: 50px; }
+
+    /* FORMULARIO */
+    .form-container { max-width: 600px; margin: 40px auto; padding: 30px 20px; width: 90%; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; }
+    h1 { font-size: 24px; font-weight: 800; margin-bottom: 10px; text-align: center; }
+    p.subtitle { text-align: center; color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 30px; }
+
+    .form-group { margin-bottom: 20px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: var(--blue-tech); text-transform: uppercase; letter-spacing: 1px; }
+    
+    input[type="text"], select {
+      width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: white; font-size: 16px; outline: none; transition: 0.3s;
+    }
+    input:focus, select:focus { border-color: var(--orange-mired); background: rgba(255,255,255,0.08); }
+
+    /* ESTILO PARA SUBIDA DE FOTOS */
+    .file-upload { 
+      border: 2px dashed rgba(255,255,255,0.2); padding: 30px; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s;
+    }
+    .file-upload:hover { border-color: var(--orange-mired); background: rgba(248,148,32,0.05); }
+    .file-upload span { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+    .btn-submit { 
+      width: 100%; background: var(--orange-mired); color: white; padding: 16px; border-radius: 12px; border: none; font-weight: 800; font-size: 16px; cursor: pointer; margin-top: 20px; box-shadow: 0 10px 20px rgba(248,148,32,0.3); transition: 0.3s;
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(248,148,32,0.5); }
+
+    footer { text-align: center; padding: 20px; font-size: 11px; color: rgba(255,255,255,0.3); margin-top: auto; }
+  </style>
+</head>
+<body>
+  <div class="aurora-bg"><div class="blob blob-orange"></div></div>
+  
+  <header class="header">
+    <div class="nav"><a href="index.html" class="brand"><img src="logo.png" alt="MIRED"></a></div>
+  </header>
+
+  <main class="form-container">
+    <h1>Únete a la Red</h1>
+    <p class="subtitle">Completa los datos para iniciar tu solicitud de subagente.</p>
+
+    <form action="#" method="POST">
+      <div class="form-group">
+        <label>Nombre Completo</label>
+        <input type="text" name="nombre" placeholder="Ej: Juan Pérez" required>
+      </div>
+
+      <div class="form-group">
+        <label>Cédula de Identidad</label>
+        <input type="text" name="cedula" placeholder="001-0000000-0" required>
+      </div>
+
+      <div class="form-group">
+        <label>Nombre del Negocio</label>
+        <input type="text" name="nombre_negocio" placeholder="Ej: Colmado La Esperanza" required>
+      </div>
+
+      <div class="form-group">
+        <label>¿Quién lo refirió?</label>
+        <select name="referido" required>
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="nombre1">Nombre 1</option>
+          <option value="nombre2">Nombre 2</option>
+          <option value="nombre3">Nombre 3</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Fotos del Negocio</label>
+        <div class="file-upload" onclick="document.getElementById('fotos').click()">
+          <span>Click para subir fotos del local</span>
+          <input type="file" id="fotos" name="fotos[]" multiple style="display:none" accept="image/*">
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">Enviar Solicitud</button>
+    </form>
+  </main>
+
+  <footer>&copy; 2026 MIRED — Todos los derechos reservados.</footer>
+</body>
+</html>
