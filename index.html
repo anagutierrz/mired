@@ -23,27 +23,38 @@
     .nav { display: flex; align-items: center; justify-content: space-between; height: 140px; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
     .brand img { height: 110px; width: auto; display: block; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4)); }
     .menu-desktop { display: none; }
-    @media (min-width: 900px) { .menu-desktop { display: flex; gap: 30px; } .menu-desktop a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 15px; font-weight: 600; } }
+    @media (min-width: 900px) { .menu-desktop { display: flex; gap: 30px; } .menu-desktop a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 15px; font-weight: 600; transition: 0.3s; } .menu-desktop a:hover { color: var(--orange-mired); } }
 
     /* BOTONES */
     .btn-main { background: var(--orange-mired); color: white; padding: 18px 36px; border-radius: 14px; text-decoration: none; font-weight: 800; box-shadow: 0 10px 30px rgba(248,148,32,0.4); transition: 0.3s; display: inline-block; border: none; text-align: center; }
     .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(248,148,32,0.6); }
 
-    /* SECCIÓN SERVICIOS CON IMÁGENES */
+    /* BANDA DE ALIADOS (CLIENTES) */
+    .aliados-slider { background: rgba(255, 255, 255, 0.03); padding: 30px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); overflow: hidden; white-space: nowrap; margin-bottom: 60px; }
+    .aliados-track { display: inline-flex; animation: scroll-left 35s linear infinite; align-items: center; }
+    .aliado-item { font-size: 20px; font-weight: 800; color: rgba(255, 255, 255, 0.3); margin: 0 40px; text-transform: uppercase; letter-spacing: 3px; }
+    @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECCIÓN SERVICIOS */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .hero { padding: 250px 0 80px; display: grid; gap: 60px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: center; }
+    .hero-text h1 { font-size: clamp(34px, 6vw, 64px); line-height: 1.1; margin-bottom: 24px; font-weight: 800; }
+    
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 100px; }
     .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
     .service-card:hover { border-color: var(--orange-mired); transform: translateY(-10px); }
-    .service-img { height: 180px; width: 100%; background-size: cover; background-position: center; }
+    .service-img { height: 200px; width: 100%; background-size: cover; background-position: center; }
     .service-content { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; }
-    .service-content h3 { color: var(--blue-tech); margin-bottom: 15px; font-size: 20px; font-weight: 800; }
+    .service-content h3 { color: var(--blue-tech); margin-bottom: 15px; font-size: 19px; font-weight: 800; }
     .service-content p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
     
     .btn-outline { border: 2px solid var(--orange-mired); color: var(--orange-mired); padding: 10px 20px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 13px; text-align: center; transition: 0.3s; }
     .btn-outline:hover { background: var(--orange-mired); color: white; }
 
     /* MOBILE NAV */
-    .mobile-nav { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: rgba(0, 10, 20, 0.98); backdrop-filter: blur(20px); display: flex; flex-direction: column; padding: 120px 30px; gap: 20px; transition: 0.4s ease; z-index: 1050; border-left: 1px solid rgba(255,255,255,0.1); }
+    .mobile-toggle { display: block; background: none; border: none; color: white; cursor: pointer; }
+    @media (min-width: 900px) { .mobile-toggle { display: none; } }
+    .mobile-nav { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: rgba(0, 10, 20, 0.98); backdrop-filter: blur(25px); display: flex; flex-direction: column; padding: 120px 30px; gap: 20px; transition: 0.4s ease; z-index: 1050; border-left: 1px solid rgba(255,255,255,0.1); }
     .mobile-nav.active { right: 0; }
     .mobile-nav a { color: white; text-decoration: none; font-size: 18px; font-weight: 600; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
@@ -62,9 +73,7 @@
         <a href="noticias.html">Noticias</a>
         <a href="empleos.html">Empleos</a>
       </div>
-      <button onclick="toggleMenu()" style="background:none; border:none; color:white; cursor:pointer;" class="mobile-toggle">
-        <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
+      <button onclick="toggleMenu()" class="mobile-toggle"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
     </div>
   </header>
 
@@ -73,53 +82,57 @@
     <a href="clientes.html" onclick="toggleMenu()">Clientes</a>
     <a href="noticias.html" onclick="toggleMenu()">Noticias</a>
     <a href="empleos.html" onclick="toggleMenu()">Empleos</a>
+    <a href="https://wa.me/TuNumero" class="btn-main" style="font-size: 14px; padding: 12px; margin-top: 10px;">WhatsApp</a>
   </div>
 
   <main class="container">
-    <section style="padding: 250px 0 100px; display: grid; gap: 60px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: center;">
-      <div>
-        <h1 style="font-size: clamp(34px, 6vw, 64px); line-height: 1.1; margin-bottom: 24px; font-weight: 800;">Lidere la inclusión financiera</h1>
-        <p style="font-size: 20px; color: rgba(255,255,255,0.6); margin-bottom: 40px;">Puntos estratégicos de servicios bancarios con tecnología de vanguardia.</p>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Lidere la inclusión financiera</h1>
+        <p>Somos la red de subagentes bancarios más completa de RD, con presencia en todas las provincias.</p>
         <a href="#servicios" class="btn-main">Quiero ser subagente</a>
       </div>
       <div style="border-radius: 40px; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.5);"><img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" style="width: 100%; display: block;"></div>
     </section>
 
-    <h2 id="servicios" style="text-align: center; margin-bottom: 50px; font-size: 36px; font-weight: 800;">Soluciones MiRed</h2>
-    
+    <div class="aliados-slider">
+      <div class="aliados-track">
+        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">POPULAR</span><span class="aliado-item">BHD</span><span class="aliado-item">CARIBE</span><span class="aliado-item">ADOPEM</span><span class="aliado-item">SANTA CRUZ</span>
+        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">POPULAR</span><span class="aliado-item">BHD</span><span class="aliado-item">CARIBE</span><span class="aliado-item">ADOPEM</span><span class="aliado-item">SANTA CRUZ</span>
+      </div>
+    </div>
+
+    <h2 id="servicios" style="text-align: center; margin-bottom: 50px; font-size: 36px; font-weight: 800;">Nuestras Soluciones</h2>
     <div class="services-grid">
       <div class="service-card">
         <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800');"></div>
         <div class="service-content">
           <h3>SubAgentes Bancarios</h3>
-          <p>Personas físicas o jurídicas gestionadas por MiRed para realizar operaciones bancarias habilitadas en nombre de bancos participantes.</p>
+          <p>Realice operaciones permitidas en nombre del Banco Participante en sus establecimientos.</p>
           <a href="#" class="btn-outline">Conocer Servicio</a>
         </div>
       </div>
-
       <div class="service-card">
         <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1512428559083-a4051ba836c5?auto=format&fit=crop&q=80&w=800');"></div>
         <div class="service-content">
           <h3>Soluciones de Movilidad</h3>
-          <p>Habilitación de servicios bancarios mediante dispositivos móviles, incluyendo desarrollo tecnológico y soporte procesal.</p>
+          <p>Habilitación de servicios bancarios mediante dispositivos móviles con soporte tecnológico integral.</p>
           <a href="#" class="btn-outline">Conocer Servicio</a>
         </div>
       </div>
-
       <div class="service-card">
         <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=800');"></div>
         <div class="service-content">
           <h3>Ecosistema TAT</h3>
-          <p>Conecta proveedores con el sector retail para gestionar colmados y tiendas al detalle, optimizando rentabilidad e inventarios.</p>
+          <p>Conecta proveedores con retail para optimizar la rentabilidad y el inventario de pequeños negocios.</p>
           <a href="#" class="btn-outline">Conocer Servicio</a>
         </div>
       </div>
-
       <div class="service-card">
         <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80&w=800');"></div>
         <div class="service-content">
           <h3>Bancarización Masiva</h3>
-          <p>Servicio integral para procesos masivos de bancarización utilizando nuevos medios de autenticación y alta tecnología.</p>
+          <p>Servicio integral utilizando tecnología avanzada y nuevos medios de autenticación para procesos masivos.</p>
           <a href="#" class="btn-outline">Conocer Servicio</a>
         </div>
       </div>
