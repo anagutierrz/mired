@@ -28,7 +28,7 @@
       line-height: 1.6;
     }
 
-    /* --- FONDO AURORA CON NARANJA VIBRANTE --- */
+    /* --- FONDO AURORA --- */
     .aurora-bg {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       z-index: -1; background: var(--black-bg); overflow: hidden;
@@ -38,8 +38,7 @@
       filter: blur(150px); opacity: 0.45; animation: move 25s infinite alternate;
     }
     .blob-blue { background: var(--navy); top: -20%; left: -10%; }
-    /* Mancha naranja estratégica */
-    .blob-orange { background: var(--orange-mired); top: 10%; right: -10%; opacity: 0.45; animation-duration: 18s; }
+    .blob-orange { background: var(--orange-mired); top: 10%; right: -10%; opacity: 0.45; }
     .blob-cyan { background: var(--blue-tech); bottom: -15%; left: 20%; opacity: 0.3; }
 
     @keyframes move {
@@ -47,23 +46,28 @@
       to { transform: translate(100px, 150px) scale(1.2); }
     }
 
-    /* --- HEADER --- */
+    /* --- HEADER OPTIMIZADO PARA LOGO GRANDE --- */
     .header {
       position: fixed; top: 0; width: 100%; z-index: 1000;
-      background: rgba(0, 26, 44, 0.8); backdrop-filter: blur(25px);
+      background: rgba(0, 26, 44, 0.85); backdrop-filter: blur(25px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     .nav { 
       display: flex; align-items: center; justify-content: space-between; 
-      height: 90px; max-width: 1200px; margin: 0 auto; padding: 0 24px; 
+      height: 110px; /* Aumentado de 90px a 110px para dar espacio al logo */
+      max-width: 1200px; margin: 0 auto; padding: 0 24px; 
     }
     
-    /* LLAMADA AL NUEVO NOMBRE DE ARCHIVO */
+    /* LOGO CON TAMAÑO REFORZADO */
     .brand img {
-      height: 55px; 
+      height: 75px; /* Aumentado de 55px a 75px para que se aprecie bien */
       width: auto;
       display: block;
-      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
+      filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4)); /* Sombra para resaltar sobre el fondo */
+      transition: transform 0.3s ease;
+    }
+    .brand:hover img {
+      transform: scale(1.05); /* Efecto sutil al pasar el mouse */
     }
 
     .menu { display: none; }
@@ -74,7 +78,7 @@
     }
 
     /* --- HERO --- */
-    .hero { padding: 180px 24px 100px; max-width: 1200px; margin: 0 auto; display: grid; gap: 60px; }
+    .hero { padding: 200px 24px 100px; max-width: 1200px; margin: 0 auto; display: grid; gap: 60px; }
     @media (min-width: 900px) { .hero { grid-template-columns: 1.2fr 1fr; align-items: center; text-align: left; } }
     @media (max-width: 899px) { .hero { text-align: center; } }
     
@@ -94,13 +98,12 @@
     }
     .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    /* WHATSAPP FLOAT */
+    /* WHATSAPP */
     .wa-btn {
       position: fixed; bottom: 30px; right: 30px; background: var(--green-wa); width: 65px; height: 65px;
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3); z-index: 2000; transition: 0.3s;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3); z-index: 2000;
     }
-    .wa-btn:hover { transform: scale(1.1); }
   </style>
 </head>
 <body>
