@@ -14,7 +14,6 @@
       --navy: #00558c;
       --blue-tech: #00aef0;
       --orange-mired: #f89420;
-      --black-pure: #000a12; /* Un tono más oscuro para el header */
       --black-bg: #001a2c;
       --white: #ffffff;
       --green-wa: #25d366;
@@ -28,53 +27,49 @@
       overflow-x: hidden;
     }
 
-    /* --- FONDO AURORA (Manchas movidas para no estorbar el logo) --- */
+    /* --- FONDO AURORA (Tu favorito) --- */
     .aurora-bg {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       z-index: -1; background: var(--black-bg); overflow: hidden;
     }
     .blob {
       position: absolute; width: min(100vw, 800px); height: min(100vw, 800px); border-radius: 50%;
-      filter: blur(140px); opacity: 0.4; animation: move 25s infinite alternate;
+      filter: blur(140px); opacity: 0.45; animation: move 25s infinite alternate;
     }
-    .blob-blue { background: var(--navy); bottom: -10%; left: -10%; }
-    .blob-orange { background: var(--orange-mired); top: 30%; right: -5%; opacity: 0.35; }
-    .blob-cyan { background: var(--blue-tech); bottom: 10%; right: 20%; opacity: 0.2; }
+    .blob-blue { background: var(--navy); top: -10%; left: -10%; }
+    .blob-orange { background: var(--orange-mired); top: 15%; right: -5%; opacity: 0.45; }
+    .blob-cyan { background: var(--blue-tech); bottom: -10%; left: 15%; opacity: 0.3; }
 
     @keyframes move {
       from { transform: translate(0, 0) scale(1); }
-      to { transform: translate(50px, 80px) scale(1.1); }
+      to { transform: translate(60px, 100px) scale(1.1); }
     }
 
-    /* --- HEADER DE ALTO IMPACTO --- */
+    /* --- HEADER CON LOGO GIGANTE --- */
     .header {
       position: fixed; top: 0; width: 100%; z-index: 1000;
-      background: rgba(0, 10, 18, 0.98); /* Casi negro sólido para máximo contraste */
-      backdrop-filter: blur(10px);
-      border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+      background: rgba(0, 26, 44, 0.8); /* Fondo aurora visible a través */
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     .nav { 
       display: flex; align-items: center; justify-content: space-between; 
-      height: 140px; /* Altura máxima para que el logo se vea gigante */
-      max-width: 1300px; margin: 0 auto; padding: 0 30px; 
+      height: 140px; /* Header alto para logo grande */
+      max-width: 1200px; margin: 0 auto; padding: 0 24px; 
     }
     
-    .brand { display: flex; align-items: center; text-decoration: none; }
     .brand img {
-      height: 100px; /* ¡LOGO MÁS GRANDE! */
+      height: 110px; /* LOGO MUCHO MÁS GRANDE */
       width: auto;
       display: block;
-      /* Filtros para que el logo brille sobre el fondo oscuro */
-      filter: drop-shadow(0 0 15px rgba(255,255,255,0.1)) brightness(1.1);
-      transition: transform 0.3s ease;
+      filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4));
     }
-    .brand:hover img { transform: scale(1.05); }
 
     /* Menú Escritorio */
     .menu-desktop { display: none; }
-    @media (min-width: 1024px) {
-      .menu-desktop { display: flex; gap: 40px; margin-left: 50px; }
-      .menu-desktop a { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    @media (min-width: 900px) {
+      .menu-desktop { display: flex; gap: 35px; }
+      .menu-desktop a { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 15px; font-weight: 600; transition: 0.3s; }
       .menu-desktop a:hover { color: var(--orange-mired); }
     }
 
@@ -89,25 +84,32 @@
     .mobile-toggle {
       display: block; background: none; border: none; color: white; cursor: pointer;
     }
-    @media (min-width: 1024px) { .mobile-toggle { display: none; } }
+    @media (min-width: 900px) { .mobile-toggle { display: none; } }
 
     .mobile-nav {
-      position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-      background: #000a12; display: flex; flex-direction: column;
-      padding: 150px 40px; gap: 35px; transition: 0.5s; z-index: 1050;
+      position: fixed; top: 0; right: -100%; width: 85%; height: 100vh;
+      background: var(--black-bg); display: flex; flex-direction: column;
+      padding: 140px 40px; gap: 35px; transition: 0.4s ease; z-index: 1050;
+      border-left: 1px solid rgba(255,255,255,0.1);
     }
     .mobile-nav.active { right: 0; }
-    .mobile-nav a { color: white; text-decoration: none; font-size: 28px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+    .mobile-nav a { color: white; text-decoration: none; font-size: 26px; font-weight: 700; }
 
     /* --- HERO --- */
-    .hero { padding: 240px 24px 100px; max-width: 1200px; margin: 0 auto; display: grid; gap: 60px; }
-    @media (min-width: 1024px) { .hero { grid-template-columns: 1.1fr 1fr; align-items: center; text-align: left; } }
-    @media (max-width: 1023px) { .hero { text-align: center; } }
+    .hero { padding: 250px 24px 100px; max-width: 1200px; margin: 0 auto; display: grid; gap: 60px; }
+    @media (min-width: 900px) { .hero { grid-template-columns: 1.2fr 1fr; align-items: center; text-align: left; } }
+    @media (max-width: 899px) { .hero { text-align: center; } }
     
-    h1 { font-size: clamp(38px, 6vw, 72px); font-weight: 800; letter-spacing: -2px; line-height: 1.05; margin-bottom: 25px; }
+    h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 800; letter-spacing: -2px; line-height: 1.05; margin-bottom: 25px; }
 
-    .hero-img { border-radius: 40px; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.6); }
+    .hero-img { border-radius: 40px; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.5); }
     .hero-img img { width: 100%; height: auto; display: block; }
+
+    /* WA */
+    .wa-btn {
+      position: fixed; bottom: 30px; right: 30px; background: var(--green-wa); width: 65px; height: 65px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000;
+    }
   </style>
 </head>
 <body>
@@ -132,9 +134,9 @@
       </div>
 
       <div style="display: flex; align-items: center; gap: 20px;">
-        <a href="https://wa.me/TuNumero" class="btn-main" style="display: none; @media (min-width: 1024px) { display: inline-block; }">Contacto</a>
+        <a href="https://wa.me/TuNumero" class="btn-main" style="display: none; @media (min-width: 900px) { display: inline-block; } padding: 12px 24px; font-size: 13px;">Contacto</a>
         <button class="mobile-toggle" onclick="toggleMenu()">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
     </div>
@@ -145,17 +147,18 @@
     <a href="clientes.html" onclick="toggleMenu()">Clientes</a>
     <a href="noticias.html" onclick="toggleMenu()">Noticias</a>
     <a href="empleos.html" onclick="toggleMenu()">Empleos</a>
-    <a href="https://wa.me/TuNumero" class="btn-main" style="text-align: center; margin-top: 20px;">Quiero ser subagente</a>
+    <a href="https://wa.me/TuNumero" class="btn-main" style="text-align: center;">Quiero ser subagente</a>
   </div>
 
   <main class="hero">
     <div class="hero-text">
-      <h1>Lidere la inclusión financiera</h1>
-      <p style="font-size: 22px; color: rgba(255,255,255,0.7); margin-bottom: 40px;">Forme parte de la red transaccional más robusta de República Dominicana.</p>
-      <a href="clientes.html" class="btn-main" style="padding: 22px 45px; font-size: 18px;">Quiero ser subagente</a>
+      <span style="color: var(--blue-tech); font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 3px; display: block; margin-bottom: 15px;">Red Transaccional Líder</span>
+      <h1>Lidere la inclusión financiera en su zona</h1>
+      <p style="font-size: 20px; color: rgba(255,255,255,0.6); margin-bottom: 40px;">Transforme su local en un punto estratégico de servicios con MIRED.</p>
+      <a href="clientes.html" class="btn-main">Quiero ser subagente</a>
     </div>
     <div class="hero-img">
-      <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1000" alt="Fintech">
+      <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" alt="Subagente">
     </div>
   </main>
 
