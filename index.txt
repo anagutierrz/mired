@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>MIRED — Innovación en Servicios Financieros</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #00558c;
+      --blue-tech: #00aef0;
+      --teal-tech: #1dafb2;
+      --orange-action: #f89420;
+      --black-auth: #001a2c; /* Un azul casi negro para profundidad */
+      --white: #ffffff;
+      --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--black-auth);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* --- FONDO INNOVADOR (AURORA EFFECT) --- */
+    .aurora-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1;
+      background: var(--black-auth);
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.4;
+      animation: move 20s infinite alternate;
+    }
+
+    .blob-1 { background: var(--navy); top: -10%; left: -10%; }
+    .blob-2 { background: var(--teal-tech); bottom: -10%; right: -10%; animation-duration: 25s; }
+    .blob-3 { background: var(--blue-tech); top: 40%; left: 30%; opacity: 0.2; animation-duration: 15s; }
+    .blob-4 { background: var(--orange-action); bottom: 10%; left: 10%; opacity: 0.15; animation-duration: 30s; }
+
+    @keyframes move {
+      from { transform: translate(0, 0) scale(1); }
+      to { transform: translate(100px, 150px) scale(1.2); }
+    }
+
+    /* --- LAYOUT --- */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Header Glassmorphism */
+    .header {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(0, 26, 44, 0.4);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .logo-mark {
+      width: 38px; height: 38px; background: var(--navy);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 800; border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Hero */
+    .hero { padding: 180px 0 100px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    
+    .kicker {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 24px;
+      color: var(--blue-tech);
+    }
+
+    h1 {
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -2.5px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; padding: 16px 32px; 
+      border-radius: 12px; font-weight: 700; text-decoration: none; 
+      transition: all 0.3s var(--ease); border: none; cursor: pointer;
+    }
+    .btn-primary { background: var(--orange-action); color: white; box-shadow: 0 10px 30px rgba(248,148,32,0.3); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(248,148,32,0.4); }
+    .btn-outline { background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); margin-left: 12px; }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 1s var(--ease); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* Visual Card */
+    .visual-card {
+      position: relative;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      height: 440px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+    
+    .glass-label {
+      position: absolute; bottom: 24px; left: 24px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px 20px; border-radius: 12px;
+      backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);
+      font-size: 14px; font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="aurora-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="#" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: white;">
+          <div class="logo-mark">M</div>
+          <span style="font-weight: 800; font-size: 22px; letter-spacing: -1px;">MIRED</span>
+        </a>
+        <div style="display: flex; gap: 32px;">
+          <a href="#servicios" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; font-weight: 600;">Servicios</a>
+          <a href="#noticias" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; font-weight: 600;">Noticias</a>
+        </div>
+        <a href="#afiliar" class="btn btn-primary" style="padding: 10px 24px; font-size: 13px;">Unirse a la Red</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="reveal">
+          <span class="kicker">Red de Servicios Financieros</span>
+          <h1>Lidere la inclusión financiera en su zona</h1>
+          <p style="font-size: 18px; color: rgba(255,255,255,0.6); margin-bottom: 40px; max-width: 500px;">
+            Transforme su establecimiento en un nodo transaccional de alta eficiencia con el respaldo institucional de MIRED.
+          </p>
+          <div style="display: flex;">
+            <a href="#afiliar" class="btn btn-primary">Iniciar Afiliación</a>
+            <a href="#servicios" class="btn btn-outline">Ver Servicios</a>
+          </div>
+        </div>
+        
+        <div class="reveal" style="transition-delay: 0.2s;">
+          <div class="visual-card">
+            <div style="text-align: center; opacity: 0.4;">
+               <div style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Visual Institucional MIRED</div>
+            </div>
+            <div class="glass-label">
+              <span style="color: var(--teal-tech);">●</span> Red Operativa 24/7
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Reveal On Scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
