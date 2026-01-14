@@ -3,73 +3,104 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>MIRED — Red de Subagentes Bancarios líder en RD</title>
+  <title>MIRED — Red Transaccional</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root { --navy: #00558c; --blue-tech: #00aef0; --orange-mired: #f89420; --black-bg: #001a2c; --white: #ffffff; --green-wa: #25d366; }
+    
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background-color: var(--black-bg); color: var(--white); overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+    
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background-color: var(--black-bg); 
+      color: var(--white); 
+      overflow-x: hidden; 
+      line-height: 1.5;
+    }
 
     /* FONDO AURORA */
     .aurora-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: var(--black-bg); overflow: hidden; }
-    .blob { position: absolute; width: min(100vw, 800px); height: min(100vw, 800px); border-radius: 50%; filter: blur(140px); opacity: 0.3; animation: move 25s infinite alternate; }
+    .blob { position: absolute; width: 60vw; height: 60vw; border-radius: 50%; filter: blur(80px); opacity: 0.3; }
     .blob-blue { background: var(--navy); top: -10%; left: -10%; }
-    .blob-orange { background: var(--orange-mired); top: 15%; right: -5%; }
-    @keyframes move { from { transform: translate(0, 0) scale(1); } to { transform: translate(40px, 60px) scale(1.1); } }
+    .blob-orange { background: var(--orange-mired); bottom: -10%; right: -10%; }
 
-    /* HEADER AJUSTADO PARA MÓVIL */
-    .header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 26, 44, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 90px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    @media (min-width: 900px) { .nav { height: 140px; } }
-    
-    .brand img { height: 60px; width: auto; display: block; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
-    @media (min-width: 900px) { .brand img { height: 110px; } }
+    /* HEADER RESPONSIVO */
+    .header { 
+      position: fixed; top: 0; width: 100%; z-index: 1000; 
+      background: rgba(0, 26, 44, 0.95); backdrop-filter: blur(10px); 
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    }
+    .nav { 
+      display: flex; align-items: center; justify-content: space-between; 
+      height: 70px; /* Altura reducida en móvil */
+      padding: 0 20px; max-width: 1200px; margin: 0 auto;
+    }
+    @media (min-width: 1024px) { .nav { height: 120px; } }
 
-    /* MENÚ DESKTOP */
+    .brand img { height: 45px; width: auto; }
+    @media (min-width: 1024px) { .brand img { height: 90px; } }
+
     .menu-desktop { display: none; }
-    @media (min-width: 900px) { .menu-desktop { display: flex; gap: 30px; } .menu-desktop a { color: white; text-decoration: none; font-size: 15px; font-weight: 600; } }
+    @media (min-width: 1024px) { .menu-desktop { display: flex; gap: 30px; } .menu-desktop a { color: white; text-decoration: none; font-weight: 600; font-size: 15px; } }
 
-    /* HERO RESPONSIVO */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; flex: 1; }
-    .hero { padding: 130px 0 40px; text-align: center; display: flex; flex-direction: column; gap: 30px; }
-    @media (min-width: 900px) { .hero { padding: 250px 0 100px; display: grid; grid-template-columns: 1.2fr 1fr; text-align: left; } }
+    /* HERO SECTION */
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     
-    .hero-text h1 { font-size: 28px; line-height: 1.2; margin-bottom: 15px; font-weight: 800; }
-    @media (min-width: 900px) { .hero-text h1 { font-size: 56px; } }
-    
+    .hero { 
+      padding-top: 100px; padding-bottom: 40px; 
+      display: flex; flex-direction: column; gap: 30px; text-align: center; 
+    }
+    @media (min-width: 1024px) { 
+      .hero { padding-top: 200px; flex-direction: row; text-align: left; align-items: center; } 
+      .hero-text { flex: 1.2; }
+      .hero-img { flex: 1; }
+    }
+
+    .hero-text h1 { font-size: 28px; font-weight: 800; line-height: 1.2; margin-bottom: 15px; }
+    @media (min-width: 1024px) { .hero-text h1 { font-size: 52px; } }
+
     .hero-text p { font-size: 16px; color: rgba(255,255,255,0.7); margin-bottom: 25px; }
 
-    .btn-main { background: var(--orange-mired); color: white; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-weight: 800; display: inline-block; font-size: 14px; }
+    .btn-main { 
+      background: var(--orange-mired); color: white; padding: 14px 28px; 
+      border-radius: 10px; text-decoration: none; font-weight: 800; 
+      display: inline-block; font-size: 15px; transition: 0.3s;
+    }
 
-    /* ALIADOS SLIDER */
-    .aliados-slider { background: rgba(255, 255, 255, 0.03); padding: 20px 0; overflow: hidden; white-space: nowrap; margin: 20px 0; }
-    .aliados-track { display: inline-flex; animation: scroll-left 30s linear infinite; }
-    .aliado-item { font-size: 14px; font-weight: 800; color: rgba(255, 255, 255, 0.2); margin: 0 25px; letter-spacing: 2px; }
-    @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .hero-img img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+    /* BANDA ALIADOS */
+    .aliados-slider { background: rgba(255,255,255,0.03); padding: 20px 0; overflow: hidden; margin: 20px 0; }
+    .aliados-track { display: flex; animation: scroll 30s linear infinite; width: max-content; }
+    .aliado-item { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.2); padding: 0 30px; letter-spacing: 2px; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* STATS */
-    .stats-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 30px 0; text-align: center; }
-    @media (min-width: 900px) { .stats-container { grid-template-columns: repeat(4, 1fr); } }
-    .stat-item h2 { font-size: 24px; color: var(--orange-mired); font-weight: 800; }
-    .stat-item p { font-size: 10px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+    .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 40px 0; text-align: center; }
+    @media (min-width: 1024px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+    .stat-item h2 { color: var(--orange-mired); font-size: 24px; font-weight: 800; }
+    .stat-item p { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; }
 
-    /* SERVICIOS MÓVIL (UNA COLUMNA CLARA) */
-    .services-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 30px 0 60px; }
-    @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
+    /* SERVICIOS */
+    .services-title { text-align: center; font-size: 24px; margin-bottom: 30px; font-weight: 800; }
+    .services-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-bottom: 60px; }
+    @media (min-width: 768px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1100px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
 
-    .service-card { background: rgba(255,255,255,0.05); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.1); }
-    .service-img { height: 150px; width: 100%; background-size: cover; background-position: center; }
-    .service-content { padding: 20px; text-align: left; }
-    .service-content h3 { color: var(--blue-tech); font-size: 18px; margin-bottom: 10px; }
-    .service-content p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; margin-bottom: 15px; }
+    .card { background: rgba(255,255,255,0.05); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; }
+    .card-img { height: 160px; width: 100%; background-size: cover; background-position: center; }
+    .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .card-body h3 { color: var(--blue-tech); font-size: 18px; margin-bottom: 10px; }
+    .card-body p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 20px; flex: 1; }
+    .btn-card { border: 2px solid var(--orange-mired); color: var(--orange-mired); text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 13px; }
 
     /* FOOTER */
-    .footer { background: #000a12; padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer { background: #000a12; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
     .footer p { font-size: 12px; color: rgba(255,255,255,0.4); }
 
-    /* MENÚ MÓVIL */
-    .mobile-toggle { background: none; border: none; color: white; cursor: pointer; }
-    @media (min-width: 900px) { .mobile-toggle { display: none; } }
+    /* MOBILE MENU ICON */
+    .menu-btn { background: none; border: none; color: white; cursor: pointer; }
+    @media (min-width: 1024px) { .menu-btn { display: none; } }
   </style>
 </head>
 <body>
@@ -84,9 +115,7 @@
         <a href="noticias.html">Noticias</a>
         <a href="empleos.html">Empleos</a>
       </div>
-      <button class="mobile-toggle" onclick="alert('Menú en desarrollo')">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
+      <button class="menu-btn"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
     </div>
   </header>
 
@@ -97,7 +126,9 @@
         <p>Somos la red de subagentes bancarios más completa de la República Dominicana.</p>
         <a href="formulario.html" class="btn-main">Quiero ser subagente</a>
       </div>
-      <div style="border-radius: 20px; overflow: hidden;"><img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" style="width: 100%;"></div>
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" alt="Terminal MiRed">
+      </div>
     </section>
 
     <div class="aliados-slider">
@@ -107,19 +138,21 @@
       </div>
     </div>
 
-    <section class="stats-container">
+    <section class="stats">
       <div class="stat-item"><h2>+5,000</h2><p>Puntos MiRed</p></div>
       <div class="stat-item"><h2>32</h2><p>Provincias</p></div>
       <div class="stat-item"><h2>+1M</h2><p>Transacciones</p></div>
       <div class="stat-item"><h2>24/7</h2><p>Soporte</p></div>
     </section>
 
+    <h2 class="services-title">Soluciones MiRed</h2>
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800');"></div>
-        <div class="service-content">
+      <div class="card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800');"></div>
+        <div class="card-body">
           <h3>SubAgentes Bancarios</h3>
-          <p>Opere en nombre de bancos participantes desde sus establecimientos.</p>
+          <p>Realice operaciones bancarias habilitadas en sus establecimientos físicos o jurídicos.</p>
+          <a href="servicio-sab.html" class="btn-card">Ver Detalle</a>
         </div>
       </div>
       </div>
