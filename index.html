@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>MIRED — Red Transaccional Líder en RD</title>
+  <title>MIRED — Red de Subagentes Bancarios líder en República Dominicana</title>
+  <meta name="description" content="Lidere la inclusión financiera con MiRed. Somos la red de subagentes bancarios más completa de RD con presencia en todas las provincias y soluciones tecnológicas avanzadas.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root { --navy: #00558c; --blue-tech: #00aef0; --orange-mired: #f89420; --black-bg: #001a2c; --white: #ffffff; --green-wa: #25d366; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background-color: var(--black-bg); color: var(--white); overflow-x: hidden; scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--black-bg); color: var(--white); overflow-x: hidden; scroll-behavior: smooth; display: flex; flex-direction: column; min-height: 100vh; }
 
-    /* FONDO AURORA VIBRANTE */
+    /* FONDO AURORA */
     .aurora-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: var(--black-bg); overflow: hidden; }
     .blob { position: absolute; width: min(100vw, 800px); height: min(100vw, 800px); border-radius: 50%; filter: blur(140px); opacity: 0.4; animation: move 25s infinite alternate; }
     .blob-blue { background: var(--navy); top: -10%; left: -10%; }
@@ -29,41 +30,50 @@
     .btn-main { background: var(--orange-mired); color: white; padding: 18px 36px; border-radius: 14px; text-decoration: none; font-weight: 800; box-shadow: 0 10px 30px rgba(248,148,32,0.4); transition: 0.3s; display: inline-block; border: none; text-align: center; }
     .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(248,148,32,0.6); }
 
-    /* BANDA DE ALIADOS (CLIENTES) */
-    .aliados-slider { background: rgba(255, 255, 255, 0.03); padding: 30px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); overflow: hidden; white-space: nowrap; margin-bottom: 20px; }
+    /* BANDA ALIADOS & STATS */
+    .aliados-slider { background: rgba(255, 255, 255, 0.03); padding: 30px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); overflow: hidden; white-space: nowrap; }
     .aliados-track { display: inline-flex; animation: scroll-left 35s linear infinite; align-items: center; }
     .aliado-item { font-size: 20px; font-weight: 800; color: rgba(255, 255, 255, 0.3); margin: 0 40px; text-transform: uppercase; letter-spacing: 3px; }
     @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* SECCIÓN DE ESTADÍSTICAS */
-    .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding: 60px 0 100px; text-align: center; max-width: 1200px; margin: 0 auto; }
+    .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding: 60px 0; text-align: center; max-width: 1200px; margin: 0 auto; }
     .stat-item h2 { font-size: 52px; font-weight: 800; color: var(--orange-mired); margin-bottom: 5px; }
     .stat-item p { font-size: 14px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 
-    /* SECCIÓN SERVICIOS */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    /* CONTENEDOR Y HERO */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; flex: 1; }
     .hero { padding: 250px 0 80px; display: grid; gap: 60px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: center; }
-    .hero-text h1 { font-size: clamp(34px, 6vw, 64px); line-height: 1.1; margin-bottom: 24px; font-weight: 800; }
-    
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 100px; }
+    .hero-text h1 { font-size: clamp(34px, 5vw, 60px); line-height: 1.1; margin-bottom: 24px; font-weight: 800; }
+    .hero-text p { font-size: 18px; color: rgba(255,255,255,0.7); margin-bottom: 35px; line-height: 1.6; }
+    .hero-text strong { color: var(--blue-tech); }
+
+    /* SERVICIOS */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin: 50px 0 100px; }
     .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
     .service-card:hover { border-color: var(--orange-mired); transform: translateY(-10px); }
-    .service-img { height: 200px; width: 100%; background-size: cover; background-position: center; }
-    .service-content { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; }
-    .service-content h3 { color: var(--blue-tech); margin-bottom: 15px; font-size: 19px; font-weight: 800; }
-    .service-content p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
-    
-    .btn-outline { border: 2px solid var(--orange-mired); color: var(--orange-mired); padding: 10px 20px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 13px; text-align: center; transition: 0.3s; }
+    .service-img { height: 180px; width: 100%; background-size: cover; background-position: center; }
+    .service-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+    .service-content h3 { color: var(--blue-tech); margin-bottom: 12px; font-size: 18px; font-weight: 800; }
+    .service-content p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.5; margin-bottom: 20px; flex-grow: 1; }
+    .btn-outline { border: 2px solid var(--orange-mired); color: var(--orange-mired); padding: 10px 15px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 12px; text-align: center; transition: 0.3s; }
     .btn-outline:hover { background: var(--orange-mired); color: white; }
 
-    /* MOBILE NAV */
+    /* FOOTER */
+    .footer { background: rgba(0, 10, 20, 0.9); padding: 60px 24px 30px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+    .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+    .footer-col h4 { color: var(--orange-mired); margin-bottom: 20px; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+    .footer-col p, .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; line-height: 1.8; display: block; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { text-align: center; padding-top: 40px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    /* MOBILE MENU */
     .mobile-toggle { display: block; background: none; border: none; color: white; cursor: pointer; }
     @media (min-width: 900px) { .mobile-toggle { display: none; } }
     .mobile-nav { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: rgba(0, 10, 20, 0.98); backdrop-filter: blur(25px); display: flex; flex-direction: column; padding: 120px 30px; gap: 20px; transition: 0.4s ease; z-index: 1050; border-left: 1px solid rgba(255,255,255,0.1); }
     .mobile-nav.active { right: 0; }
     .mobile-nav a { color: white; text-decoration: none; font-size: 18px; font-weight: 600; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-    .wa-btn { position: fixed; bottom: 30px; right: 30px; background: var(--green-wa); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; }
+    .wa-btn { position: fixed; bottom: 30px; right: 30px; background: var(--green-wa); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
   </style>
 </head>
 <body>
@@ -92,47 +102,37 @@
   <main class="container">
     <section class="hero">
       <div class="hero-text">
-        <h1>Lidere la inclusión financiera</h1>
-        <p>Somos la red de subagentes bancarios más completa de la República Dominicana, con presencia en todas las provincias del país.</p>
-        <a href="#servicios" class="btn-main">Quiero ser subagente</a>
+        <h1>Lidere la inclusión financiera con la mayor red de RD</h1>
+        <p>Somos la red de <strong>subagentes bancarios</strong> más completa de la República Dominicana, con presencia estratégica en todas las provincias y la mayor gama de servicios transaccionales.</p>
+        <a href="formulario.html" class="btn-main">Quiero ser subagente</a>
       </div>
-      <div style="border-radius: 40px; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.5);"><img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" style="width: 100%; display: block;"></div>
+      <div style="border-radius: 40px; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.5);">
+        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" alt="Tecnología MiRed" style="width: 100%; display: block;">
+      </div>
     </section>
 
     <div class="aliados-slider">
       <div class="aliados-track">
-        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">BANCO POPULAR</span><span class="aliado-item">BANCO BHD</span><span class="aliado-item">BANCO CARIBE</span><span class="aliado-item">BANCO ADOPEM</span><span class="aliado-item">SANTA CRUZ</span>
-        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">BANCO POPULAR</span><span class="aliado-item">BANCO BHD</span><span class="aliado-item">BANCO CARIBE</span><span class="aliado-item">BANCO ADOPEM</span><span class="aliado-item">SANTA CRUZ</span>
+        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">BANCO POPULAR</span><span class="aliado-item">BANCO BHD</span><span class="aliado-item">BANCO CARIBE</span><span class="aliado-item">ADOPEM</span><span class="aliado-item">SANTA CRUZ</span>
+        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">BANCO POPULAR</span><span class="aliado-item">BANCO BHD</span><span class="aliado-item">BANCO CARIBE</span><span class="aliado-item">ADOPEM</span><span class="aliado-item">SANTA CRUZ</span>
       </div>
     </div>
 
     <section class="stats-container">
-      <div class="stat-item">
-        <h2>+5,000</h2>
-        <p>Subagentes en RD</p>
-      </div>
-      <div class="stat-item">
-        <h2>32</h2>
-        <p>Provincias cubiertas</p>
-      </div>
-      <div class="stat-item">
-        <h2>+1M</h2>
-        <p>Transacciones mensuales</p>
-      </div>
-      <div class="stat-item">
-        <h2>24/7</h2>
-        <p>Soporte especializado</p>
-      </div>
+      <div class="stat-item"><h2>+5,000</h2><p>Subagentes en RD</p></div>
+      <div class="stat-item"><h2>32</h2><p>Provincias</p></div>
+      <div class="stat-item"><h2>+1M</h2><p>Transacciones/mes</p></div>
+      <div class="stat-item"><h2>24/7</h2><p>Soporte</p></div>
     </section>
 
-    <h2 id="servicios" style="text-align: center; margin-bottom: 50px; font-size: 36px; font-weight: 800;">Nuestras Soluciones</h2>
+    <h2 style="text-align: center; margin-bottom: 50px; font-size: 32px; font-weight: 800;">Soluciones MiRed</h2>
     <div class="services-grid">
       <div class="service-card">
         <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800');"></div>
         <div class="service-content">
           <h3>SubAgentes Bancarios</h3>
           <p>Realice operaciones bancarias habilitadas en sus establecimientos físicos o jurídicos en nombre de bancos participantes.</p>
-          <a href="#" class="btn-outline">Conocer Servicio</a>
+          <a href="#" class="btn-outline">Ver Detalle</a>
         </div>
       </div>
       <div class="service-card">
@@ -140,7 +140,7 @@
         <div class="service-content">
           <h3>Soluciones de Movilidad</h3>
           <p>Habilitación de servicios bancarios mediante dispositivos móviles con soporte tecnológico y operativo integral.</p>
-          <a href="#" class="btn-outline">Conocer Servicio</a>
+          <a href="#" class="btn-outline">Ver Detalle</a>
         </div>
       </div>
       <div class="service-card">
@@ -148,19 +148,46 @@
         <div class="service-content">
           <h3>Ecosistema TAT</h3>
           <p>Plataforma para conectar proveedores con retail, optimizando rentabilidad e inventarios de colmados y cafeterías.</p>
-          <a href="#" class="btn-outline">Conocer Servicio</a>
+          <a href="#" class="btn-outline">Ver Detalle</a>
         </div>
       </div>
       <div class="service-card">
         <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80&w=800');"></div>
         <div class="service-content">
           <h3>Bancarización Masiva</h3>
-          <p>Servicio integral para procesos masivos de bancarización utilizando alta tecnología y autenticación moderna.</p>
-          <a href="#" class="btn-outline">Conocer Servicio</a>
+          <p>Servicio integral utilizando tecnología avanzada y autenticación moderna para procesos masivos.</p>
+          <a href="#" class="btn-outline">Ver Detalle</a>
         </div>
       </div>
     </div>
   </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>Compañía</h4>
+        <a href="index.html">Inicio</a>
+        <a href="clientes.html">Clientes</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="empleos.html">Empleos</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Política de privacidad</a>
+        <a href="#">Manual de cumplimiento</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p>Santo Domingo, R.D.</p>
+        <p>Email: info@mired.com.do</p>
+        <p>Tel: (809) 000-0000</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 MIRED — Todos los derechos reservados.
+    </div>
+  </footer>
 
   <a href="https://wa.me/TuNumero" class="wa-btn" target="_blank">
     <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
