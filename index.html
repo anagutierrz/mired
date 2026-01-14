@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>MIRED — Red Transaccional Innovadora</title>
+  <title>MIRED — Red Transaccional</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
     :root {
       --navy: #00558c;
       --blue-tech: #00aef0;
-      --orange-mired: #f89420; /* Tu color de marca naranja */
+      --orange-mired: #f89420;
       --black-bg: #001a2c;
       --white: #ffffff;
     }
@@ -24,96 +24,80 @@
       background-color: var(--black-bg);
       color: var(--white);
       overflow-x: hidden;
-      line-height: 1.6;
     }
 
-    /* --- FONDO AURORA CON NARANJA --- */
+    /* --- FONDO AURORA REFORZADO CON NARANJA --- */
     .aurora-bg {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       z-index: -1; background: var(--black-bg); overflow: hidden;
     }
     .blob {
-      position: absolute; width: 700px; height: 700px; border-radius: 50%;
-      filter: blur(140px); opacity: 0.35; animation: move 25s infinite alternate;
+      position: absolute; width: min(90vw, 800px); height: min(90vw, 800px); border-radius: 50%;
+      filter: blur(140px); opacity: 0.4; animation: move 25s infinite alternate;
     }
-    /* Mancha Azul */
-    .blob-1 { background: var(--navy); top: -15%; left: -10%; }
-    /* Mancha Cyan */
-    .blob-2 { background: var(--blue-tech); bottom: -10%; right: -5%; animation-duration: 30s; }
-    /* NUEVA MANCHA NARANJA (Innovación) */
-    .blob-3 { background: var(--orange-mired); top: 30%; right: 15%; opacity: 0.25; animation-duration: 20s; }
+    .blob-blue { background: var(--navy); top: -20%; left: -10%; }
+    .blob-orange { background: var(--orange-mired); top: 20%; right: -10%; opacity: 0.3; } /* Mancha naranja principal */
+    .blob-cyan { background: var(--blue-tech); bottom: -10%; left: 20%; opacity: 0.2; }
 
     @keyframes move {
       from { transform: translate(0, 0) scale(1); }
-      to { transform: translate(120px, 180px) scale(1.3); }
+      to { transform: translate(100px, 150px) scale(1.2); }
     }
 
-    /* --- HEADER --- */
+    /* --- HEADER CON LOGO REAL --- */
     .header {
       position: fixed; top: 0; width: 100%; z-index: 1000;
-      background: rgba(0, 26, 44, 0.7); backdrop-filter: blur(25px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 26, 44, 0.75); backdrop-filter: blur(25px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 85px; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .nav { 
+      display: flex; align-items: center; justify-content: space-between; 
+      height: 90px; max-width: 1200px; margin: 0 auto; padding: 0 24px; 
+    }
     
-    /* Logo Estilo PDF */
-    .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-    .logo-symbol { position: relative; width: 45px; height: 30px; }
-    .brand span { font-weight: 800; font-size: 28px; color: var(--white); letter-spacing: -1.5px; }
+    .brand img {
+      height: 50px; /* Ajusta la altura de tu logo aquí */
+      width: auto;
+      display: block;
+    }
 
     .menu { display: none; }
     @media (min-width: 900px) {
       .menu { display: flex; gap: 35px; }
-      .menu a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.3s; }
-      .menu a:hover { color: var(--orange-mired); }
+      .menu a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 15px; font-weight: 600; }
     }
 
-    /* --- HERO SECTION --- */
-    .hero { padding: 180px 24px 100px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 60px; align-items: center; }
-    @media (min-width: 900px) { .hero { grid-template-columns: 1.2fr 1fr; text-align: left; } }
+    /* --- HERO --- */
+    .hero { padding: 180px 24px 100px; max-width: 1200px; margin: 0 auto; display: grid; gap: 60px; }
+    @media (min-width: 900px) { .hero { grid-template-columns: 1.2fr 1fr; align-items: center; } }
     
-    h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 800; letter-spacing: -2.5px; line-height: 1.05; margin-bottom: 24px; }
-    .hero p { font-size: 19px; color: rgba(255,255,255,0.6); margin-bottom: 40px; max-width: 550px; }
-
-    .btn {
-      display: inline-flex; align-items: center; padding: 18px 36px; border-radius: 14px;
-      font-weight: 700; text-decoration: none; transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 25px; }
+    
+    .btn-main {
+      background: var(--orange-mired); color: white; padding: 18px 36px; 
+      border-radius: 14px; text-decoration: none; font-weight: 700;
+      box-shadow: 0 10px 30px rgba(248,148,32,0.4); display: inline-block;
     }
-    .btn-primary { background: var(--orange-mired); color: white; box-shadow: 0 10px 30px rgba(248,148,32,0.3); }
-    .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(248,148,32,0.5); }
 
-    /* Imagen de Referencia */
-    .visual-frame {
-      border-radius: 40px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 40px 80px rgba(0,0,0,0.4); background: rgba(255,255,255,0.02);
+    .hero-img {
+      border-radius: 30px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 50px 100px rgba(0,0,0,0.5);
     }
-    .visual-frame img { width: 100%; height: 450px; object-fit: cover; opacity: 0.8; }
-
-    /* WhatsApp Float */
-    .wa-btn {
-      position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 15px 30px rgba(37,211,102,0.3); z-index: 2000;
-    }
+    .hero-img img { width: 100%; height: 100%; object-fit: cover; }
   </style>
 </head>
 <body>
 
   <div class="aurora-bg">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div> </div>
+    <div class="blob blob-blue"></div>
+    <div class="blob blob-orange"></div>
+    <div class="blob blob-cyan"></div>
+  </div>
 
   <header class="header">
     <div class="nav">
       <a href="index.html" class="brand">
-        <div class="logo-symbol">
-          <svg viewBox="0 0 50 30" fill="none">
-            <path d="M8 20C8 12 13 8 20 8C27 8 31 12 31 20" stroke="var(--blue-tech)" stroke-width="5" stroke-linecap="round"/>
-            <path d="M22 20C22 12 27 8 34 8C41 8 45 12 45 20" stroke="var(--orange-mired)" stroke-width="5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <span>mired</span>
+        <img src="logo-mired.png" alt="MIRED Logo">
       </a>
       <div class="menu">
         <a href="index.html">Inicio</a>
@@ -121,26 +105,20 @@
         <a href="noticias.html">Noticias</a>
         <a href="empleos.html">Empleos</a>
       </div>
-      <a href="https://wa.me/TuNumero" class="btn-primary" style="padding: 12px 24px; font-size: 14px;">Contacto</a>
+      <a href="https://wa.me/TuNumero" class="btn-main" style="padding: 12px 24px; font-size: 14px;">Contacto</a>
     </div>
   </header>
 
   <main class="hero">
     <div class="hero-text">
-      <span style="color: var(--blue-tech); font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 3px; display: block; margin-bottom: 15px;">Red Transaccional #1 de RD</span>
       <h1>Lidere la inclusión financiera en su zona</h1>
-      <p>Convierta su establecimiento en un nodo de alta eficiencia con el respaldo de la red más innovadora del país.</p>
-      <a href="clientes.html" class="btn btn-primary">Ver Nuestros Aliados</a>
+      <p style="font-size: 20px; color: rgba(255,255,255,0.6); margin-bottom: 40px;">Potenciamos comercios con la red transaccional más segura y moderna de República Dominicana.</p>
+      <a href="clientes.html" class="btn-main">Conocer Aliados</a>
     </div>
-    
-    <div class="visual-frame">
-      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=1000" alt="Tecnología Mired">
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1000" alt="Fintech">
     </div>
   </main>
-
-  <a href="https://wa.me/TuNumero" class="wa-btn" target="_blank">
-    <svg width="35" height="35" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
 
 </body>
 </html>
