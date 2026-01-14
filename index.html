@@ -3,171 +3,78 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>MIRED — Red Transaccional</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>MIRED — Red Transaccional Líder</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
   <style>
-    :root {
-      --navy: #00558c;
-      --blue-tech: #00aef0;
-      --orange-mired: #f89420;
-      --black-bg: #001a2c;
-      --white: #ffffff;
-      --green-wa: #25d366;
-    }
-
+    :root { --navy: #00558c; --blue-tech: #00aef0; --orange-mired: #f89420; --black-bg: #001a2c; --white: #ffffff; --green-wa: #25d366; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--black-bg);
-      color: var(--white);
-      overflow-x: hidden;
-    }
+    body { font-family: 'Inter', sans-serif; background-color: var(--black-bg); color: var(--white); overflow-x: hidden; }
 
-    /* --- FONDO AURORA (Tu favorito) --- */
-    .aurora-bg {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -1; background: var(--black-bg); overflow: hidden;
-    }
-    .blob {
-      position: absolute; width: min(100vw, 800px); height: min(100vw, 800px); border-radius: 50%;
-      filter: blur(140px); opacity: 0.45; animation: move 25s infinite alternate;
-    }
+    /* FONDO AURORA UNIFICADO */
+    .aurora-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: var(--black-bg); overflow: hidden; }
+    .blob { position: absolute; width: min(100vw, 800px); height: min(100vw, 800px); border-radius: 50%; filter: blur(140px); opacity: 0.45; animation: move 25s infinite alternate; }
     .blob-blue { background: var(--navy); top: -10%; left: -10%; }
     .blob-orange { background: var(--orange-mired); top: 15%; right: -5%; opacity: 0.45; }
     .blob-cyan { background: var(--blue-tech); bottom: -10%; left: 15%; opacity: 0.3; }
+    @keyframes move { from { transform: translate(0, 0) scale(1); } to { transform: translate(60px, 100px) scale(1.1); } }
 
-    @keyframes move {
-      from { transform: translate(0, 0) scale(1); }
-      to { transform: translate(60px, 100px) scale(1.1); }
-    }
-
-    /* --- HEADER CON LOGO GIGANTE --- */
-    .header {
-      position: fixed; top: 0; width: 100%; z-index: 1000;
-      background: rgba(0, 26, 44, 0.8); /* Fondo aurora visible a través */
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .nav { 
-      display: flex; align-items: center; justify-content: space-between; 
-      height: 140px; /* Header alto para logo grande */
-      max-width: 1200px; margin: 0 auto; padding: 0 24px; 
-    }
-    
-    .brand img {
-      height: 110px; /* LOGO MUCHO MÁS GRANDE */
-      width: auto;
-      display: block;
-      filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4));
-    }
-
-    /* Menú Escritorio */
+    /* HEADER UNIFICADO */
+    .header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 26, 44, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 140px; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .brand img { height: 110px; width: auto; display: block; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4)); }
     .menu-desktop { display: none; }
-    @media (min-width: 900px) {
-      .menu-desktop { display: flex; gap: 35px; }
-      .menu-desktop a { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 15px; font-weight: 600; transition: 0.3s; }
-      .menu-desktop a:hover { color: var(--orange-mired); }
-    }
+    @media (min-width: 900px) { .menu-desktop { display: flex; gap: 30px; } .menu-desktop a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 15px; font-weight: 600; } }
 
-    .btn-main {
-      background: var(--orange-mired); color: white; padding: 18px 36px; 
-      border-radius: 14px; text-decoration: none; font-weight: 800;
-      box-shadow: 0 10px 30px rgba(248,148,32,0.4); display: inline-block;
-      transition: 0.3s;
-    }
+    /* BOTONES */
+    .btn-main { background: var(--orange-mired); color: white; padding: 18px 36px; border-radius: 14px; text-decoration: none; font-weight: 800; box-shadow: 0 10px 30px rgba(248,148,32,0.4); transition: 0.3s; display: inline-block; text-align: center; }
+    .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(248,148,32,0.6); }
 
-    /* --- MENÚ MÓVIL --- */
-    .mobile-toggle {
-      display: block; background: none; border: none; color: white; cursor: pointer;
-    }
+    /* MOBILE MENU AJUSTADO */
+    .mobile-toggle { display: block; background: none; border: none; color: white; cursor: pointer; }
     @media (min-width: 900px) { .mobile-toggle { display: none; } }
-
-    .mobile-nav {
-      position: fixed; top: 0; right: -100%; width: 85%; height: 100vh;
-      background: var(--black-bg); display: flex; flex-direction: column;
-      padding: 140px 40px; gap: 35px; transition: 0.4s ease; z-index: 1050;
-      border-left: 1px solid rgba(255,255,255,0.1);
-    }
+    .mobile-nav { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: rgba(0, 10, 20, 0.98); backdrop-filter: blur(20px); display: flex; flex-direction: column; padding: 120px 30px; gap: 20px; transition: 0.4s ease; z-index: 1050; }
     .mobile-nav.active { right: 0; }
-    .mobile-nav a { color: white; text-decoration: none; font-size: 26px; font-weight: 700; }
+    .mobile-nav a { color: white; text-decoration: none; font-size: 18px; font-weight: 600; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
-    /* --- HERO --- */
+    /* HERO */
     .hero { padding: 250px 24px 100px; max-width: 1200px; margin: 0 auto; display: grid; gap: 60px; }
     @media (min-width: 900px) { .hero { grid-template-columns: 1.2fr 1fr; align-items: center; text-align: left; } }
     @media (max-width: 899px) { .hero { text-align: center; } }
-    
     h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 800; letter-spacing: -2px; line-height: 1.05; margin-bottom: 25px; }
-
+    .hero p { font-size: 20px; color: rgba(255,255,255,0.6); margin-bottom: 40px; }
     .hero-img { border-radius: 40px; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.5); }
     .hero-img img { width: 100%; height: auto; display: block; }
-
-    /* WA */
-    .wa-btn {
-      position: fixed; bottom: 30px; right: 30px; background: var(--green-wa); width: 65px; height: 65px;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000;
-    }
   </style>
 </head>
 <body>
-
-  <div class="aurora-bg">
-    <div class="blob blob-blue"></div>
-    <div class="blob blob-orange"></div>
-    <div class="blob blob-cyan"></div>
-  </div>
-
+  <div class="aurora-bg"><div class="blob blob-blue"></div><div class="blob blob-orange"></div><div class="blob blob-cyan"></div></div>
   <header class="header">
     <div class="nav">
-      <a href="index.html" class="brand">
-        <img src="logo.png" alt="MIRED">
-      </a>
-
+      <a href="index.html" class="brand"><img src="logo.png" alt="MIRED"></a>
       <div class="menu-desktop">
         <a href="index.html">Inicio</a>
         <a href="clientes.html">Clientes</a>
         <a href="noticias.html">Noticias</a>
         <a href="empleos.html">Empleos</a>
       </div>
-
-      <div style="display: flex; align-items: center; gap: 20px;">
-        <a href="https://wa.me/TuNumero" class="btn-main" style="display: none; @media (min-width: 900px) { display: inline-block; } padding: 12px 24px; font-size: 13px;">Contacto</a>
-        <button class="mobile-toggle" onclick="toggleMenu()">
-          <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-      </div>
+      <button class="mobile-toggle" onclick="toggleMenu()"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
     </div>
   </header>
-
   <div class="mobile-nav" id="mobileMenu">
     <a href="index.html" onclick="toggleMenu()">Inicio</a>
     <a href="clientes.html" onclick="toggleMenu()">Clientes</a>
     <a href="noticias.html" onclick="toggleMenu()">Noticias</a>
     <a href="empleos.html" onclick="toggleMenu()">Empleos</a>
-    <a href="https://wa.me/TuNumero" class="btn-main" style="text-align: center;">Quiero ser subagente</a>
+    <a href="https://wa.me/TuNumero" class="btn-main">WhatsApp</a>
   </div>
-
   <main class="hero">
     <div class="hero-text">
-      <span style="color: var(--blue-tech); font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 3px; display: block; margin-bottom: 15px;">Red Transaccional Líder</span>
       <h1>Lidere la inclusión financiera en su zona</h1>
-      <p style="font-size: 20px; color: rgba(255,255,255,0.6); margin-bottom: 40px;">Transforme su local en un punto estratégico de servicios con MIRED.</p>
+      <p>Transforme su local en un punto estratégico con el respaldo de MIRED.</p>
       <a href="clientes.html" class="btn-main">Quiero ser subagente</a>
     </div>
-    <div class="hero-img">
-      <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" alt="Subagente">
-    </div>
+    <div class="hero-img"><img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000"></div>
   </main>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('active');
-    }
-  </script>
-
+  <script>function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }</script>
 </body>
 </html>
