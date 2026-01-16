@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>MIRED — Red de Subagentes Bancarios líder en RD</title>
+  <title>MIRED — Red Transaccional Líder en RD</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root { --navy: #00558c; --blue-tech: #00aef0; --orange-mired: #f89420; --black-bg: #001a2c; --white: #ffffff; --green-wa: #25d366; }
@@ -21,41 +21,54 @@
     .nav { display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 20px; max-width: 1400px; margin: 0 auto; }
     @media (min-width: 1024px) { .nav { height: 130px; } }
     .brand img { height: 55px; width: auto; }
-    @media (min-width: 1024px) { .brand img { height: 100px; } }
+    @media (min-width: 1024px) { .brand img { height: 110px; } }
 
-    /* MENÚ Y BOTONES DE ACCESO */
+    /* MENÚ DESKTOP */
     .menu-desktop { display: none; }
     @media (min-width: 1024px) { 
         .menu-desktop { display: flex; align-items: center; gap: 25px; } 
         .menu-desktop a { color: white; text-decoration: none; font-weight: 600; font-size: 14px; transition: 0.3s; }
         .menu-desktop a:hover { color: var(--orange-mired); }
+        .nav-actions { display: flex; gap: 15px; margin-left: 20px; }
     }
 
-    .nav-actions { display: none; }
-    @media (min-width: 1024px) { 
-        .nav-actions { display: flex; gap: 15px; margin-left: 30px; } 
-    }
+    /* BOTONES HEADER */
+    .btn-portal { border: 1px solid var(--white); color: white; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 12px; transition: 0.3s; }
+    .btn-afiliate { background: var(--orange-mired); color: white; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 12px; transition: 0.3s; }
 
-    /* ESTILOS DE BOTONES */
-    .btn-portal { border: 1px solid var(--white); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 13px; transition: 0.3s; }
-    .btn-portal:hover { background: white; color: var(--black-bg); }
-    
-    .btn-afiliate { background: var(--orange-mired); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 13px; transition: 0.3s; }
-    .btn-afiliate:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(248,148,32,0.4); }
+    /* SECCIONES PRINCIPALES */
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .hero { padding: 140px 0 60px; text-align: center; }
+    @media (min-width: 1024px) { .hero { padding: 240px 0 100px; text-align: left; display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 60px; } }
+    .hero h1 { font-size: clamp(30px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
 
-    /* BOTÓN WHATSAPP FLOTANTE */
-    .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--green-wa); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 25px rgba(0,0,0,0.3); transition: 0.3s; }
-    .wa-float:hover { transform: scale(1.1); }
+    /* ALIADOS */
+    .aliados-slider { background: rgba(255,255,255,0.03); padding: 25px 0; overflow: hidden; margin: 40px 0; }
+    .aliados-track { display: flex; animation: scroll 35s linear infinite; width: max-content; }
+    .aliado-item { font-size: 16px; font-weight: 800; color: rgba(255,255,255,0.2); padding: 0 35px; letter-spacing: 3px; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* SECCIONES RESTANTES (MANTENIENDO TU ESTILO) */
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 120px 20px 60px; flex-grow: 1; }
-    @media (min-width: 1024px) { .container { padding-top: 220px; } }
-    .hero-text h1 { font-size: clamp(32px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-    .hero-text p { font-size: 18px; color: rgba(255,255,255,0.7); margin-bottom: 30px; }
+    /* SERVICIOS */
+    .services-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin: 50px 0 100px; }
+    @media (min-width: 768px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1100px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
+    .card { background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; display: flex; flex-direction: column; height: 100%; transition: 0.3s; }
+    .card:hover { transform: translateY(-10px); border-color: var(--orange-mired); }
+    .card-img { height: 160px; width: 100%; background-size: cover; background-position: center; }
+    .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .btn-card { border: 2px solid var(--orange-mired); color: var(--orange-mired); text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 12px; margin-top: auto; }
 
-    /* MENÚ MÓVIL */
-    .mobile-nav { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: #000a12; padding: 100px 30px; display: flex; flex-direction: column; gap: 20px; transition: 0.4s; z-index: 1050; }
-    .mobile-nav.active { right: 0; }
+    /* TESTIMONIOS */
+    .testimonials { padding: 80px 0; background: rgba(255,255,255,0.02); }
+    .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+    .test-item { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+    .test-item p { font-style: italic; color: rgba(255,255,255,0.7); margin-bottom: 20px; font-size: 14px; }
+    .test-author { font-weight: 800; color: var(--blue-tech); font-size: 13px; }
+
+    /* FOOTER & WA */
+    .footer { background: #000a12; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+    .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--green-wa); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+
     .menu-btn { background: none; border: none; color: white; cursor: pointer; }
     @media (min-width: 1024px) { .menu-btn { display: none; } }
   </style>
@@ -66,48 +79,77 @@
   <header class="header">
     <div class="nav">
       <a href="index.html" class="brand"><img src="logo.png" alt="MIRED"></a>
-      
       <div class="menu-desktop">
         <a href="index.html">Inicio</a>
         <a href="clientes.html">Clientes</a>
         <a href="noticias.html">Noticias</a>
         <a href="empleos.html">Empleos</a>
-        
         <div class="nav-actions">
             <a href="https://portal.mired.com.do" class="btn-portal" target="_blank">Portal de Negocios</a>
             <a href="formulario.html" class="btn-afiliate">Afíliate</a>
         </div>
       </div>
-
-      <button class="menu-btn" onclick="toggleMenu()">
-        <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
+      <button class="menu-btn" onclick="alert('Abriendo menú...')"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
     </div>
   </header>
 
-  <div class="mobile-nav" id="mobileNav">
-    <a href="index.html">Inicio</a>
-    <a href="clientes.html">Clientes</a>
-    <a href="noticias.html">Noticias</a>
-    <a href="empleos.html">Empleos</a>
-    <a href="formulario.html" style="color: var(--orange-mired);">Afíliate</a>
-    <a href="https://portal.mired.com.do">Portal de Negocios</a>
-  </div>
-
   <main class="container">
-    <section class="hero-text">
+    <section class="hero">
+      <div class="hero-text">
         <h1>Lidere la inclusión financiera con la mayor red de RD</h1>
         <p>Somos la red de subagentes bancarios más completa de la República Dominicana.</p>
         <a href="formulario.html" class="btn-afiliate" style="padding: 18px 40px; font-size: 16px;">Comenzar ahora</a>
+      </div>
+      <div style="border-radius: 30px; overflow: hidden;"><img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" style="width: 100%;"></div>
+    </section>
+
+    <div class="aliados-slider">
+      <div class="aliados-track">
+        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">POPULAR</span><span class="aliado-item">BHD</span><span class="aliado-item">CARIBE</span><span class="aliado-item">SANTA CRUZ</span>
+        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">POPULAR</span><span class="aliado-item">BHD</span><span class="aliado-item">CARIBE</span><span class="aliado-item">SANTA CRUZ</span>
+      </div>
+    </div>
+
+    <h2 style="text-align: center; margin: 60px 0 30px; font-weight: 800; font-size: 32px;">Nuestras Soluciones</h2>
+    <div class="services-grid">
+      <div class="card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800');"></div>
+        <div class="card-body">
+          <h3>SubAgentes Bancarios</h3>
+          <p>Opere en nombre de bancos participantes desde sus establecimientos.</p>
+          <a href="servicio-sab.html" class="btn-card">Ver Detalle</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512428559083-a4051ba836c5?auto=format&fit=crop&q=80&w=800');"></div>
+        <div class="card-body"><h3>Movilidad</h3><p>Habilitamos servicios móviles con soporte tecnológico.</p><a href="#" class="btn-card">Ver Detalle</a></div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=800');"></div>
+        <div class="card-body"><h3>Ecosistema TAT</h3><p>Conecta proveedores con retail para optimizar rentabilidad.</p><a href="#" class="btn-card">Ver Detalle</a></div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80&w=800');"></div>
+        <div class="card-body"><h3>Bancarización</h3><p>Procesos masivos con tecnología avanzada.</p><a href="#" class="btn-card">Ver Detalle</a></div>
+      </div>
+    </div>
+
+    <section class="testimonials">
+        <h2 style="text-align: center; font-weight: 800; font-size: 32px;">Lo que dicen nuestros clientes</h2>
+        <div class="test-grid">
+            <div class="test-item"><p>"MiRed ha transformado la forma en que gestionamos nuestras transacciones. El soporte es excepcional."</p><div class="test-author">— Gerente, Banco Aliado</div></div>
+            <div class="test-item"><p>"Ser subagente ha incrementado las visitas a mi local y mis ingresos mensuales de forma real."</p><div class="test-author">— Propietario de Comercio</div></div>
+            <div class="test-item"><p>"La infraestructura tecnológica es sólida y confiable, ideal para el crecimiento masivo."</p><div class="test-author">— Socio Estratégico</div></div>
+        </div>
     </section>
   </main>
 
-  <a href="https://wa.me/TuNumeroDeTelefono" class="wa-float" target="_blank">
-    <svg width="35" height="35" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
+  <footer class="footer">
+    <p>&copy; 2026 MIRED — Todos los derechos reservados.</p>
+  </footer>
 
-  <script>
-    function toggleMenu() { document.getElementById('mobileNav').classList.toggle('active'); }
-  </script>
+  <a href="https://wa.me/TuNumero" class="wa-float" target="_blank">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 </body>
 </html>
