@@ -3,62 +3,131 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>MIRED — Empleos</title>
+  <title>Vacantes MIRED — Únete al Líder Transaccional</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* Estilos idénticos al index */
     :root { --navy: #00558c; --blue-tech: #00aef0; --orange-mired: #f89420; --black-bg: #001a2c; --white: #ffffff; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background-color: var(--black-bg); color: var(--white); overflow-x: hidden; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--black-bg); color: var(--white); overflow-x: hidden; scroll-behavior: smooth; display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* FONDO AURORA AZUL PROFUNDO */
     .aurora-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: var(--black-bg); overflow: hidden; }
-    .blob { position: absolute; width: min(100vw, 800px); height: min(100vw, 800px); border-radius: 50%; filter: blur(140px); opacity: 0.45; animation: move 25s infinite alternate; }
-    .blob-blue { background: var(--navy); top: -10%; left: -10%; }
-    .blob-orange { background: var(--orange-mired); top: 15%; right: -5%; opacity: 0.45; }
-    .blob-cyan { background: var(--blue-tech); bottom: -10%; left: 15%; opacity: 0.3; }
-    @keyframes move { from { transform: translate(0, 0) scale(1); } to { transform: translate(60px, 100px) scale(1.1); } }
-    .header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 26, 44, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 140px; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .brand img { height: 110px; width: auto; display: block; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4)); }
-    .menu-desktop { display: none; }
-    @media (min-width: 900px) { .menu-desktop { display: flex; gap: 30px; } .menu-desktop a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 15px; font-weight: 600; } }
-    .mobile-nav { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: rgba(0, 10, 20, 0.98); backdrop-filter: blur(20px); display: flex; flex-direction: column; padding: 120px 30px; gap: 20px; transition: 0.4s ease; z-index: 1050; }
-    .mobile-nav.active { right: 0; }
-    .mobile-nav a { color: white; text-decoration: none; font-size: 18px; font-weight: 600; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .content-area { padding: 250px 24px 100px; max-width: 1200px; margin: 0 auto; text-align: center; }
-    h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 800; letter-spacing: -2px; margin-bottom: 25px; }
-    .btn-main { background: var(--orange-mired); color: white; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 800; display: inline-block; }
+    .blob { position: absolute; width: min(80vw, 600px); height: min(80vw, 600px); border-radius: 50%; filter: blur(100px); opacity: 0.25; }
+    .blob-blue { background: var(--navy); top: -5%; left: -5%; }
+    .blob-orange { background: var(--orange-mired); bottom: 10%; right: -5%; }
+
+    /* HEADER */
+    .header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 26, 44, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 90px; padding: 0 20px; max-width: 1400px; margin: 0 auto; }
+    @media (min-width: 1024px) { .nav { height: 150px; padding: 0 30px; } }
+    .brand img { height: 65px; width: auto; }
+    @media (min-width: 1024px) { .brand img { height: 130px; } }
+
+    /* CONTENIDO */
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 140px 20px 80px; flex-grow: 1; }
+    @media (min-width: 1024px) { .container { padding-top: 220px; } }
+
+    .jobs-header { text-align: center; margin-bottom: 60px; }
+    .jobs-header h1 { font-size: clamp(32px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+    .jobs-header p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 800px; margin: 0 auto; }
+
+    /* GRID DE VACANTES */
+    .jobs-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 40px; }
+    @media (min-width: 768px) { .jobs-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .job-card { 
+      background: rgba(255,255,255,0.04); 
+      border: 1px solid rgba(255,255,255,0.1); 
+      border-radius: 24px; 
+      padding: 35px; 
+      transition: 0.3s; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: space-between;
+    }
+    .job-card:hover { border-color: var(--orange-mired); transform: translateY(-5px); background: rgba(255,255,255,0.06); }
+
+    .job-tag { color: var(--orange-mired); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; }
+    .job-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: var(--blue-tech); }
+    .job-card p { font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 25px; line-height: 1.6; }
+
+    .btn-apply { 
+      background: var(--orange-mired); 
+      color: white; 
+      padding: 14px 25px; 
+      border-radius: 10px; 
+      text-decoration: none; 
+      font-weight: 800; 
+      font-size: 14px; 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 10px;
+      width: fit-content;
+      transition: 0.3s;
+    }
+    .btn-apply:hover { box-shadow: 0 10px 20px rgba(248,148,32,0.3); }
+
+    .footer { background: #000a12; padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto; }
   </style>
 </head>
 <body>
-  <div class="aurora-bg"><div class="blob blob-blue"></div><div class="blob blob-orange"></div><div class="blob blob-cyan"></div></div>
+  <div class="aurora-bg"><div class="blob blob-blue"></div><div class="blob blob-orange"></div></div>
+  
   <header class="header">
     <div class="nav">
       <a href="index.html" class="brand"><img src="logo.png" alt="MIRED"></a>
-      <nav class="menu-desktop">
-        <a href="index.html">Inicio</a>
-        <a href="clientes.html">Clientes</a>
-        <a href="noticias.html">Noticias</a>
-        <a href="empleos.html">Empleos</a>
-      </nav>
-      <button class="mobile-toggle" onclick="toggleMenu()" style="background:none; border:none; color:white; cursor:pointer;"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      <a href="https://portal.mired.com.do" style="border:1px solid white; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:700; font-size:12px;">Portal</a>
     </div>
   </header>
-  <div class="mobile-nav" id="mobileMenu">
-    <a href="index.html" onclick="toggleMenu()">Inicio</a>
-    <a href="clientes.html" onclick="toggleMenu()">Clientes</a>
-    <a href="noticias.html" onclick="toggleMenu()">Noticias</a>
-    <a href="empleos.html" onclick="toggleMenu()">Empleos</a>
-  </div>
-  <main class="content-area">
-    <h1>Únete a MIRED</h1>
-    <p style="margin-bottom: 60px; color: rgba(255,255,255,0.6);">Sé parte de la revolución de los servicios financieros.</p>
-    <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
-      <div style="background: rgba(255,255,255,0.05); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
-        <div style="text-align: left;"><h3 style="margin: 0;">Gestor de Canales</h3><span style="color: var(--blue-tech);">Operaciones</span></div>
-        <a href="#" class="btn-main">Aplicar</a>
+
+  <main class="container">
+    <section class="jobs-header">
+      <h1>Únete a nuestro equipo</h1>
+      <p>Forma parte de la red transaccional líder en República Dominicana. Buscamos talento apasionado por la innovación y la excelencia.</p>
+    </section>
+
+    <div class="jobs-grid">
+      <div class="job-card">
+        <div>
+          <span class="job-tag">Tecnología</span>
+          <h3>Desarrollador Backend Senior</h3>
+          <p>Responsable del diseño y mantenimiento de APIs robustas para el procesamiento transaccional de nuestra red nacional.</p>
+        </div>
+        <a href="https://www.linkedin.com/company/mi-red/jobs/" target="_blank" class="btn-apply">Aplicar en LinkedIn</a>
+      </div>
+
+      <div class="job-card">
+        <div>
+          <span class="job-tag">Operaciones</span>
+          <h3>Coordinador de Subagentes</h3>
+          <p>Supervisión y soporte técnico/operativo para nuestra red de puntos de venta en la zona norte del país.</p>
+        </div>
+        <a href="https://www.linkedin.com/company/mi-red/jobs/" target="_blank" class="btn-apply">Aplicar en LinkedIn</a>
+      </div>
+
+      <div class="job-card">
+        <div>
+          <span class="job-tag">Ventas</span>
+          <h3>Ejecutivo de Cuentas Clave</h3>
+          <p>Gestión de relaciones con entidades financieras aliadas y búsqueda de nuevas oportunidades estratégicas.</p>
+        </div>
+        <a href="https://www.linkedin.com/company/mi-red/jobs/" target="_blank" class="btn-apply">Aplicar en LinkedIn</a>
+      </div>
+
+      <div class="job-card">
+        <div>
+          <span class="job-tag">Soporte</span>
+          <h3>Analista de Monitoreo 24/7</h3>
+          <p>Garantizar la disponibilidad del servicio y atención inmediata a incidencias en nuestra red nacional.</p>
+        </div>
+        <a href="https://www.linkedin.com/company/mi-red/jobs/" target="_blank" class="btn-apply">Aplicar en LinkedIn</a>
       </div>
     </div>
   </main>
-  <script>function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }</script>
+
+  <footer class="footer">
+    <p style="font-size:12px; color:rgba(255,255,255,0.3);">&copy; 2026 MIRED — Talento y Tecnología para todos.</p>
+  </footer>
 </body>
+</html>
 </html>
