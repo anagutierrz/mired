@@ -12,67 +12,72 @@
 
     /* FONDO AURORA */
     .aurora-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: var(--black-bg); overflow: hidden; }
-    .blob { position: absolute; width: min(80vw, 600px); height: min(80vw, 600px); border-radius: 50%; filter: blur(100px); opacity: 0.3; }
+    .blob { position: absolute; width: min(80vw, 600px); height: min(80vw, 600px); border-radius: 50%; filter: blur(100px); opacity: 0.25; }
     .blob-blue { background: var(--navy); top: -5%; left: -5%; }
     .blob-orange { background: var(--orange-mired); bottom: 10%; right: -5%; }
 
-    /* HEADER CON LOGO MÁS GRANDE */
+    /* HEADER AJUSTADO */
     .header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 26, 44, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 90px; padding: 0 20px; max-width: 1400px; margin: 0 auto; }
-    @media (min-width: 1024px) { .nav { height: 150px; } }
-    
-    .brand img { height: 75px; width: auto; transition: 0.3s; }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 15px; max-width: 1400px; margin: 0 auto; }
+    @media (min-width: 1024px) { .nav { height: 150px; padding: 0 30px; } }
+    .brand img { height: 65px; width: auto; transition: 0.3s; }
     @media (min-width: 1024px) { .brand img { height: 130px; } }
 
-    /* NAVEGACIÓN DESKTOP */
+    /* MENU DESKTOP */
     .menu-desktop { display: none; }
     @media (min-width: 1024px) { 
-        .menu-desktop { display: flex; align-items: center; gap: 25px; } 
+        .menu-desktop { display: flex; align-items: center; gap: 20px; } 
         .menu-desktop a { color: white; text-decoration: none; font-weight: 600; font-size: 14px; }
-        .nav-actions { display: flex; gap: 15px; margin-left: 20px; }
+        .nav-actions { display: flex; gap: 12px; margin-left: 15px; }
     }
+    .btn-portal { border: 1px solid var(--white); color: white; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 11px; }
+    .btn-afiliate { background: var(--orange-mired); color: white; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 11px; }
 
-    .btn-portal { border: 1px solid var(--white); color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 12px; }
-    .btn-afiliate { background: var(--orange-mired); color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 12px; }
-
-    /* CONTENEDOR Y HERO */
+    /* HERO */
     .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .hero { padding: 140px 0 60px; text-align: center; }
+    .hero { padding: 120px 0 40px; text-align: center; }
     @media (min-width: 1024px) { .hero { padding: 260px 0 100px; text-align: left; display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 60px; } }
-    .hero h1 { font-size: clamp(28px, 8vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-    .hero p { font-size: 17px; color: rgba(255,255,255,0.7); margin-bottom: 30px; }
+    .hero h1 { font-size: clamp(30px, 7vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+    .hero p { font-size: 16px; color: rgba(255,255,255,0.7); margin-bottom: 30px; line-height: 1.5; }
 
-    /* ALIADOS SLIDER */
-    .aliados-slider { background: rgba(255,255,255,0.03); padding: 25px 0; overflow: hidden; }
+    /* SLIDER ALIADOS */
+    .aliados-slider { background: rgba(255,255,255,0.03); padding: 20px 0; overflow: hidden; margin: 20px 0; }
     .aliados-track { display: flex; animation: scroll 35s linear infinite; width: max-content; }
-    .aliado-item { font-size: 16px; font-weight: 800; color: rgba(255,255,255,0.2); padding: 0 40px; letter-spacing: 3px; }
+    .aliado-item { font-size: 15px; font-weight: 800; color: rgba(255,255,255,0.25); padding: 0 35px; letter-spacing: 2px; }
     @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* SERVICIOS RESPONSIVE */
-    .services-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin: 50px 0 80px; }
+    /* ESTADÍSTICAS */
+    .stats-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 40px 0; text-align: center; }
+    @media (min-width: 1024px) { .stats-container { grid-template-columns: repeat(4, 1fr); padding: 60px 0; } }
+    .stat-item h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 800; color: var(--orange-mired); margin-bottom: 5px; }
+    .stat-item p { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; font-weight: 600; }
+
+    /* SERVICIOS GRID */
+    .services-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin: 40px 0 80px; }
     @media (min-width: 768px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1100px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
-    
-    .card { background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; display: flex; flex-direction: column; height: 100%; }
-    .card-img { height: 170px; width: 100%; background-size: cover; background-position: center; }
-    .card-body { padding: 25px; flex: 1; display: flex; flex-direction: column; }
+    .card { background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; display: flex; flex-direction: column; height: 100%; transition: 0.3s; }
+    .card:hover { transform: translateY(-8px); border-color: var(--orange-mired); }
+    .card-img { height: 160px; width: 100%; background-size: cover; background-position: center; }
+    .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
     .card-body h3 { color: var(--blue-tech); font-size: 18px; margin-bottom: 12px; font-weight: 800; }
     .btn-card { border: 2px solid var(--orange-mired); color: var(--orange-mired); text-align: center; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 13px; margin-top: auto; }
 
     /* TESTIMONIOS */
-    .test-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 40px; }
+    .test-grid { display: grid; grid-template-columns: 1fr; gap: 25px; padding-bottom: 80px; }
     @media (min-width: 768px) { .test-grid { grid-template-columns: repeat(3, 1fr); } }
     .test-item { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); text-align: left; }
+    .test-item p { font-style: italic; color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 15px; }
 
-    /* FOOTER & MÓVIL */
-    .footer { background: #000a12; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; margin-top: auto; }
-    .wa-float { position: fixed; bottom: 25px; right: 25px; background: var(--green-wa); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
-    
+    /* FOOTER Y WHATSAPP */
+    .footer { background: #000a12; padding: 50px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto; }
+    .wa-float { position: fixed; bottom: 25px; right: 25px; background: var(--green-wa); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.4); transition: 0.3s; }
+    .wa-float:hover { transform: scale(1.1); }
+
+    /* MOBILE NAV */
     .menu-btn { background: none; border: none; color: white; cursor: pointer; }
     @media (min-width: 1024px) { .menu-btn { display: none; } }
-    
-    /* MOBILE NAV */
-    .mobile-nav { position: fixed; top: 0; right: -100%; width: 85%; height: 100vh; background: #000a12; padding: 120px 30px; display: flex; flex-direction: column; gap: 20px; transition: 0.4s; z-index: 1050; text-align: left; }
+    .mobile-nav { position: fixed; top: 0; right: -100%; width: 85%; height: 100vh; background: #000a12; padding: 120px 30px; display: flex; flex-direction: column; gap: 20px; transition: 0.4s; z-index: 1050; }
     .mobile-nav.active { right: 0; }
     .mobile-nav a { color: white; text-decoration: none; font-size: 20px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
   </style>
@@ -93,7 +98,7 @@
             <a href="formulario.html" class="btn-afiliate">Afíliate</a>
         </div>
       </div>
-      <button class="menu-btn" onclick="toggleMenu()"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      <button class="menu-btn" onclick="toggleMenu()"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
     </div>
   </header>
 
@@ -101,19 +106,18 @@
     <a href="index.html" onclick="toggleMenu()">Inicio</a>
     <a href="clientes.html" onclick="toggleMenu()">Clientes</a>
     <a href="noticias.html" onclick="toggleMenu()">Noticias</a>
-    <a href="empleos.html" onclick="toggleMenu()">Empleos</a>
     <a href="https://portal.mired.com.do" style="color: var(--blue-tech);">Portal de Negocios</a>
-    <a href="formulario.html" style="color: var(--orange-mired);">Afíliate</a>
+    <a href="formulario.html" style="color: var(--orange-mired);">Afíliate Ahora</a>
   </div>
 
   <main class="container">
     <section class="hero">
       <div class="hero-text">
         <h1>Lidere la inclusión financiera en RD</h1>
-        <p>Somos la red de subagentes bancarios más completa de la República Dominicana, presente en todas las provincias.</p>
-        <a href="formulario.html" class="btn-afiliate" style="padding: 18px 40px; font-size: 16px;">Comenzar ahora</a>
+        <p>Somos la red de subagentes bancarios más completa de la República Dominicana, presente en todas las provincias con tecnología líder.</p>
+        <a href="formulario.html" class="btn-afiliate" style="padding: 16px 32px; font-size: 15px;">Comenzar ahora</a>
       </div>
-      <div style="border-radius: 25px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.5);">
+      <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); margin-top: 20px;">
         <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" style="width: 100%; display: block;">
       </div>
     </section>
@@ -125,30 +129,46 @@
       </div>
     </div>
 
-    <h2 style="text-align: center; margin-top: 60px; font-weight: 800; font-size: 32px;">Nuestras Soluciones</h2>
+    <section class="stats-container">
+      <div class="stat-item"><h2>+5,000</h2><p>Puntos MiRed</p></div>
+      <div class="stat-item"><h2>32</h2><p>Provincias</p></div>
+      <div class="stat-item"><h2>+1M</h2><p>Transacciones</p></div>
+      <div class="stat-item"><h2>24/7</h2><p>Soporte</p></div>
+    </section>
+
+    <h2 style="text-align: center; margin-bottom: 30px; font-weight: 800; font-size: 32px;">Nuestras Soluciones</h2>
     <div class="services-grid">
       <div class="card">
         <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800');"></div>
         <div class="card-body">
           <h3>SubAgentes Bancarios</h3>
-          <p>Opere en nombre de bancos participantes desde sus establecimientos físicos o jurídicos.</p>
+          <p>Opere en nombre de bancos participantes desde sus propios establecimientos.</p>
           <a href="servicio-sab.html" class="btn-card">Ver Detalle</a>
         </div>
       </div>
-      <div class="card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512428559083-a4051ba836c5?auto=format&fit=crop&q=80&w=800');"></div><div class="card-body"><h3>Movilidad</h3><p>Habilitamos servicios móviles con soporte tecnológico.</p><a href="#" class="btn-card">Ver Detalle</a></div></div>
-      <div class="card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=800');"></div><div class="card-body"><h3>Ecosistema TAT</h3><p>Conecta proveedores con retail para optimizar rentabilidad.</p><a href="#" class="btn-card">Ver Detalle</a></div></div>
-      <div class="card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80&w=800');"></div><div class="card-body"><h3>Bancarización</h3><p>Procesos masivos con tecnología avanzada.</p><a href="#" class="btn-card">Ver Detalle</a></div></div>
+      <div class="card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512428559083-a4051ba836c5?auto=format&fit=crop&q=80&w=800');"></div>
+        <div class="card-body"><h3>Movilidad</h3><p>Habilitamos servicios móviles con soporte tecnológico.</p><a href="#" class="btn-card">Ver Detalle</a></div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=800');"></div>
+        <div class="card-body"><h3>Ecosistema TAT</h3><p>Conecta proveedores con retail para optimizar rentabilidad.</p><a href="#" class="btn-card">Ver Detalle</a></div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80&w=800');"></div>
+        <div class="card-body"><h3>Bancarización</h3><p>Procesos masivos con tecnología avanzada.</p><a href="#" class="btn-card">Ver Detalle</a></div>
+      </div>
     </div>
 
-    <h2 style="text-align: center; font-weight: 800; font-size: 32px;">Lo que dicen nuestros clientes</h2>
+    <h2 style="text-align: center; margin-bottom: 30px; font-weight: 800; font-size: 32px;">Lo que dicen nuestros clientes</h2>
     <div class="test-grid">
-        <div class="test-item"><p>"MiRed ha transformado la forma en que gestionamos nuestras transacciones cotidianas."</p><div class="test-author">— Banco Aliado</div></div>
-        <div class="test-item"><p>"Ser subagente ha incrementado las visitas y ventas en mi local comercial."</p><div class="test-author">— Comercio Afiliado</div></div>
-        <div class="test-item"><p>"La infraestructura tecnológica es sólida y muy confiable para nuestras remesas."</p><div class="test-author">— Usuario Final</div></div>
+        <div class="test-item"><p>"MiRed ha transformado la gestión de nuestras transacciones bancarias cotidianas."</p><div style="font-weight:800; color:var(--blue-tech);">— Banco Aliado</div></div>
+        <div class="test-item"><p>"Ser subagente aumentó las ventas en mi local comercial notablemente."</p><div style="font-weight:800; color:var(--blue-tech);">— Comercio Afiliado</div></div>
+        <div class="test-item"><p>"La infraestructura tecnológica es robusta y muy confiable para nuestras remesas."</p><div style="font-weight:800; color:var(--blue-tech);">— Usuario Final</div></div>
     </div>
   </main>
 
-  <footer class="footer"><p>&copy; 2026 MIRED — Todos los derechos reservados.</p></footer>
+  <footer class="footer"><p style="font-size:12px; color:rgba(255,255,255,0.3);">&copy; 2026 MIRED — Todos los derechos reservados.</p></footer>
 
   <a href="https://wa.me/TuNumero" class="wa-float" target="_blank">
     <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
