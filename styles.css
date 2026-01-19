@@ -1,0 +1,19 @@
+/* Archivo: styles.css o global.css */
+:root {
+  --mired-blue: #00ADEF;
+  --mired-green: #66BC46;
+  --mired-red: #E31B23;
+  --mired-orange: #F5A623;
+  --mired-dark: #1A1A1A;
+  --mired-gray: #666666;
+  --mired-light: #F2F2F2;
+  --mired-radius: 40px;
+}
+
+/* Ejemplo de uso para los botones o bloques */
+.card-retira {
+  background-color: var(--mired-blue);
+  border-radius: var(--mired-radius);
+  color: white;
+  padding: 2rem;
+}
