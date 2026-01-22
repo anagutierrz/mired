@@ -9,8 +9,6 @@
     <style>
         body { font-family: 'Manrope', sans-serif; }
         html { scroll-behavior: smooth; }
-        
-        /* Patrón sutil para el diseño generado */
         .bg-pattern {
             background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
         }
@@ -18,11 +16,10 @@
 </head>
 <body class="bg-white overflow-x-hidden">
 
-    <header class="w-full bg-white py-4 fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
+    <header class="w-full bg-white py-4 fixed top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
         <div class="max-w-[1440px] mx-auto px-12 flex justify-between items-center h-20">
-            
             <div class="w-48 flex items-center">
-                <img src="img/logo.png" alt="MiRed" class="w-full h-auto object-contain">
+                <img src="logo.png" alt="MiRed" class="w-full h-auto object-contain">
             </div>
 
             <nav class="flex items-center gap-8">
@@ -56,12 +53,12 @@
                 </h1>
             </div>
 
-            <div class="col-span-7 relative h-[550px] flex items-end justify-center">
+            <div class="col-span-7 relative h-[550px] flex items-center justify-center">
                 
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-[150%] z-0 grid grid-cols-[260px_1fr] grid-rows-[150px_150px_150px]">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-[150%] z-0 grid grid-cols-[150px_1fr] grid-rows-[150px_150px_150px]">
                     
-                    <div class="relative bg-[#F39200] rounded-tl-[50px] overflow-hidden border-r border-white/10">
-                        <img src="img/foto-estante.jpg" alt="Estante" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60 grayscale">
+                    <div class="relative bg-[#F39200] rounded-tl-[50px] overflow-hidden">
+                        <img src="foto-estante.jpg" alt="Estante" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60 grayscale">
                         <div class="absolute inset-0 bg-[#F39200] mix-blend-multiply opacity-80"></div>
                     </div>
                     <div class="bg-[#A7A9AC]"></div>
@@ -69,16 +66,16 @@
                     <div class="bg-[#A7A9AC]"></div>
                     <div class="bg-transparent"></div>
 
-                    <div class="relative bg-[#5EBA46] rounded-bl-[50px] overflow-hidden border-r border-white/10">
-                        <img src="img/foto-dinero.jpg" alt="Dinero" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60 grayscale">
+                    <div class="relative bg-[#5EBA46] rounded-bl-[50px] overflow-hidden">
+                        <img src="foto-dinero.jpg" alt="Dinero" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60 grayscale">
                         <div class="absolute inset-0 bg-[#5EBA46] mix-blend-multiply opacity-80"></div>
                     </div>
                     <div class="bg-[#A7A9AC]"></div>
 
                 </div>
 
-                <div class="absolute bottom-0 z-20 h-[600px] w-auto pointer-events-none flex items-end -translate-x-8">
-                    <img src="img/hombre-hero.png" alt="Cliente MiRed" class="h-full w-auto object-contain drop-shadow-2xl">
+                <div class="absolute bottom-[50px] z-20 h-[650px] w-auto pointer-events-none flex items-end -translate-x-12">
+                    <img src="hombre-hero.png" alt="Cliente MiRed" class="h-full w-auto object-contain drop-shadow-2xl">
                 </div>
                 
             </div>
@@ -87,70 +84,53 @@
 
     <section class="w-full bg-white py-24">
         <div class="max-w-[1200px] mx-auto px-12 flex flex-col md:flex-row items-center justify-center gap-16">
-            
             <div class="w-[320px] shrink-0">
-                <img src="img/logo.png" alt="Logo MiRed Texto" class="w-full h-auto object-contain">
+                <img src="logo.png" alt="Logo MiRed Texto" class="w-full h-auto object-contain">
             </div>
-
             <div class="max-w-lg">
                 <p class="text-[19px] leading-relaxed text-gray-900 font-bold tracking-tight">
                     facilita la intermediación financiera a través de una robusta infraestructura y soluciones tecnológicas avanzadas.
                 </p>
             </div>
-
         </div>
     </section>
 
     <section class="w-full relative bg-white mb-20">
-        
         <div class="absolute inset-y-0 left-0 w-[55%] bg-[#9DA3A5] z-0"></div>
-
         <div class="max-w-[1440px] w-full mx-auto px-12 relative z-10 flex items-stretch">
-            
             <div class="w-1/2 py-32 pr-20 flex items-center">
                 <p class="text-[26px] leading-[1.5] text-white font-medium text-left">
                     Optimizando la gestión de pagos, transferencias y otros servicios bancarios, garantizando transacciones seguras, eficientes y accesibles en toda la República Dominicana.
                 </p>
             </div>
-
             <div class="w-1/2 min-h-[500px]">
-                <img src="img/comercio-verifone.jpg" 
-                     alt="Gestión de Pagos" 
-                     class="w-full h-full object-cover rounded-tl-[100px] rounded-br-[100px] shadow-2xl">
+                <img src="comercio-verifone.jpg" alt="Gestión de Pagos" class="w-full h-full object-cover rounded-tl-[100px] rounded-br-[100px] shadow-2xl">
             </div>
-
         </div>
     </section>
 
     <section class="w-full bg-white pt-10 pb-0 relative overflow-hidden">
-        
         <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-12 gap-12 items-end">
-            
             <div class="col-span-5 pb-24 pl-8">
-                
                 <div class="flex flex-col mb-6">
                     <span class="text-2xl font-bold text-black mb-[-8px] pl-1">Con</span>
-                    <img src="img/logo.png" alt="MiRed Logo" class="w-24 h-auto object-contain">
+                    <img src="logo.png" alt="MiRed Logo" class="w-24 h-auto object-contain">
                 </div>
-
                 <div class="grid grid-cols-3 gap-1 w-full max-w-[420px]">
                     <div class="h-28 bg-[#00AEEF] rounded-tl-[20px] flex items-center justify-center text-white font-bold text-lg shadow-sm">Retira</div>
                     <div class="h-28 bg-[#A7A9AC] flex items-center justify-center relative z-0"></div>
                     <div class="h-28 bg-[#5EBA46] rounded-tr-[20px] flex items-center justify-center text-white font-bold text-lg shadow-sm">Paga</div>
-
                     <div class="h-28 bg-[#A7A9AC] flex items-center justify-center relative z-0"></div>
                     <div class="h-28 bg-transparent"></div>
                     <div class="h-28 bg-[#A7A9AC] flex items-center justify-center relative z-0"></div>
-
                     <div class="h-28 bg-[#E30613] rounded-bl-[20px] rounded-br-[20px] flex items-center justify-center text-white font-bold text-lg shadow-sm">Tranfiere</div>
                     <div class="h-28 bg-transparent"></div>
                     <div class="h-28 bg-[#F39200] rounded-bl-[20px] rounded-br-[20px] flex items-center justify-center text-white font-bold text-lg shadow-sm">Deposita</div>
                 </div>
             </div>
-
             <div class="col-span-7 relative h-[600px] flex items-end">
                 <div class="absolute bottom-[80px] left-[50px] w-[200%] h-[180px] bg-[#A7A9AC] z-0"></div>
-                <img src="img/chica-libros.png" alt="Estudiante" class="relative z-10 w-[85%] h-auto object-contain ml-auto drop-shadow-xl">
+                <img src="chica-libros.png" alt="Estudiante" class="relative z-10 w-[85%] h-auto object-contain ml-auto drop-shadow-xl">
             </div>
         </div>
     </section>
@@ -186,10 +166,10 @@
                     <h4 class="font-extrabold mb-2 text-black uppercase tracking-wide">Contáctanos</h4>
                     <p class="mb-4 font-medium">+1-809-530-3995<br>servicio@mired.com.do</p>
                     <h4 class="font-extrabold mb-2 text-black uppercase tracking-wide">Síguenos en</h4>
-                    <div class="flex gap-4 font-bold text-xl">
-                        <a href="#" class="hover:text-black">f</a>
-                        <a href="#" class="hover:text-black">📷</a>
-                        <a href="#" class="hover:text-black">in</a>
+                    <div class="flex gap-4 font-bold text-xl text-black">
+                        <a href="#" class="hover:opacity-70">f</a>
+                        <a href="#" class="hover:opacity-70">📷</a>
+                        <a href="#" class="hover:opacity-70">in</a>
                     </div>
                 </div>
             </div>
