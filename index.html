@@ -1,179 +1,223 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>MIRED — Red Transaccional Líder en RD</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root { --navy: #00558c; --blue-tech: #00aef0; --orange-mired: #f89420; --black-bg: #001a2c; --white: #ffffff; --green-wa: #25d366; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background-color: var(--black-bg); color: var(--white); overflow-x: hidden; scroll-behavior: smooth; display: flex; flex-direction: column; min-height: 100vh; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiRed - Soluciones Financieras</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-green': '#8DC63F',
+                        'brand-cyan': '#00AEEF',
+                        'brand-orange': '#F58220',
+                        'brand-red': '#E30613',
+                        'brand-dark': '#333333',
+                        'brand-gray': '#9D9D9C', 
+                        'brand-light-gray': '#F4F4F4',
+                        'footer-bg': '#9D9D9C',
+                        'whatsapp': '#25D366',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(0, 174, 239, 0.4)',
+                        'card': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
 
-    /* FONDO AURORA */
-    .aurora-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: var(--black-bg); overflow: hidden; }
-    .blob { position: absolute; width: min(80vw, 600px); height: min(80vw, 600px); border-radius: 50%; filter: blur(100px); opacity: 0.25; }
-    .blob-blue { background: var(--navy); top: -5%; left: -5%; }
-    .blob-orange { background: var(--orange-mired); bottom: 10%; right: -5%; }
+    <style>
+        body { font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        
+        /* GRID SERVICIOS */
+        .service-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            height: 150px;
+            transition: all 0.3s ease;
+        }
+        .service-box:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); z-index: 10; }
+        
+        .rounded-tl-custom { border-radius: 60px 0 0 0; }
+        .rounded-tr-custom { border-radius: 0 60px 0 0; }
+        .rounded-bl-custom { border-radius: 0 0 0 60px; }
+        .rounded-br-custom { border-radius: 0 0 60px 0; }
 
-    /* HEADER AJUSTADO */
-    .header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 26, 44, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 15px; max-width: 1400px; margin: 0 auto; }
-    @media (min-width: 1024px) { .nav { height: 150px; padding: 0 30px; } }
-    .brand img { height: 65px; width: auto; transition: 0.3s; }
-    @media (min-width: 1024px) { .brand img { height: 130px; } }
-
-    /* MENU DESKTOP */
-    .menu-desktop { display: none; }
-    @media (min-width: 1024px) { 
-        .menu-desktop { display: flex; align-items: center; gap: 20px; } 
-        .menu-desktop a { color: white; text-decoration: none; font-weight: 600; font-size: 14px; }
-        .nav-actions { display: flex; gap: 12px; margin-left: 15px; }
-    }
-    .btn-portal { border: 1px solid var(--white); color: white; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 11px; }
-    .btn-afiliate { background: var(--orange-mired); color: white; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 11px; }
-
-    /* HERO */
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .hero { padding: 120px 0 40px; text-align: center; }
-    @media (min-width: 1024px) { .hero { padding: 260px 0 100px; text-align: left; display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 60px; } }
-    .hero h1 { font-size: clamp(30px, 7vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-    .hero p { font-size: 16px; color: rgba(255,255,255,0.7); margin-bottom: 30px; line-height: 1.5; }
-
-    /* SLIDER ALIADOS */
-    .aliados-slider { background: rgba(255,255,255,0.03); padding: 20px 0; overflow: hidden; margin: 20px 0; }
-    .aliados-track { display: flex; animation: scroll 35s linear infinite; width: max-content; }
-    .aliado-item { font-size: 15px; font-weight: 800; color: rgba(255,255,255,0.25); padding: 0 35px; letter-spacing: 2px; }
-    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ESTADÍSTICAS */
-    .stats-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 40px 0; text-align: center; }
-    @media (min-width: 1024px) { .stats-container { grid-template-columns: repeat(4, 1fr); padding: 60px 0; } }
-    .stat-item h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 800; color: var(--orange-mired); margin-bottom: 5px; }
-    .stat-item p { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; font-weight: 600; }
-
-    /* SERVICIOS GRID */
-    .services-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin: 40px 0 80px; }
-    @media (min-width: 768px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1100px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
-    .card { background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; display: flex; flex-direction: column; height: 100%; transition: 0.3s; }
-    .card:hover { transform: translateY(-8px); border-color: var(--orange-mired); }
-    .card-img { height: 160px; width: 100%; background-size: cover; background-position: center; }
-    .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-    .card-body h3 { color: var(--blue-tech); font-size: 18px; margin-bottom: 12px; font-weight: 800; }
-    .btn-card { border: 2px solid var(--orange-mired); color: var(--orange-mired); text-align: center; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 13px; margin-top: auto; }
-
-    /* TESTIMONIOS */
-    .test-grid { display: grid; grid-template-columns: 1fr; gap: 25px; padding-bottom: 80px; }
-    @media (min-width: 768px) { .test-grid { grid-template-columns: repeat(3, 1fr); } }
-    .test-item { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); text-align: left; }
-    .test-item p { font-style: italic; color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 15px; }
-
-    /* FOOTER Y WHATSAPP */
-    .footer { background: #000a12; padding: 50px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto; }
-    .wa-float { position: fixed; bottom: 25px; right: 25px; background: var(--green-wa); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.4); transition: 0.3s; }
-    .wa-float:hover { transform: scale(1.1); }
-
-    /* MOBILE NAV */
-    .menu-btn { background: none; border: none; color: white; cursor: pointer; }
-    @media (min-width: 1024px) { .menu-btn { display: none; } }
-    .mobile-nav { position: fixed; top: 0; right: -100%; width: 85%; height: 100vh; background: #000a12; padding: 120px 30px; display: flex; flex-direction: column; gap: 20px; transition: 0.4s; z-index: 1050; }
-    .mobile-nav.active { right: 0; }
-    .mobile-nav a { color: white; text-decoration: none; font-size: 20px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
-  </style>
+        /* Animación Botón */
+        @keyframes pulse-cyan {
+            0% { box-shadow: 0 0 0 0 rgba(0, 174, 239, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 174, 239, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 174, 239, 0); }
+        }
+        .btn-pulse { animation: pulse-cyan 2s infinite; }
+    </style>
 </head>
-<body>
-  <div class="aurora-bg"><div class="blob blob-blue"></div><div class="blob blob-orange"></div></div>
-  
-  <header class="header">
-    <div class="nav">
-      <a href="index.html" class="brand"><img src="logo.png" alt="MIRED"></a>
-      <div class="menu-desktop">
-        <a href="index.html">Inicio</a>
-        <a href="clientes.html">Clientes</a>
-        <a href="noticias.html">Noticias</a>
-        <a href="empleos.html">Empleos</a>
-        <div class="nav-actions">
-            <a href="https://portal.mired.com.do" class="btn-portal" target="_blank">Portal de Negocios</a>
-            <a href="formulario.html" class="btn-afiliate">Afíliate</a>
+<body class="bg-white text-gray-800 antialiased">
+
+    <header class="bg-white py-4 lg:py-6 sticky top-0 z-50 shadow-sm transition-all">
+        <div class="container mx-auto px-6 lg:px-12 flex justify-between items-center">
+            
+            <a href="#" class="flex items-center group">
+                <img src="logo.png" alt="Logo MiRed" class="h-12 md:h-20 w-auto object-contain transition-all">
+            </a>
+            
+            <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 font-bold text-sm text-black">
+                <a href="#" class="hover:text-brand-cyan transition">Inicio</a>
+                <a href="#" class="hover:text-brand-cyan transition">Nosotros</a>
+                <a href="#" class="hover:text-brand-cyan transition">Servicios</a>
+                <a href="#" class="hover:text-brand-cyan transition">Clientes</a>
+                <a href="#" class="hover:text-brand-cyan transition">Noticias</a>
+                <a href="#" class="hover:text-brand-cyan transition">Trabaja con nosotros</a>
+                <a href="#" class="hover:text-brand-cyan transition">Contacto</a>
+                <button class="text-black hover:text-brand-cyan font-bold text-lg pl-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </button>
+            </nav>
         </div>
-      </div>
-      <button class="menu-btn" onclick="toggleMenu()"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-    </div>
-  </header>
+    </header>
 
-  <div class="mobile-nav" id="mobileNav">
-    <a href="index.html" onclick="toggleMenu()">Inicio</a>
-    <a href="clientes.html" onclick="toggleMenu()">Clientes</a>
-    <a href="noticias.html" onclick="toggleMenu()">Noticias</a>
-    <a href="https://portal.mired.com.do" style="color: var(--blue-tech);">Portal de Negocios</a>
-    <a href="formulario.html" style="color: var(--orange-mired);">Afíliate Ahora</a>
-  </div>
-
-  <main class="container">
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Lidere la inclusión financiera en RD</h1>
-        <p>Somos la red de subagentes bancarios más completa de la República Dominicana, presente en todas las provincias con tecnología líder.</p>
-        <a href="formulario.html" class="btn-afiliate" style="padding: 16px 32px; font-size: 15px;">Comenzar ahora</a>
-      </div>
-      <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); margin-top: 20px;">
-        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1000" style="width: 100%; display: block;">
-      </div>
+    <section class="relative pt-12 pb-24 overflow-hidden bg-white">
+        <div class="container mx-auto px-6 lg:px-12 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="w-full lg:w-5/12 mb-12 lg:mb-0 relative z-30 pt-10">
+                    <h1 class="text-4xl lg:text-6xl font-medium leading-tight text-black mb-10">
+                        Llevamos el banco<br>
+                        <span class="font-extrabold">a donde están los clientes</span>
+                    </h1>
+                    <a href="#" class="inline-block bg-brand-cyan text-white text-xl font-bold px-12 py-5 rounded-full shadow-glow btn-pulse transform transition hover:-translate-y-1 hover:bg-[#009bd5]">
+                        ¡AFÍLIATE AHORA!
+                    </a>
+                </div>
+                <div class="w-full lg:w-7/12 relative flex justify-center lg:justify-end items-end">
+                    <img src="image_5.png" alt="Agente MiRed" class="w-full max-w-4xl h-auto object-contain transform scale-105 origin-bottom-right">
+                </div>
+            </div>
+        </div>
     </section>
 
-    <div class="aliados-slider">
-      <div class="aliados-track">
-        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">POPULAR</span><span class="aliado-item">BHD</span><span class="aliado-item">CARIBE</span><span class="aliado-item">SANTA CRUZ</span>
-        <span class="aliado-item">BANRESERVAS</span><span class="aliado-item">POPULAR</span><span class="aliado-item">BHD</span><span class="aliado-item">CARIBE</span><span class="aliado-item">SANTA CRUZ</span>
-      </div>
-    </div>
-
-    <section class="stats-container">
-      <div class="stat-item"><h2>+5,000</h2><p>Puntos MiRed</p></div>
-      <div class="stat-item"><h2>32</h2><p>Provincias</p></div>
-      <div class="stat-item"><h2>+1M</h2><p>Transacciones</p></div>
-      <div class="stat-item"><h2>24/7</h2><p>Soporte</p></div>
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="w-full max-w-4xl mx-auto text-center pl-0 md:pl-8 border-l-4 border-brand-cyan">
+                <p class="text-2xl md:text-3xl font-medium text-brand-dark leading-relaxed">
+                    <span class="font-extrabold">MiRed</span> facilita la intermediación financiera a través de una robusta infraestructura y soluciones tecnológicas avanzadas.
+                </p>
+            </div>
+        </div>
     </section>
 
-    <h2 style="text-align: center; margin-bottom: 30px; font-weight: 800; font-size: 32px;">Nuestras Soluciones</h2>
-    <div class="services-grid">
-      <div class="card">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800');"></div>
-        <div class="card-body">
-          <h3>SubAgentes Bancarios</h3>
-          <p>Opere en nombre de bancos participantes desde sus propios establecimientos.</p>
-          <a href="subagente.html" class="btn-card">Ver Detalle</a>
+    <section class="relative py-0 bg-white">
+        <div class="absolute top-0 left-0 w-full md:w-[55%] h-full bg-brand-gray z-0"></div>
+        <div class="container mx-auto px-6 lg:px-12 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-1/2 py-32 pr-16 text-white">
+                    <p class="text-3xl font-light leading-relaxed">
+                        Optimizando la gestión de pagos, transferencias y otros servicios bancarios, garantizando transacciones seguras, eficientes y accesibles en toda la República Dominicana.
+                    </p>
+                </div>
+                <div class="w-full md:w-1/2 relative py-16 md:py-0 flex justify-center">
+                    <img src="image_6.png" alt="Transacción segura" class="w-full max-w-lg h-auto object-cover shadow-2xl transform md:-translate-x-10 transition duration-500 hover:scale-105" style="border-top-right-radius: 100px; border-bottom-left-radius: 100px;">
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512428559083-a4051ba836c5?auto=format&fit=crop&q=80&w=800');"></div>
-        <div class="card-body"><h3>Movilidad</h3><p>Habilitamos servicios móviles con soporte tecnológico.</p><a href="#" class="btn-card">Ver Detalle</a></div>
-      </div>
-      <div class="card">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=800');"></div>
-        <div class="card-body"><h3>Ecosistema TAT</h3><p>Conecta proveedores con retail para optimizar rentabilidad.</p><a href="#" class="btn-card">Ver Detalle</a></div>
-      </div>
-      <div class="card">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80&w=800');"></div>
-        <div class="card-body"><h3>Bancarización</h3><p>Procesos masivos con tecnología avanzada.</p><a href="#" class="btn-card">Ver Detalle</a></div>
-      </div>
-    </div>
+    </section>
 
-    <h2 style="text-align: center; margin-bottom: 30px; font-weight: 800; font-size: 32px;">Lo que dicen nuestros clientes</h2>
-    <div class="test-grid">
-        <div class="test-item"><p>"MiRed ha transformado la gestión de nuestras transacciones bancarias cotidianas."</p><div style="font-weight:800; color:var(--blue-tech);">— Banco Aliado</div></div>
-        <div class="test-item"><p>"Ser subagente aumentó las ventas en mi local comercial notablemente."</p><div style="font-weight:800; color:var(--blue-tech);">— Comercio Afiliado</div></div>
-        <div class="test-item"><p>"La infraestructura tecnológica es robusta y muy confiable para nuestras remesas."</p><div style="font-weight:800; color:var(--blue-tech);">— Usuario Final</div></div>
-    </div>
-  </main>
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="flex flex-col lg:flex-row items-center gap-20">
+                <div class="w-full lg:w-5/12 relative z-20">
+                    <div class="flex items-center gap-4 mb-12">
+                        <span class="text-4xl md:text-5xl font-bold text-black">Con</span>
+                        <img src="logo.png" alt="Logo MiRed" class="h-12 md:h-16 w-auto object-contain"> 
+                    </div>
 
-  <footer class="footer"><p style="font-size:12px; color:rgba(255,255,255,0.3);">&copy; 2026 MIRED — Todos los derechos reservados.</p></footer>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="service-box bg-brand-cyan rounded-tl-custom shadow-card cursor-pointer">Retira</div>
+                        <div class="service-box bg-brand-green rounded-tr-custom shadow-card cursor-pointer">Paga</div>
+                        <div class="service-box bg-brand-red rounded-bl-custom shadow-card cursor-pointer">Tranfiere</div>
+                        <div class="service-box bg-brand-orange rounded-br-custom shadow-card cursor-pointer">Deposita</div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-7/12 relative flex justify-center lg:justify-end mt-16 lg:mt-0 items-end">
+                     <img src="image_7.png" alt="Estudiante feliz" class="w-full max-w-3xl h-auto object-contain drop-shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <a href="https://wa.me/TuNumero" class="wa-float" target="_blank">
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
+    <footer class="bg-footer-bg text-black py-20 text-sm">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
+                <div>
+                    <h4 class="font-bold mb-6 uppercase tracking-wider">Navegación</h4>
+                    <ul class="space-y-3 text-black/80 font-medium">
+                        <li><a href="#" class="hover:text-white transition">Inicio</a></li>
+                        <li><a href="#" class="hover:text-white transition">Nosotros</a></li>
+                        <li><a href="#" class="hover:text-white transition">Servicios</a></li>
+                        <li><a href="#" class="hover:text-white transition">Clientes</a></li>
+                        <li><a href="#" class="hover:text-white transition">Noticias</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase tracking-wider">Servicio al cliente</h4>
+                    <ul class="space-y-3 text-black/80 font-medium">
+                        <li><a href="#" class="hover:text-white transition">Soporte SubAgentes</a></li>
+                        <li><a href="#" class="hover:text-white transition">Solicitud de servicios</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase tracking-wider">Horarios de Servicio</h4>
+                    <div class="text-black/80 font-medium space-y-1">
+                        <p class="font-bold text-black">Lunes a Viernes</p>
+                        <p class="mb-4">8:00am - 7:00pm</p>
+                        <p class="font-bold text-black">Sábados</p>
+                        <p>8:00am - 12:00pm</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase tracking-wider">Ubicación</h4>
+                    <p class="text-black/80 text-sm leading-relaxed font-medium">
+                        Av. Tiradentes esq. Gustavo Mejía Ricart, Torre Silver Sun Gallery, Local 201-B, Ensanche Naco, Santo Domingo.
+                    </p>
+                </div>
+                 <div>
+                    <h4 class="font-bold mb-6 uppercase tracking-wider">Contáctanos</h4>
+                    <div class="text-black/80 font-medium mb-6 space-y-2">
+                        <p>+1-809-530-3995</p>
+                        <p>servicio@mired.com.do</p>
+                    </div>
+                    <h4 class="font-bold mb-4 uppercase tracking-wider">Síguenos en</h4>
+                    <div class="flex space-x-4 font-bold text-lg">
+                        <a href="#" class="hover:text-white transition">f</a>
+                        <a href="#" class="hover:text-white transition">📷</a>
+                        <a href="#" class="hover:text-white transition">in</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 pt-8 border-t border-black/10 text-xs text-black/60 font-semibold text-center md:text-left">
+                © 2025 MiRed. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
 
-  <script>function toggleMenu() { document.getElementById('mobileNav').classList.toggle('active'); }</script>
-</body>
-</html>
+    <a href="https://wa.me/18095303995" target="_blank" class="fixed bottom-6 right-6 z-50 bg-whatsapp text-white p-4 rounded-full shadow-lg hover:scale-110 transition duration-300 flex items-center justify-center group" aria-label="Chat en WhatsApp">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+    </a>
