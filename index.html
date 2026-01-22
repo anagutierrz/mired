@@ -12,7 +12,7 @@
         body { font-family: 'Manrope', sans-serif; }
         html { scroll-behavior: smooth; }
         
-        /* BLOQUE: ANIMACIONES REVEAL (Aparición gradual) */
+        /* ANIMACIONES REVEAL */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -22,12 +22,10 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .delay-1 { transition-delay: 100ms; }
+        .delay-1 { transition-delay: 150ms; }
         .delay-2 { transition-delay: 300ms; }
-        .delay-3 { transition-delay: 500ms; }
-        .delay-4 { transition-delay: 700ms; }
 
-        /* BLOQUE: ELEMENTOS FLOTANTES */
+        /* WHATSAPP BOUNCE */
         .whatsapp-bounce { animation: bounce 2s infinite; }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
@@ -35,38 +33,43 @@
             60% {transform: translateY(-5px);}
         }
 
-        /* BLOQUE: ESTILOS DE COMPONENTES */
-        .service-card { transition: all 0.3s ease; border: 1px solid #f0f0f0; }
-        .service-card:hover { transform: translateY(-10px) !important; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); }
-        
+        /* ESTILO SERVICIOS (Forma con puntas izquierda y derecha) */
+        .service-shape {
+            border-top-left-radius: 100px;
+            border-bottom-right-radius: 100px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            transition: all 0.4s ease;
+        }
+        .service-shape:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.2);
+        }
+
+        /* ESTRUCTURA MONOLÍTICA U (⊂) */
         .u-structure {
-            grid-template-columns: 150px 1fr; /* Grosor unificado de 150px */
+            grid-template-columns: 150px 1fr;
             grid-template-rows: 150px 150px 150px;
         }
     </style>
 </head>
 <body class="bg-white overflow-x-hidden">
 
-    <a href="https://wa.me/18095303995" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-[#25D366] p-4 rounded-full shadow-2xl hover:scale-110 transition-transform whatsapp-bounce">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.555-5.332 11.887-11.888 11.887-2.012 0-3.987-.51-5.742-1.478l-6.142 1.702zm6.108-3.321c1.657.985 3.324 1.482 5.023 1.482 5.462 0 9.904-4.442 9.904-9.904 0-2.645-1.03-5.132-2.901-7.002-1.872-1.871-4.359-2.901-7.004-2.901-5.461 0-9.904 4.443-9.904 9.904 0 1.843.518 3.559 1.498 5.107l-1.002 3.662 3.784-1.048z"/>
-        </svg>
+    <a href="https://wa.me/18095303995" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-[#25D366] p-4 rounded-full shadow-2xl whatsapp-bounce">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.555-5.332 11.887-11.888 11.887-2.012 0-3.987-.51-5.742-1.478l-6.142 1.702zm6.108-3.321c1.657.985 3.324 1.482 5.023 1.482 5.462 0 9.904-4.442 9.904-9.904 0-2.645-1.03-5.132-2.901-7.002-1.872-1.871-4.359-2.901-7.004-2.901-5.461 0-9.904 4.443-9.904 9.904 0 1.843.518 3.559 1.498 5.107l-1.002 3.662 3.784-1.048z"/></svg>
     </a>
 
-    <header class="w-full bg-white py-4 fixed top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
-        <div class="max-w-[1440px] mx-auto px-12 flex justify-between items-center h-20">
-            <div class="w-48 flex items-center">
-                <img src="logo.png" alt="MiRed" class="w-full h-auto object-contain">
-            </div>
+    <header class="w-full bg-white/95 backdrop-blur-sm fixed top-0 z-50 shadow-sm h-20 flex items-center">
+        <div class="max-w-[1440px] mx-auto px-12 w-full flex justify-between items-center">
+            <img src="logo.png" alt="MiRed" class="w-48 h-auto object-contain">
             <nav class="flex items-center gap-8">
-                <ul class="flex gap-8 text-[15px] font-bold text-gray-950 tracking-tight">
-                    <li><a href="#" class="hover:text-[#00AEEF] transition-colors">Inicio</a></li>
-                    <li><a href="#nosotros" class="hover:text-[#00AEEF] transition-colors">Nosotros</a></li>
-                    <li><a href="#servicios" class="hover:text-[#00AEEF] transition-colors">Servicios</a></li>
-                    <li><a href="#noticias" class="hover:text-[#00AEEF] transition-colors">Noticias</a></li>
-                    <li><a href="#institucional" class="hover:text-[#00AEEF] transition-colors">Institucional</a></li>
+                <ul class="flex gap-8 text-[14px] font-bold text-gray-950 uppercase tracking-tight">
+                    <li><a href="#" class="hover:text-[#00AEEF]">Inicio</a></li>
+                    <li><a href="#nosotros" class="hover:text-[#00AEEF]">Nosotros</a></li>
+                    <li><a href="#servicios" class="hover:text-[#00AEEF]">Servicios</a></li>
+                    <li><a href="#institucional" class="hover:text-[#00AEEF]">Institucional</a></li>
                 </ul>
-                <a href="#" class="bg-[#00AEEF] text-white px-8 py-3 rounded-full font-bold hover:bg-[#008cc0] transition-all shadow-lg">Afíliate</a>
+                <a href="#" class="bg-[#00AEEF] text-white px-8 py-3 rounded-full font-extrabold hover:bg-[#008cc0] shadow-lg text-sm uppercase">Afíliate</a>
             </nav>
         </div>
     </header>
@@ -75,66 +78,52 @@
 
     <section class="w-full bg-white pb-20 overflow-hidden relative">
         <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-12 gap-8 relative items-center">
-            
             <div class="col-span-5 z-30 pt-10">
-                <h1 class="text-[58px] font-bold leading-[1.1] text-[#1a1a1a] mb-8 uppercase tracking-tighter">
-                    Llevamos el banco <br>
-                    <span class="font-extrabold text-[#1a1a1a]">a donde están los clientes</span>
-                </h1>
-                <p class="text-[19px] leading-relaxed text-gray-700 font-medium">
-                    MiRed facilita la intermediación financiera a través de una robusta infraestructura y soluciones tecnológicas avanzadas.
-                </p>
+                <h1 class="text-[58px] font-bold leading-[1.1] text-[#1a1a1a] mb-8 uppercase tracking-tighter">Llevamos el banco <br><span class="font-extrabold">a donde están los clientes</span></h1>
+                <p class="text-[19px] leading-relaxed text-gray-700 font-medium">MiRed facilita la intermediación financiera a través de una robusta infraestructura y soluciones tecnológicas avanzadas.</p>
             </div>
-
             <div class="col-span-7 relative h-[550px] flex items-center justify-center">
                 <div class="absolute left-0 top-1/2 -translate-y-1/2 w-[150%] z-0 grid u-structure">
-                    <div class="relative bg-[#F39200] rounded-tl-[50px] overflow-hidden">
-                        <img src="foto-estante.jpg" alt="Estante" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60">
-                    </div>
-                    <div class="bg-[#A7A9AC]"></div>
-                    <div class="bg-[#A7A9AC]"></div>
-                    <div class="bg-transparent"></div>
-                    <div class="relative bg-[#5EBA46] rounded-bl-[50px] overflow-hidden">
-                        <img src="foto-dinero.jpg" alt="Dinero" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60">
-                    </div>
+                    <div class="relative bg-[#F39200] rounded-tl-[50px] overflow-hidden"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60"></div>
+                    <div class="bg-[#A7A9AC]"></div><div class="bg-[#A7A9AC]"></div><div class="bg-transparent"></div>
+                    <div class="relative bg-[#5EBA46] rounded-bl-[50px] overflow-hidden"><img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=800" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60"></div>
                     <div class="bg-[#A7A9AC]"></div>
                 </div>
                 <div class="absolute bottom-[50px] z-20 h-[650px] w-auto flex items-end -translate-x-12">
-                    <img src="hombre-hero.png" alt="Usuario MiRed" class="h-full w-auto object-contain drop-shadow-2xl">
+                    <img src="https://www.freeiconspng.com/uploads/business-man-png-transparent-14.png" class="h-full w-auto object-contain drop-shadow-2xl">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="nosotros" class="w-full bg-white py-24 border-t border-gray-50 overflow-hidden">
-        <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-12 gap-16 items-center">
+    <section id="nosotros" class="w-full relative bg-white py-24 overflow-hidden border-t border-gray-50">
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 h-[150px] w-[60%] bg-[#A7A9AC]/30 z-0 rounded-l-[50px]"></div>
+        <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-12 gap-16 items-center relative z-10">
             <div class="col-span-6 reveal delay-1">
-                <img src="quienes-somos.jpg" alt="Empresa" class="w-full h-[550px] object-cover rounded-tr-[100px] rounded-bl-[100px] shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800" class="w-full h-[550px] object-cover rounded-tr-[100px] rounded-bl-[100px] shadow-2xl">
             </div>
             <div class="col-span-6 reveal delay-2">
-                <h2 class="text-5xl font-extrabold text-[#1a1a1a] mb-8 uppercase tracking-tighter">¿Quiénes Somos?</h2>
-                <p class="text-[22px] leading-relaxed text-gray-800 font-medium mb-6">
-                    Somos la infraestructura tecnológica que conecta instituciones financieras con una red nacional de comercios.
-                </p>
+                <h2 class="text-6xl font-extrabold text-[#1a1a1a] mb-8 uppercase tracking-tighter">¿Quiénes Somos?</h2>
+                <p class="text-[22px] leading-relaxed text-gray-800 font-medium">MiRed es la infraestructura tecnológica que conecta instituciones financieras con una red nacional de comercios.</p>
             </div>
         </div>
     </section>
 
-    <section class="w-full bg-white py-24">
+    <section class="w-full bg-[#f8f9fa] py-24">
         <div class="max-w-[1440px] mx-auto px-12">
-            <h2 class="text-5xl font-extrabold text-[#1a1a1a] uppercase tracking-tighter text-center mb-16">Por qué ser parte de MiRed</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
-                <div class="bg-[#00AEEF] p-12 rounded-[50px] shadow-xl reveal delay-1 service-card">
-                    <h3 class="text-3xl font-extrabold mb-6 uppercase">Escala Territorial</h3>
-                    <p class="text-lg opacity-90 font-medium">Ampliamos el alcance de las instituciones financieras eficientemente.</p>
+            <h2 class="text-center text-5xl font-extrabold text-[#1a1a1a] mb-16 uppercase tracking-tighter">Por qué ser parte de MiRed</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-12 rounded-[40px] shadow-sm border-t-8 border-[#00AEEF] reveal delay-1">
+                    <h3 class="text-2xl font-extrabold mb-4 text-[#1a1a1a] uppercase">Escala Territorial</h3>
+                    <p class="text-gray-600 leading-relaxed font-medium">Facilitamos la expansión eficiente de las instituciones financieras mediante nuestra red estructurada.</p>
                 </div>
-                <div class="bg-[#5EBA46] p-12 rounded-[50px] shadow-xl reveal delay-2 service-card">
-                    <h3 class="text-3xl font-extrabold mb-6 uppercase">Nuevos Ingresos</h3>
-                    <p class="text-lg opacity-90 font-medium">Comercios afiliados generan fuentes de ingresos incrementales.</p>
+                <div class="bg-white p-12 rounded-[40px] shadow-sm border-t-8 border-[#5EBA46] reveal delay-2">
+                    <h3 class="text-2xl font-extrabold mb-4 text-[#1a1a1a] uppercase">Nuevos Ingresos</h3>
+                    <p class="text-gray-600 leading-relaxed font-medium">Permitimos que los comercios afiliados generen nuevas fuentes de ingresos y aumenten su tráfico de clientes.</p>
                 </div>
-                <div class="bg-[#F39200] p-12 rounded-[50px] shadow-xl reveal delay-3 service-card">
-                    <h3 class="text-3xl font-extrabold mb-6 uppercase">Inclusión Real</h3>
-                    <p class="text-lg opacity-90 font-medium">Transacciones seguras y accesibles en toda la República Dominicana.</p>
+                <div class="bg-white p-12 rounded-[40px] shadow-sm border-t-8 border-[#F39200] reveal delay-1">
+                    <h3 class="text-2xl font-extrabold mb-4 text-[#1a1a1a] uppercase">Inclusión Real</h3>
+                    <p class="text-gray-600 leading-relaxed font-medium">Llevamos servicios bancarios a donde antes no llegaban, garantizando transacciones seguras.</p>
                 </div>
             </div>
         </div>
@@ -142,21 +131,23 @@
 
     <section id="servicios" class="w-full bg-white py-24 border-t border-gray-50">
         <div class="max-w-[1440px] mx-auto px-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="service-card reveal delay-1 bg-white p-8 rounded-2xl text-center">
-                    <img src="subagentes.jpg" alt="Servicio" class="w-full h-48 object-cover rounded-xl mb-6">
-                    <h3 class="text-2xl font-extrabold text-[#1a1a1a] mb-4 uppercase">SubAgentes Bancarios</h3>
-                    <p class="text-sm text-gray-600 font-medium">Comercios que realizan operaciones bancarias vía nuestra plataforma.</p>
+            <h2 class="text-5xl font-extrabold text-[#1a1a1a] mb-16 uppercase tracking-tighter text-center">Nuestros Servicios</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="bg-[#00AEEF] p-12 service-shape text-white reveal">
+                    <h3 class="text-3xl font-extrabold mb-6 uppercase tracking-tight">SubAgente Bancario</h3>
+                    <p class="text-lg opacity-90 leading-relaxed font-medium">Son comercios que a través de la plataforma tecnológica pueden realizar operaciones bancarias.</p>
                 </div>
-                <div class="service-card reveal delay-2 bg-white p-8 rounded-2xl text-center">
-                    <img src="productos.jpg" alt="Servicio" class="w-full h-48 object-cover rounded-xl mb-6">
-                    <h3 class="text-2xl font-extrabold text-[#1a1a1a] mb-4 uppercase">Productos y Servicios</h3>
-                    <p class="text-sm text-gray-600 font-medium">Soluciones avanzadas para rentabilizar su negocio.</p>
+                <div class="bg-[#5EBA46] p-12 service-shape text-white reveal delay-1">
+                    <h3 class="text-3xl font-extrabold mb-6 uppercase tracking-tight">Soluciones de Movilidad</h3>
+                    <p class="text-lg opacity-90 leading-relaxed font-medium">Habilitación de servicios bancarios a través de dispositivos móviles y procesamiento de transacciones.</p>
                 </div>
-                <div class="service-card reveal delay-3 bg-white p-8 rounded-2xl text-center">
-                    <img src="clientes.jpg" alt="Servicio" class="w-full h-48 object-cover rounded-xl mb-6">
-                    <h3 class="text-2xl font-extrabold text-[#1a1a1a] mb-4 uppercase">Nuestros Clientes</h3>
-                    <p class="text-sm text-gray-600 font-medium">Soporte transaccional para instituciones financieras líderes.</p>
+                <div class="bg-[#E30613] p-12 service-shape text-white reveal">
+                    <h3 class="text-3xl font-extrabold mb-6 uppercase tracking-tight">Ecosistema TAT</h3>
+                    <p class="text-lg opacity-90 leading-relaxed font-medium">Plataforma que conecta proveedores con retail para optimizar inventarios y rentabilidad.</p>
+                </div>
+                <div class="bg-[#F39200] p-12 service-shape text-white reveal delay-1">
+                    <h3 class="text-3xl font-extrabold mb-6 uppercase tracking-tight">Bancarización Masiva</h3>
+                    <p class="text-lg opacity-90 leading-relaxed font-medium">Servicio integral utilizando tecnología y nuevos medios de autenticación para procesos masivos.</p>
                 </div>
             </div>
         </div>
@@ -164,34 +155,29 @@
 
     <section id="institucional" class="w-full bg-[#f8f9fa] py-24 border-y border-gray-100">
         <div class="max-w-[1440px] mx-auto px-12">
-            <h2 class="text-5xl font-extrabold text-[#1a1a1a] mb-16 uppercase tracking-tighter text-center">Contacto institucional</h2>
-            <div class="flex justify-center">
-                <div class="service-card reveal bg-white p-10 rounded-[40px] shadow-sm w-full max-w-[400px] text-center">
-                    <div class="w-32 h-32 bg-gray-100 rounded-full mx-auto mb-6 overflow-hidden border-4 border-[#00AEEF]">
-                         <img src="avatar-zipamocha.jpg" alt="Edward Ricardo Zipamocha Gutiérrez" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="text-2xl font-bold text-[#1a1a1a] mb-2 leading-tight">Edward Ricardo Zipamocha Gutiérrez</h3>
-                    <p class="text-[#00AEEF] font-bold mb-6 uppercase tracking-wide text-sm">Gerente General</p>
-                    <a href="https://do.linkedin.com/in/edward-ricardo-zipamocha-gutierrez-12988370" target="_blank" class="inline-flex items-center gap-2 bg-[#0077b5] text-white px-8 py-3 rounded-full font-bold hover:bg-[#005582] transition-colors shadow-lg">
-                        LinkedIn
-                    </a>
+            <h2 class="text-5xl font-extrabold text-[#1a1a1a] mb-20 uppercase tracking-tighter text-center">Contacto institucional</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div class="bg-white p-12 rounded-[40px] text-center shadow-sm reveal">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-[#00AEEF] overflow-hidden"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300" class="w-full h-full object-cover"></div>
+                    <h3 class="text-2xl font-bold mb-2">Edward Ricardo Zipamocha Gutiérrez</h3>
+                    <p class="text-[#00AEEF] font-bold mb-8 uppercase text-sm">Gerente General</p>
+                    <a href="https://do.linkedin.com/in/edward-ricardo-zipamocha-gutierrez-12988370" target="_blank" class="bg-[#0077b5] text-white px-8 py-3 rounded-full font-bold shadow-lg inline-flex items-center gap-2">LinkedIn</a>
+                </div>
+                <div class="bg-white p-12 rounded-[40px] text-center shadow-sm reveal delay-1">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-[#5EBA46] overflow-hidden"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300" class="w-full h-full object-cover"></div>
+                    <h3 class="text-2xl font-bold mb-2">Andrés Gañán S.</h3>
+                    <p class="text-[#5EBA46] font-bold mb-8 uppercase text-sm">Gerente de Producto</p>
+                    <a href="https://do.linkedin.com/in/andrés-gañán-s" target="_blank" class="bg-[#0077b5] text-white px-8 py-3 rounded-full font-bold shadow-lg inline-flex items-center gap-2">LinkedIn</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="w-full bg-[#9DA3A5] py-16 text-center text-black border-t border-gray-400">
-        <p class="font-bold">© 2026 MiRed. Todos los derechos reservados.</p>
-    </footer>
+    <footer class="w-full bg-[#9DA3A5] py-16 text-center text-black border-t border-gray-400 font-extrabold uppercase tracking-widest text-sm">© 2026 MiRed. Todos los derechos reservados.</footer>
 
     <script>
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } });
         }, { threshold: 0.15 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
