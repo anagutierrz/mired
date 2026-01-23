@@ -1,230 +1,122 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiRed - Soluciones Financieras</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        body { font-family: 'Manrope', sans-serif; }
-        html { scroll-behavior: smooth; }
+<section id="noticias" class="w-full bg-[#F5F7FA] py-24 relative overflow-hidden border-t border-gray-200">
         
-        /* ANIMACIONES REVEAL (Aparición gradual) */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .delay-1 { transition-delay: 150ms; }
-        .delay-2 { transition-delay: 300ms; }
+        <div class="absolute top-[40%] left-0 w-full h-[1px] bg-gray-200 z-0"></div>
 
-        /* WHATSAPP BOUNCE */
-        .whatsapp-bounce { animation: bounce 2s infinite; }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
-
-        /* ESTILO SERVICIOS (Forma con puntas opuestas) */
-        .service-shape {
-            border-top-left-radius: 100px;
-            border-bottom-right-radius: 100px;
-            border-top-right-radius: 20px;
-            border-bottom-left-radius: 20px;
-            transition: all 0.4s ease;
-        }
-        .service-shape:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.2);
-        }
-
-        /* ESTRUCTURA MONOLÍTICA U (⊂) - Grosor 150px */
-        .u-structure {
-            grid-template-columns: 150px 1fr;
-            grid-template-rows: 150px 150px 150px;
-        }
-
-        /* MODAL AFÍLIATE */
-        #modal-afiliate {
-            display: none;
-            backdrop-filter: blur(8px);
-        }
-        #modal-afiliate.active {
-            display: flex;
-        }
-    </style>
-</head>
-<body class="bg-white overflow-x-hidden">
-
-    <a href="https://wa.me/18095303995" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-[#25D366] p-4 rounded-full shadow-2xl hover:scale-110 transition-transform whatsapp-bounce">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.555-5.332 11.887-11.888 11.887-2.012 0-3.987-.51-5.742-1.478l-6.142 1.702zm6.108-3.321c1.657.985 3.324 1.482 5.023 1.482 5.462 0 9.904-4.442 9.904-9.904 0-2.645-1.03-5.132-2.901-7.002-1.872-1.871-4.359-2.901-7.004-2.901-5.461 0-9.904 4.443-9.904 9.904 0 1.843.518 3.559 1.498 5.107l-1.002 3.662 3.784-1.048z"/></svg>
-    </a>
-
-    <header class="w-full bg-white/95 backdrop-blur-sm fixed top-0 z-50 shadow-sm h-20 flex items-center">
-        <div class="max-w-[1440px] mx-auto px-12 w-full flex justify-between items-center">
-            <img src="logo.png" alt="MiRed" class="w-48 h-auto object-contain">
-            <nav class="flex items-center gap-8">
-                <ul class="flex gap-8 text-[14px] font-bold text-gray-950 uppercase tracking-tight">
-                    <li><a href="#" class="hover:text-[#00AEEF]">Inicio</a></li>
-                    <li><a href="#nosotros" class="hover:text-[#00AEEF]">Nosotros</a></li>
-                    <li><a href="#servicios" class="hover:text-[#00AEEF]">Servicios</a></li>
-                    <li><a href="#institucional" class="hover:text-[#00AEEF]">Institucional</a></li>
-                </ul>
-                <button onclick="toggleModal()" class="bg-[#00AEEF] text-white px-8 py-3 rounded-full font-extrabold shadow-lg text-sm uppercase hover:bg-[#008cc0] transition-colors">Afíliate</button>
-            </nav>
-        </div>
-    </header>
-
-    <div class="h-28"></div>
-
-    <section class="w-full bg-white pb-20 overflow-hidden relative">
-        <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-12 gap-8 items-center">
-            <div class="col-span-5 z-30 pt-10">
-                <h1 class="text-[58px] font-bold leading-[1.1] text-[#1a1a1a] mb-8 uppercase tracking-tighter">Llevamos el banco <br><span class="font-extrabold text-[#1a1a1a]">a donde están los clientes</span></h1>
-                <p class="text-[19px] leading-relaxed text-gray-700 font-medium">MiRed facilita la intermediación financiera a través de una robusta infraestructura y soluciones tecnológicas avanzadas.</p>
-            </div>
-            <div class="col-span-7 relative h-[550px] flex items-center justify-center">
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-[150%] z-0 grid u-structure">
-                    <div class="relative bg-[#F39200] rounded-tl-[50px] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
+            
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="max-w-2xl relative pl-8">
+                    <div class="absolute left-0 top-1 h-full w-2 bg-[#00AEEF] rounded-full"></div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-[#1a1a1a] uppercase tracking-tighter leading-none">
+                        Actualidad <span class="text-[#00AEEF]">MiRed</span>
+                    </h2>
+                    <p class="text-gray-500 mt-4 font-medium text-lg">
+                        Mantente informado sobre nuestras alianzas, tecnología y crecimiento.
+                    </p>
+                </div>
+                
+                <a href="#" class="group flex items-center gap-3 font-bold text-[#1a1a1a] hover:text-[#00AEEF] transition-colors">
+                    Ver todas las noticias
+                    <div class="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-sm group-hover:bg-[#00AEEF] group-hover:border-[#00AEEF] group-hover:text-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </div>
-                    <div class="bg-[#A7A9AC]"></div><div class="bg-[#A7A9AC]"></div><div class="bg-transparent"></div>
-                    <div class="relative bg-[#5EBA46] rounded-bl-[50px] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=800" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60">
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+                
+                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden relative h-full flex flex-col">
+                    <div class="h-[220px] relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600" alt="Expansión" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#00AEEF]/10 group-hover:bg-transparent transition-colors"></div>
                     </div>
-                    <div class="bg-[#A7A9AC]"></div>
-                </div>
-                <div class="absolute bottom-[50px] z-20 h-[650px] w-auto flex items-end -translate-x-12">
-                    <img src="https://www.freeiconspng.com/uploads/business-man-png-transparent-14.png" class="h-full w-auto object-contain drop-shadow-2xl">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="nosotros" class="w-full relative bg-white py-24 overflow-hidden border-t border-gray-50">
-        <div class="absolute right-0 top-1/2 -translate-y-1/2 h-[150px] w-[60%] bg-[#A7A9AC]/30 z-0 rounded-l-[50px]"></div>
-        <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-12 gap-16 items-center relative z-10">
-            <div class="col-span-6 reveal delay-1">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800" class="w-full h-[550px] object-cover rounded-tr-[100px] rounded-bl-[100px] shadow-2xl">
-            </div>
-            <div class="col-span-6 reveal delay-2">
-                <h2 class="text-6xl font-extrabold text-[#1a1a1a] mb-8 uppercase tracking-tighter">¿Quiénes Somos?</h2>
-                <p class="text-[22px] leading-relaxed text-gray-800 font-medium">MiRed es la infraestructura tecnológica que conecta instituciones financieras con una red nacional de comercios.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="w-full bg-[#f8f9fa] py-24">
-        <div class="max-w-[1440px] mx-auto px-12">
-            <h2 class="text-center text-5xl font-extrabold text-[#1a1a1a] mb-16 uppercase tracking-tighter">Por qué ser parte de MiRed</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-12 rounded-[40px] shadow-sm border-t-8 border-[#00AEEF] reveal delay-1">
-                    <h3 class="text-2xl font-extrabold mb-4 uppercase">Escala Territorial</h3>
-                    <p class="text-gray-600 font-medium">Facilitamos la expansión eficiente de las instituciones financieras mediante nuestra red estructurada.</p>
-                </div>
-                <div class="bg-white p-12 rounded-[40px] shadow-sm border-t-8 border-[#5EBA46] reveal delay-2">
-                    <h3 class="text-2xl font-extrabold mb-4 uppercase">Nuevos Ingresos</h3>
-                    <p class="text-gray-600 font-medium">Permitimos que los comercios afiliados generen nuevas fuentes de ingresos.</p>
-                </div>
-                <div class="bg-white p-12 rounded-[40px] shadow-sm border-t-8 border-[#F39200] reveal delay-1">
-                    <h3 class="text-2xl font-extrabold mb-4 uppercase">Inclusión Real</h3>
-                    <p class="text-gray-600 font-medium">Llevamos servicios bancarios a donde antes no llegaban, garantizando transacciones seguras.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="servicios" class="w-full bg-white py-24 border-t border-gray-50">
-        <div class="max-w-[1440px] mx-auto px-12">
-            <h2 class="text-5xl font-extrabold text-[#1a1a1a] mb-16 uppercase tracking-tighter text-center">Nuestros Servicios</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="bg-[#00AEEF] p-12 service-shape text-white reveal">
-                    <h3 class="text-3xl font-extrabold mb-6 uppercase">SubAgente Bancario</h3>
-                    <p class="text-lg opacity-90 font-medium leading-relaxed">Comercios que realizan operaciones bancarias desde sus establecimientos a través de MiRed.</p>
-                </div>
-                <div class="bg-[#5EBA46] p-12 service-shape text-white reveal delay-1">
-                    <h3 class="text-3xl font-extrabold mb-6 uppercase">Soluciones de Movilidad</h3>
-                    <p class="text-lg opacity-90 font-medium leading-relaxed">Habilitación de servicios bancarios mediante dispositivos móviles y soporte transaccional.</p>
-                </div>
-                <div class="bg-[#E30613] p-12 service-shape text-white reveal">
-                    <h3 class="text-3xl font-extrabold mb-6 uppercase">Ecosistema TAT</h3>
-                    <p class="text-lg opacity-90 font-medium leading-relaxed">Conectamos proveedores con el canal retail para optimizar inventarios y rentabilidad.</p>
-                </div>
-                <div class="bg-[#F39200] p-12 service-shape text-white reveal delay-1">
-                    <h3 class="text-3xl font-extrabold mb-6 uppercase">Bancarización Masiva</h3>
-                    <p class="text-lg opacity-90 font-medium leading-relaxed">Servicio integral para procesos masivos de bancarización utilizando nuevos medios de autenticación.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="institucional" class="w-full bg-[#f8f9fa] py-24 border-y border-gray-100">
-        <div class="max-w-[1440px] mx-auto px-12">
-            <h2 class="text-5xl font-extrabold text-[#1a1a1a] mb-20 uppercase tracking-tighter text-center">Contacto institucional</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                <div class="bg-white p-12 rounded-[40px] text-center shadow-sm reveal">
-                    <div class="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-[#00AEEF] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300" class="w-full h-full object-cover">
+                    <div class="absolute top-[180px] left-0 bg-[#00AEEF] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">ENE</span>
+                        <span class="text-2xl font-extrabold leading-none">22</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Edward Ricardo Zipamocha Gutiérrez</h3>
-                    <p class="text-[#00AEEF] font-bold mb-8 uppercase text-sm text-sm">Gerente General</p>
-                    <a href="https://do.linkedin.com/in/edward-ricardo-zipamocha-gutierrez-12988370" target="_blank" class="bg-[#0077b5] text-white px-8 py-3 rounded-full font-bold shadow-lg inline-flex items-center gap-2">LinkedIn</a>
-                </div>
-                <div class="bg-white p-12 rounded-[40px] text-center shadow-sm reveal delay-1">
-                    <div class="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-[#5EBA46] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300" class="w-full h-full object-cover">
+                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col">
+                        <div class="text-[#00AEEF] text-xs font-bold uppercase tracking-widest mb-3">Corporativo</div>
+                        <h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#00AEEF] transition-colors">
+                            Expansión de red de subagentes en la zona norte
+                        </h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+                            Llevamos soluciones financieras a nuevas comunidades rurales con infraestructura robusta.
+                        </p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#00AEEF] transition-colors mt-auto">
+                            Leer más <span>→</span>
+                        </a>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Andrés Gañán S.</h3>
-                    <p class="text-[#5EBA46] font-bold mb-8 uppercase text-sm">Gerente de Producto</p>
-                    <a href="https://do.linkedin.com/in/andrés-gañán-s" target="_blank" class="bg-[#0077b5] text-white px-8 py-3 rounded-full font-bold shadow-lg inline-flex items-center gap-2">LinkedIn</a>
-                </div>
+                </article>
+
+                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden relative h-full flex flex-col">
+                    <div class="h-[220px] relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600" alt="Tecnología" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#5EBA46]/10 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="absolute top-[180px] left-0 bg-[#5EBA46] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">FEB</span>
+                        <span class="text-2xl font-extrabold leading-none">10</span>
+                    </div>
+                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col">
+                        <div class="text-[#5EBA46] text-xs font-bold uppercase tracking-widest mb-3">Innovación</div>
+                        <h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#5EBA46] transition-colors">
+                            Nueva tecnología Contactless para comercios
+                        </h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+                            Implementamos sistemas de cobro más rápidos y seguros para optimizar la gestión.
+                        </p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#5EBA46] transition-colors mt-auto">
+                            Leer más <span>→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden relative h-full flex flex-col">
+                    <div class="h-[220px] relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600" alt="Comunidad" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#F39200]/10 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="absolute top-[180px] left-0 bg-[#F39200] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">MAR</span>
+                        <span class="text-2xl font-extrabold leading-none">05</span>
+                    </div>
+                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col">
+                        <div class="text-[#F39200] text-xs font-bold uppercase tracking-widest mb-3">Comunidad</div>
+                        <h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#F39200] transition-colors">
+                            Capacitación financiera para emprendedores
+                        </h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+                            Más de 500 socios participaron en nuestra jornada anual de educación económica.
+                        </p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#F39200] transition-colors mt-auto">
+                            Leer más <span>→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden relative h-full flex flex-col">
+                    <div class="h-[220px] relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3dab?auto=format&fit=crop&w=600" alt="Alianzas" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#E30613]/10 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="absolute top-[180px] left-0 bg-[#E30613] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">ABR</span>
+                        <span class="text-2xl font-extrabold leading-none">12</span>
+                    </div>
+                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col">
+                        <div class="text-[#E30613] text-xs font-bold uppercase tracking-widest mb-3">Alianzas</div>
+                        <h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#E30613] transition-colors">
+                            Nueva alianza estratégica con sector retail
+                        </h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+                            Fortalecemos nuestra presencia en cadenas comerciales para facilitar transacciones.
+                        </p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#E30613] transition-colors mt-auto">
+                            Leer más <span>→</span>
+                        </a>
+                    </div>
+                </article>
+
             </div>
         </div>
     </section>
-
-    <div id="modal-afiliate" class="fixed inset-0 z-[200] items-center justify-center bg-black/60 p-6">
-        <div class="bg-white w-full max-w-lg rounded-[40px] p-12 relative shadow-2xl">
-            <button onclick="toggleModal()" class="absolute top-6 right-8 text-3xl text-gray-400 hover:text-black">×</button>
-            <h3 class="text-3xl font-extrabold mb-4 uppercase tracking-tighter">Únete a MiRed</h3>
-            <p class="text-gray-600 mb-8 font-medium">Completa tus datos y nuestro equipo institucional te contactará en breve.</p>
-            <form class="space-y-4">
-                <input type="text" placeholder="Nombre completo" class="w-full border border-gray-100 bg-gray-50 px-6 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#00AEEF]">
-                <input type="email" placeholder="Correo electrónico" class="w-full border border-gray-100 bg-gray-50 px-6 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#00AEEF]">
-                <input type="text" placeholder="Nombre de tu negocio" class="w-full border border-gray-100 bg-gray-50 px-6 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#00AEEF]">
-                <button type="submit" class="w-full bg-[#00AEEF] text-white py-4 rounded-2xl font-bold uppercase shadow-lg">Enviar solicitud</button>
-            </form>
-        </div>
-    </div>
-
-    <footer class="w-full bg-[#9DA3A5] py-16 text-center text-black border-t border-gray-400 font-extrabold uppercase tracking-widest text-sm">© 2026 MiRed. Todos los derechos reservados.</footer>
-
-    <script>
-        // Modal Toggle
-        function toggleModal() {
-            document.getElementById('modal-afiliate').classList.toggle('active');
-            document.body.classList.toggle('overflow-hidden');
-        }
-
-        // Scroll Reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
-
-</body>
-</html>
