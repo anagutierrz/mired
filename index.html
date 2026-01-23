@@ -12,18 +12,14 @@
         body { font-family: 'Manrope', sans-serif; }
         html { scroll-behavior: smooth; }
         
-        /* ANIMACIONES REVEAL */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+        /* ANIMACIONES */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 150ms; }
         .delay-2 { transition-delay: 300ms; }
         .delay-3 { transition-delay: 450ms; }
 
-        /* WHATSAPP BOUNCE */
+        /* WHATSAPP */
         .whatsapp-bounce { animation: bounce 2s infinite; }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
@@ -31,45 +27,21 @@
             60% {transform: translateY(-5px);}
         }
 
-        /* SERVICIOS: Forma con punta izquierda y derecha */
-        .service-shape {
-            border-top-left-radius: 60px;
-            border-bottom-right-radius: 60px;
-            border-top-right-radius: 15px;
-            border-bottom-left-radius: 15px;
-            transition: all 0.4s ease;
-        }
-        @media (min-width: 768px) {
-            .service-shape { border-top-left-radius: 100px; border-bottom-right-radius: 100px; }
-        }
+        /* FORMAS */
+        .service-shape { border-top-left-radius: 60px; border-bottom-right-radius: 60px; border-top-right-radius: 15px; border-bottom-left-radius: 15px; transition: all 0.4s ease; }
+        @media (min-width: 768px) { .service-shape { border-top-left-radius: 100px; border-bottom-right-radius: 100px; } }
         .service-shape:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.2); }
 
-        /* ESTRUCTURA MONOLÍTICA U (⊂) */
-        /* Versión Móvil más pequeña */
-        .u-structure {
-            grid-template-columns: 60px 1fr;
-            grid-template-rows: 70px 70px 70px;
-        }
-        /* Versión Desktop normal */
-        @media (min-width: 768px) {
-            .u-structure { grid-template-columns: 150px 1fr; grid-template-rows: 150px 150px 150px; }
-        }
+        /* GRID ESTRUCTURA U */
+        /* Móvil: Filas de 70px de alto */
+        .u-structure { grid-template-columns: 60px 1fr; grid-template-rows: 70px 70px 70px; }
+        /* Desktop: Filas de 150px de alto */
+        @media (min-width: 768px) { .u-structure { grid-template-columns: 150px 1fr; grid-template-rows: 150px 150px 150px; } }
 
-        /* TRANSICIÓN MENÚ MÓVIL */
-        #mobile-menu {
-            transition: all 0.3s ease-in-out;
-            transform-origin: top;
-        }
-        .menu-hidden {
-            transform: scaleY(0);
-            opacity: 0;
-            height: 0;
-        }
-        .menu-visible {
-            transform: scaleY(1);
-            opacity: 1;
-            height: auto;
-        }
+        /* MENÚ */
+        #mobile-menu { transition: all 0.3s ease-in-out; transform-origin: top; }
+        .menu-hidden { transform: scaleY(0); opacity: 0; height: 0; }
+        .menu-visible { transform: scaleY(1); opacity: 1; height: auto; }
     </style>
 </head>
 <body class="bg-white overflow-x-hidden">
@@ -80,17 +52,12 @@
 
     <header class="w-full bg-white/95 backdrop-blur-sm fixed top-0 z-50 shadow-sm transition-all duration-300">
         <div class="max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex justify-between items-center relative z-50 bg-white/95">
-            
             <div class="w-32 md:w-48">
-                <img src="logo.png" onerror="this.src='https://via.placeholder.com/150x50?text=MiRed'" alt="MiRed" class="w-full h-auto object-contain">
+                <img src="img/logo-mired.png" onerror="this.src='https://via.placeholder.com/150x50?text=MiRed'" alt="MiRed" class="w-full h-auto object-contain">
             </div>
-
             <button id="menu-btn" class="lg:hidden text-gray-800 focus:outline-none p-2">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
-
             <nav class="hidden lg:flex items-center gap-5">
                 <ul class="flex gap-5 font-extrabold text-gray-950 uppercase tracking-tight text-[12px] xl:text-[13px]">
                     <li><a href="index.html" class="hover:text-[#00AEEF]">Inicio</a></li>
@@ -103,7 +70,6 @@
                 <a href="afiliate.html" class="bg-[#00AEEF] text-white px-6 py-2.5 rounded-full font-extrabold shadow-lg uppercase hover:bg-[#008cc0] text-xs transition-all hover:scale-105">Afíliate</a>
             </nav>
         </div>
-
         <div id="mobile-menu" class="lg:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-gray-100 px-6 py-8 flex flex-col gap-4 menu-hidden z-40">
             <a href="index.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Inicio</a>
             <a href="#nosotros" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Nosotros</a>
@@ -111,10 +77,7 @@
             <a href="#visual" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Operaciones</a>
             <a href="#noticias" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Noticias</a>
             <a href="#institucional" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Contacto</a>
-            
-            <a href="afiliate.html" class="mt-4 w-full bg-[#00AEEF] text-white py-4 rounded-full font-extrabold uppercase text-center shadow-md hover:bg-[#008cc0] text-lg">
-                ¡Afíliate Ahora!
-            </a>
+            <a href="afiliate.html" class="mt-4 w-full bg-[#00AEEF] text-white py-4 rounded-full font-extrabold uppercase text-center shadow-md hover:bg-[#008cc0] text-lg">¡Afíliate Ahora!</a>
         </div>
     </header>
 
@@ -130,19 +93,24 @@
             
             <div class="lg:col-span-7 relative h-[400px] md:h-[550px] flex items-center justify-center mt-8 lg:mt-0">
                 
-                <div class="absolute left-[-10%] md:left-0 top-1/2 -translate-y-1/2 w-[150%] z-0 grid u-structure">
+                <div class="absolute left-[-10%] md:left-0 top-1/2 -translate-y-1/2 w-[150%] z-0 grid u-structure relative">
+                    
                     <div class="relative bg-[#F39200] rounded-tl-[30px] md:rounded-tl-[50px] overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=800" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60">
                     </div>
                     <div class="bg-[#A7A9AC]"></div><div class="bg-[#A7A9AC]"></div><div class="bg-transparent"></div>
+                    
+                    <div class="bg-[#A7A9AC] relative"></div> <div class="bg-transparent"></div>
+                    
                     <div class="relative bg-[#5EBA46] rounded-bl-[30px] md:rounded-bl-[50px] overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60">
                     </div>
                     <div class="bg-[#A7A9AC]"></div>
-                </div>
 
-                <div class="absolute bottom-[-30px] md:-bottom-[120px] z-20 h-[380px] md:h-[650px] w-auto flex items-end -translate-x-4 md:-translate-x-6 pointer-events-none">
-                    <img src="hombre1.png" onerror="this.src='https://png.pngtree.com/png-vector/20230918/ourmid/pngtree-man-in-shirt-smiles-and-gives-thumbs-up-png-image_10132866.png'" alt="Directivo" class="h-full w-auto object-contain drop-shadow-2xl">
+                    <img src="https://png.pngtree.com/png-vector/20230918/ourmid/pngtree-man-in-shirt-smiles-and-gives-thumbs-up-png-image_10132866.png" 
+                         alt="Persona" 
+                         class="absolute z-20 bottom-[70px] md:bottom-[150px] left-[15%] md:left-[10%] h-[250px] md:h-[500px] w-auto object-contain drop-shadow-2xl pointer-events-none">
+
                 </div>
             </div>
         </div>
@@ -212,31 +180,24 @@
                     <span class="text-2xl font-bold text-black mb-[-8px] pl-1">Con</span>
                     <div class="font-extrabold text-3xl tracking-tighter"><span class="text-[#00AEEF]">Mi</span>Red</div>
                 </div>
-                
                 <div class="flex justify-center lg:block">
                     <div class="grid grid-cols-3 gap-1 w-full max-w-[350px] md:max-w-[420px] relative scale-90 md:scale-100 origin-top">
-                        
                         <div class="h-20 md:h-28 bg-[#00AEEF] rounded-tl-[20px] flex items-center justify-center text-white font-bold text-sm md:text-lg shadow-sm">Retira</div>
                         <div class="h-20 md:h-28 bg-[#A7A9AC] flex items-center justify-center relative z-0"></div>
                         <div class="h-20 md:h-28 bg-[#5EBA46] rounded-tr-[20px] flex items-center justify-center text-white font-bold text-sm md:text-lg shadow-sm">Paga</div>
-                        
                         <div class="h-20 md:h-28 bg-[#A7A9AC] flex items-center justify-center relative z-0"></div>
                         <div class="h-20 md:h-28 bg-transparent"></div>
                         <div class="h-20 md:h-28 bg-[#A7A9AC] flex items-center justify-center relative z-0">
                             <div class="absolute left-0 top-0 h-full w-[250vw] bg-[#A7A9AC] -z-10"></div>
                         </div>
-                        
                         <div class="h-20 md:h-28 bg-[#E30613] rounded-bl-[20px] rounded-br-[20px] flex items-center justify-center text-white font-bold text-sm md:text-lg shadow-sm">Tranfiere</div>
                         <div class="h-20 md:h-28 bg-transparent"></div>
                         <div class="h-20 md:h-28 bg-[#F39200] rounded-bl-[20px] rounded-br-[20px] flex items-center justify-center text-white font-bold text-sm md:text-lg shadow-sm">Deposita</div>
-
-                        <img src="hombre1.png" 
-                             alt="Persona en la red" 
-                             class="absolute z-20 bottom-[5rem] md:bottom-[7rem] left-[30%] h-[200px] md:h-[300px] w-auto object-contain drop-shadow-xl pointer-events-none">
+                        
+                        <img src="https://png.pngtree.com/png-vector/20230906/ourmid/pngtree-casual-man-sitting-on-a-chair-png-image_10018589.png" class="absolute z-20 bottom-[5rem] md:bottom-[7rem] left-[30%] h-[200px] md:h-[300px] w-auto object-contain drop-shadow-xl pointer-events-none">
                     </div>
                 </div>
             </div>
-            
             <div class="lg:col-span-7 relative h-[300px] md:h-[600px] flex items-end reveal delay-2 pointer-events-none">
                 <img src="https://png.pngtree.com/png-vector/20230928/ourmid/pngtree-young-afro-professional-business-woman-portrait-png-image_10149635.png" alt="Estudiante" class="relative z-10 w-[90%] md:w-[85%] h-auto object-contain ml-auto drop-shadow-xl">
             </div>
@@ -265,84 +226,35 @@
 
     <section id="noticias" class="w-full bg-[#F5F7FA] py-24 relative overflow-hidden border-t border-gray-200">
         <div class="absolute top-[40%] left-0 w-full h-[1px] bg-gray-200 z-0"></div>
-
         <div class="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 reveal">
                 <div class="max-w-2xl relative pl-8">
                     <div class="absolute left-0 top-1 h-full w-2 bg-[#00AEEF] rounded-full"></div>
-                    <h2 class="text-3xl md:text-5xl font-extrabold text-[#1a1a1a] uppercase tracking-tighter leading-none">
-                        Actualidad <span class="text-[#00AEEF]">MiRed</span>
-                    </h2>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-[#1a1a1a] uppercase tracking-tighter leading-none">Actualidad <span class="text-[#00AEEF]">MiRed</span></h2>
                     <p class="text-gray-500 mt-4 font-medium text-lg">Mantente informado sobre nuestras alianzas, tecnología y crecimiento.</p>
                 </div>
-                <a href="#" class="group flex items-center gap-3 font-bold text-[#1a1a1a] hover:text-[#00AEEF] transition-colors">
-                    Ver todas las noticias
-                    <div class="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-sm group-hover:bg-[#00AEEF] group-hover:border-[#00AEEF] group-hover:text-white transition-all">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </div>
-                </a>
+                <a href="#" class="group flex items-center gap-3 font-bold text-[#1a1a1a] hover:text-[#00AEEF] transition-colors">Ver todas las noticias <div class="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-sm group-hover:bg-[#00AEEF] group-hover:border-[#00AEEF] group-hover:text-white transition-all">→</div></a>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
                 <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden relative h-full flex flex-col reveal delay-1">
-                    <div class="h-[220px] relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#00AEEF]/10 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div class="absolute top-[180px] left-0 bg-[#00AEEF] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
-                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">ENE</span><span class="text-2xl font-extrabold leading-none">22</span>
-                    </div>
-                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col">
-                        <div class="text-[#00AEEF] text-xs font-bold uppercase tracking-widest mb-3">Corporativo</div>
-                        <h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#00AEEF] transition-colors">Expansión de red de subagentes en la zona norte</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">Llevamos soluciones financieras a nuevas comunidades rurales con infraestructura robusta.</p>
-                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#00AEEF] transition-colors mt-auto">Leer más <span>→</span></a>
-                    </div>
+                    <div class="h-[220px] relative overflow-hidden"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"><div class="absolute inset-0 bg-[#00AEEF]/10 group-hover:bg-transparent transition-colors"></div></div>
+                    <div class="absolute top-[180px] left-0 bg-[#00AEEF] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20"><span class="text-[10px] font-bold uppercase tracking-widest opacity-90">ENE</span><span class="text-2xl font-extrabold leading-none">22</span></div>
+                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col"><div class="text-[#00AEEF] text-xs font-bold uppercase tracking-widest mb-3">Corporativo</div><h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#00AEEF] transition-colors">Expansión de red</h3><p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">Llevamos soluciones financieras a nuevas comunidades.</p><a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#00AEEF] transition-colors mt-auto">Leer más <span>→</span></a></div>
                 </article>
                 <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden relative h-full flex flex-col reveal delay-2">
-                    <div class="h-[220px] relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#5EBA46]/10 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div class="absolute top-[180px] left-0 bg-[#5EBA46] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
-                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">FEB</span><span class="text-2xl font-extrabold leading-none">10</span>
-                    </div>
-                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col">
-                        <div class="text-[#5EBA46] text-xs font-bold uppercase tracking-widest mb-3">Innovación</div>
-                        <h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#5EBA46] transition-colors">Tecnología Contactless</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">Sistemas de cobro más rápidos y seguros.</p>
-                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#5EBA46] transition-colors mt-auto">Leer más <span>→</span></a>
-                    </div>
+                    <div class="h-[220px] relative overflow-hidden"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"><div class="absolute inset-0 bg-[#5EBA46]/10 group-hover:bg-transparent transition-colors"></div></div>
+                    <div class="absolute top-[180px] left-0 bg-[#5EBA46] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20"><span class="text-[10px] font-bold uppercase tracking-widest opacity-90">FEB</span><span class="text-2xl font-extrabold leading-none">10</span></div>
+                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col"><div class="text-[#5EBA46] text-xs font-bold uppercase tracking-widest mb-3">Innovación</div><h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#5EBA46] transition-colors">Tecnología Contactless</h3><p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">Sistemas de cobro más rápidos.</p><a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#5EBA46] transition-colors mt-auto">Leer más <span>→</span></a></div>
                 </article>
                 <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden relative h-full flex flex-col reveal delay-3">
-                    <div class="h-[220px] relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#F39200]/10 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div class="absolute top-[180px] left-0 bg-[#F39200] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
-                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">MAR</span><span class="text-2xl font-extrabold leading-none">05</span>
-                    </div>
-                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col">
-                        <div class="text-[#F39200] text-xs font-bold uppercase tracking-widest mb-3">Comunidad</div>
-                        <h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#F39200] transition-colors">Capacitación Financiera</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">Jornada anual de educación económica.</p>
-                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#F39200] transition-colors mt-auto">Leer más <span>→</span></a>
-                    </div>
+                    <div class="h-[220px] relative overflow-hidden"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"><div class="absolute inset-0 bg-[#F39200]/10 group-hover:bg-transparent transition-colors"></div></div>
+                    <div class="absolute top-[180px] left-0 bg-[#F39200] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20"><span class="text-[10px] font-bold uppercase tracking-widest opacity-90">MAR</span><span class="text-2xl font-extrabold leading-none">05</span></div>
+                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col"><div class="text-[#F39200] text-xs font-bold uppercase tracking-widest mb-3">Comunidad</div><h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#F39200] transition-colors">Capacitación</h3><p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">Jornada anual de educación.</p><a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#F39200] transition-colors mt-auto">Leer más <span>→</span></a></div>
                 </article>
                 <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden relative h-full flex flex-col reveal">
-                    <div class="h-[220px] relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3dab?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#E30613]/10 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div class="absolute top-[180px] left-0 bg-[#E30613] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
-                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">ABR</span><span class="text-2xl font-extrabold leading-none">12</span>
-                    </div>
-                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col">
-                        <div class="text-[#E30613] text-xs font-bold uppercase tracking-widest mb-3">Alianzas</div>
-                        <h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#E30613] transition-colors">Nueva alianza estratégica</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">Fortalecemos presencia en retail.</p>
-                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#E30613] transition-colors mt-auto">Leer más <span>→</span></a>
-                    </div>
+                    <div class="h-[220px] relative overflow-hidden"><img src="https://images.unsplash.com/photo-1560179707-f14e90ef3dab?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"><div class="absolute inset-0 bg-[#E30613]/10 group-hover:bg-transparent transition-colors"></div></div>
+                    <div class="absolute top-[180px] left-0 bg-[#E30613] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20"><span class="text-[10px] font-bold uppercase tracking-widest opacity-90">ABR</span><span class="text-2xl font-extrabold leading-none">12</span></div>
+                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col"><div class="text-[#E30613] text-xs font-bold uppercase tracking-widest mb-3">Alianzas</div><h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#E30613] transition-colors">Nueva alianza</h3><p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">Fortalecemos presencia en retail.</p><a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#E30613] transition-colors mt-auto">Leer más <span>→</span></a></div>
                 </article>
             </div>
         </div>
@@ -351,50 +263,20 @@
     <footer class="w-full bg-[#1a1a1a] text-white pt-16 md:pt-24 pb-12">
         <div class="max-w-[1440px] mx-auto px-6 md:px-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
-                <div class="lg:col-span-4">
-                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+MiRed'" alt="MiRed" class="w-40 mb-8 brightness-0 invert mx-auto md:mx-0">
-                    <p class="text-gray-400 font-medium text-sm leading-relaxed">La infraestructura tecnológica líder que conecta instituciones financieras con una red nacional de comercios.</p>
-                </div>
-                <div class="lg:col-span-3 text-center md:text-left">
-                    <h4 class="text-lg font-extrabold mb-6 uppercase tracking-tighter">Navegación</h4>
-                    <ul class="space-y-3 font-bold text-gray-400 uppercase text-[11px] tracking-widest">
-                        <li><a href="index.html" class="hover:text-white transition-colors">Inicio</a></li>
-                        <li><a href="nosotros.html" class="hover:text-white transition-colors">Nosotros</a></li>
-                        <li><a href="servicios.html" class="hover:text-white transition-colors">Servicios</a></li>
-                        <li><a href="noticias.html" class="hover:text-white transition-colors">Noticias</a></li>
-                        <li><a href="empleo.html" class="hover:text-white transition-colors">Empleo</a></li>
-                    </ul>
-                </div>
-                <div class="lg:col-span-5 text-center md:text-left">
-                    <h4 class="text-lg font-extrabold mb-6 uppercase tracking-tighter">Contacto</h4>
-                    <div class="space-y-4 text-gray-400 font-medium text-sm">
-                        <p>servicio@mired.com.do</p>
-                        <p>+1 (809) 530-3995</p>
-                        <p>Av. Tiradentes esq. Gustavo Mejía Ricart, Santo Domingo.</p>
-                    </div>
-                </div>
+                <div class="lg:col-span-4"><img src="logo.png" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+MiRed'" alt="MiRed" class="w-40 mb-8 brightness-0 invert mx-auto md:mx-0"><p class="text-gray-400 font-medium text-sm leading-relaxed">La infraestructura tecnológica líder que conecta instituciones financieras con una red nacional de comercios.</p></div>
+                <div class="lg:col-span-3 text-center md:text-left"><h4 class="text-lg font-extrabold mb-6 uppercase tracking-tighter">Navegación</h4><ul class="space-y-3 font-bold text-gray-400 uppercase text-[11px] tracking-widest"><li><a href="index.html" class="hover:text-white transition-colors">Inicio</a></li><li><a href="nosotros.html" class="hover:text-white transition-colors">Nosotros</a></li><li><a href="servicios.html" class="hover:text-white transition-colors">Servicios</a></li><li><a href="noticias.html" class="hover:text-white transition-colors">Noticias</a></li><li><a href="empleo.html" class="hover:text-white transition-colors">Empleo</a></li></ul></div>
+                <div class="lg:col-span-5 text-center md:text-left"><h4 class="text-lg font-extrabold mb-6 uppercase tracking-tighter">Contacto</h4><div class="space-y-4 text-gray-400 font-medium text-sm"><p>servicio@mired.com.do</p><p>+1 (809) 530-3995</p><p>Av. Tiradentes esq. Gustavo Mejía Ricart, Santo Domingo.</p></div></div>
             </div>
-            <div class="pt-8 border-t border-white/10 text-center">
-                <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">© 2026 MiRed. Todos los derechos reservados.</p>
-            </div>
+            <div class="pt-8 border-t border-white/10 text-center"><p class="text-xs text-gray-500 font-bold uppercase tracking-widest">© 2026 MiRed. Todos los derechos reservados.</p></div>
         </div>
     </footer>
 
     <script>
-        // Animaciones Reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } });
-        }, { threshold: 0.1 });
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Toggle Menú Móvil
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('menu-hidden');
-            mobileMenu.classList.toggle('menu-visible');
-        });
+        menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('menu-hidden'); mobileMenu.classList.toggle('menu-visible'); });
     </script>
 </body>
 </html>
