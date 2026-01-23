@@ -1,122 +1,267 @@
-<section id="noticias" class="w-full bg-[#F5F7FA] py-24 relative overflow-hidden border-t border-gray-200">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias - MiRed</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Manrope', sans-serif; }
+        html { scroll-behavior: smooth; }
         
-        <div class="absolute top-[40%] left-0 w-full h-[1px] bg-gray-200 z-0"></div>
+        /* ANIMACIONES */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 100ms; }
+        .delay-2 { transition-delay: 200ms; }
+        .delay-3 { transition-delay: 300ms; }
 
-        <div class="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
-            
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                <div class="max-w-2xl relative pl-8">
-                    <div class="absolute left-0 top-1 h-full w-2 bg-[#00AEEF] rounded-full"></div>
-                    <h2 class="text-3xl md:text-5xl font-extrabold text-[#1a1a1a] uppercase tracking-tighter leading-none">
-                        Actualidad <span class="text-[#00AEEF]">MiRed</span>
-                    </h2>
-                    <p class="text-gray-500 mt-4 font-medium text-lg">
-                        Mantente informado sobre nuestras alianzas, tecnología y crecimiento.
-                    </p>
-                </div>
-                
-                <a href="#" class="group flex items-center gap-3 font-bold text-[#1a1a1a] hover:text-[#00AEEF] transition-colors">
-                    Ver todas las noticias
-                    <div class="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-sm group-hover:bg-[#00AEEF] group-hover:border-[#00AEEF] group-hover:text-white transition-all">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </div>
-                </a>
+        /* MENU TRANSITION */
+        #mobile-menu { transition: all 0.3s ease-in-out; transform-origin: top; }
+        .menu-hidden { transform: scaleY(0); opacity: 0; height: 0; }
+        .menu-visible { transform: scaleY(1); opacity: 1; height: auto; }
+    </style>
+</head>
+<body class="bg-[#F5F7FA] overflow-x-hidden">
+
+    <a href="https://wa.me/18095303995" target="_blank" class="fixed bottom-6 right-6 z-[100] bg-[#25D366] p-4 rounded-full shadow-2xl hover:scale-110 transition-transform">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.555-5.332 11.887-11.888 11.887-2.012 0-3.987-.51-5.742-1.478l-6.142 1.702zm6.108-3.321c1.657.985 3.324 1.482 5.023 1.482 5.462 0 9.904-4.442 9.904-9.904 0-2.645-1.03-5.132-2.901-7.002-1.872-1.871-4.359-2.901-7.004-2.901-5.461 0-9.904 4.443-9.904 9.904 0 1.843.518 3.559 1.498 5.107l-1.002 3.662 3.784-1.048z"/></svg>
+    </a>
+
+    <header class="w-full bg-white/95 backdrop-blur-sm fixed top-0 z-50 shadow-sm transition-all duration-300">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex justify-between items-center relative z-50">
+            <div class="w-32 md:w-48">
+                <a href="index.html"><img src="img/logo-mired.png" onerror="this.src='https://via.placeholder.com/150x50?text=MiRed'" alt="MiRed" class="w-full h-auto object-contain"></a>
             </div>
+            <button id="menu-btn" class="lg:hidden text-gray-800 focus:outline-none p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <nav class="hidden lg:flex items-center gap-5">
+                <ul class="flex gap-5 font-extrabold text-gray-950 uppercase tracking-tight text-[12px] xl:text-[13px]">
+                    <li><a href="index.html" class="hover:text-[#00AEEF] transition-colors">Inicio</a></li>
+                    <li><a href="index.html#nosotros" class="hover:text-[#00AEEF] transition-colors">Nosotros</a></li>
+                    <li><a href="index.html#servicios" class="hover:text-[#00AEEF] transition-colors">Servicios</a></li>
+                    <li><a href="index.html#visual" class="hover:text-[#00AEEF] transition-colors">Operaciones</a></li>
+                    <li><a href="noticias.html" class="text-[#00AEEF] transition-colors">Noticias</a></li>
+                    <li><a href="#contacto" class="hover:text-[#00AEEF] transition-colors">Contacto</a></li>
+                </ul>
+                <a href="afiliate.html" class="bg-[#00AEEF] text-white px-6 py-2.5 rounded-full font-extrabold shadow-lg uppercase hover:bg-[#008cc0] text-xs transition-all hover:scale-105">Afíliate</a>
+            </nav>
+        </div>
+        <div id="mobile-menu" class="lg:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-gray-100 px-6 py-8 flex flex-col gap-4 menu-hidden z-40">
+            <a href="index.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Inicio</a>
+            <a href="noticias.html" class="text-lg font-bold text-[#00AEEF] py-2 border-b border-gray-50">Noticias</a>
+            <a href="afiliate.html" class="mt-4 w-full bg-[#00AEEF] text-white py-4 rounded-full font-extrabold uppercase text-center shadow-md">¡Afíliate Ahora!</a>
+        </div>
+    </header>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-                
-                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden relative h-full flex flex-col">
-                    <div class="h-[220px] relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600" alt="Expansión" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#00AEEF]/10 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div class="absolute top-[180px] left-0 bg-[#00AEEF] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
-                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">ENE</span>
-                        <span class="text-2xl font-extrabold leading-none">22</span>
-                    </div>
-                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col">
-                        <div class="text-[#00AEEF] text-xs font-bold uppercase tracking-widest mb-3">Corporativo</div>
-                        <h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#00AEEF] transition-colors">
-                            Expansión de red de subagentes en la zona norte
-                        </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
-                            Llevamos soluciones financieras a nuevas comunidades rurales con infraestructura robusta.
-                        </p>
-                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#00AEEF] transition-colors mt-auto">
-                            Leer más <span>→</span>
-                        </a>
-                    </div>
-                </article>
+    <div class="h-20 md:h-28"></div>
 
-                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden relative h-full flex flex-col">
-                    <div class="h-[220px] relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600" alt="Tecnología" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#5EBA46]/10 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div class="absolute top-[180px] left-0 bg-[#5EBA46] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
-                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">FEB</span>
-                        <span class="text-2xl font-extrabold leading-none">10</span>
-                    </div>
-                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col">
-                        <div class="text-[#5EBA46] text-xs font-bold uppercase tracking-widest mb-3">Innovación</div>
-                        <h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#5EBA46] transition-colors">
-                            Nueva tecnología Contactless para comercios
-                        </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
-                            Implementamos sistemas de cobro más rápidos y seguros para optimizar la gestión.
-                        </p>
-                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#5EBA46] transition-colors mt-auto">
-                            Leer más <span>→</span>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden relative h-full flex flex-col">
-                    <div class="h-[220px] relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600" alt="Comunidad" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#F39200]/10 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div class="absolute top-[180px] left-0 bg-[#F39200] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
-                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">MAR</span>
-                        <span class="text-2xl font-extrabold leading-none">05</span>
-                    </div>
-                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col">
-                        <div class="text-[#F39200] text-xs font-bold uppercase tracking-widest mb-3">Comunidad</div>
-                        <h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#F39200] transition-colors">
-                            Capacitación financiera para emprendedores
-                        </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
-                            Más de 500 socios participaron en nuestra jornada anual de educación económica.
-                        </p>
-                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#F39200] transition-colors mt-auto">
-                            Leer más <span>→</span>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden relative h-full flex flex-col">
-                    <div class="h-[220px] relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3dab?auto=format&fit=crop&w=600" alt="Alianzas" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#E30613]/10 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div class="absolute top-[180px] left-0 bg-[#E30613] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
-                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">ABR</span>
-                        <span class="text-2xl font-extrabold leading-none">12</span>
-                    </div>
-                    <div class="pt-14 pb-8 px-6 flex-grow flex flex-col">
-                        <div class="text-[#E30613] text-xs font-bold uppercase tracking-widest mb-3">Alianzas</div>
-                        <h3 class="text-lg font-extrabold text-[#1a1a1a] mb-3 leading-tight group-hover:text-[#E30613] transition-colors">
-                            Nueva alianza estratégica con sector retail
-                        </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
-                            Fortalecemos nuestra presencia en cadenas comerciales para facilitar transacciones.
-                        </p>
-                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#E30613] transition-colors mt-auto">
-                            Leer más <span>→</span>
-                        </a>
-                    </div>
-                </article>
-
-            </div>
+    <section class="w-full bg-white pt-16 pb-12 border-b border-gray-100">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 text-center md:text-left">
+            <span class="text-[#00AEEF] font-bold uppercase tracking-widest text-sm mb-2 block reveal">Blog & Actualidad</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-[#1a1a1a] mb-6 tracking-tighter reveal delay-1">
+                Noticias <span class="text-[#00AEEF]">MiRed</span>
+            </h1>
+            <p class="text-lg text-gray-500 max-w-2xl reveal delay-2">
+                Descubre las últimas novedades sobre el sector financiero, nuestras alianzas estratégicas y consejos para hacer crecer tu negocio.
+            </p>
         </div>
     </section>
+
+    <section class="w-full py-16 md:py-24">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12">
+            
+            <div class="mb-20 reveal">
+                <article class="group relative bg-white rounded-[40px] shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 hover:shadow-2xl transition-all duration-300">
+                    <div class="relative h-[300px] lg:h-[500px] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200" alt="Destacada" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-[#00AEEF]/10 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="p-8 lg:p-16 flex flex-col justify-center relative">
+                        <div class="hidden lg:flex absolute top-10 -left-12 bg-[#00AEEF] text-white w-[100px] h-[90px] flex-col justify-center items-center rounded-r-[20px] shadow-lg z-20">
+                            <span class="text-xs font-bold uppercase tracking-widest opacity-90">HOY</span>
+                            <span class="text-3xl font-extrabold leading-none">23</span>
+                        </div>
+                        
+                        <div class="inline-block px-4 py-1.5 bg-blue-50 text-[#00AEEF] text-sm font-bold uppercase tracking-widest rounded-full mb-6 w-fit">
+                            Corporativo
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-[#1a1a1a] mb-6 leading-tight group-hover:text-[#00AEEF] transition-colors">
+                            MiRed alcanza la cifra récord de 10,000 puntos afiliados en todo el país
+                        </h2>
+                        <p class="text-gray-500 text-lg leading-relaxed mb-8">
+                            Gracias a la confianza de nuestros socios comerciales, hemos logrado cubrir el 95% del territorio nacional, llevando servicios financieros a las comunidades más remotas.
+                        </p>
+                        <a href="#" class="inline-flex items-center gap-3 text-lg font-bold text-[#1a1a1a] group-hover:text-[#00AEEF] transition-colors">
+                            Leer la historia completa 
+                            <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-[#00AEEF] group-hover:text-white transition-all">→</div>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col reveal">
+                    <div class="h-[240px] relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#5EBA46]/10 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="absolute top-[200px] left-0 bg-[#5EBA46] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">ENE</span><span class="text-2xl font-extrabold leading-none">20</span>
+                    </div>
+                    <div class="pt-14 pb-8 px-8 flex-grow">
+                        <div class="text-[#5EBA46] text-xs font-bold uppercase tracking-widest mb-3">Innovación</div>
+                        <h3 class="text-xl font-extrabold text-[#1a1a1a] mb-3 leading-snug group-hover:text-[#5EBA46] transition-colors">Lanzamiento de App Móvil v2.0</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Nuevas funcionalidades para gestionar tus reportes de ventas desde cualquier lugar.</p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#5EBA46] transition-colors">Leer más <span>→</span></a>
+                    </div>
+                </article>
+
+                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col reveal delay-1">
+                    <div class="h-[240px] relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#F39200]/10 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="absolute top-[200px] left-0 bg-[#F39200] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">ENE</span><span class="text-2xl font-extrabold leading-none">15</span>
+                    </div>
+                    <div class="pt-14 pb-8 px-8 flex-grow">
+                        <div class="text-[#F39200] text-xs font-bold uppercase tracking-widest mb-3">Comunidad</div>
+                        <h3 class="text-xl font-extrabold text-[#1a1a1a] mb-3 leading-snug group-hover:text-[#F39200] transition-colors">Taller de Finanzas Personales</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Capacitación gratuita para dueños de colmados y farmacias en Santo Domingo.</p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#F39200] transition-colors">Leer más <span>→</span></a>
+                    </div>
+                </article>
+
+                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col reveal delay-2">
+                    <div class="h-[240px] relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3dab?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#E30613]/10 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="absolute top-[200px] left-0 bg-[#E30613] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">DIC</span><span class="text-2xl font-extrabold leading-none">28</span>
+                    </div>
+                    <div class="pt-14 pb-8 px-8 flex-grow">
+                        <div class="text-[#E30613] text-xs font-bold uppercase tracking-widest mb-3">Alianzas</div>
+                        <h3 class="text-xl font-extrabold text-[#1a1a1a] mb-3 leading-snug group-hover:text-[#E30613] transition-colors">Alianza con Supermercados del Norte</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Nuevos puntos de retiro disponibles en toda la cadena de supermercados.</p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#E30613] transition-colors">Leer más <span>→</span></a>
+                    </div>
+                </article>
+
+                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col reveal">
+                    <div class="h-[240px] relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#A7A9AC]/20 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="absolute top-[200px] left-0 bg-[#9DA3A5] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">DIC</span><span class="text-2xl font-extrabold leading-none">10</span>
+                    </div>
+                    <div class="pt-14 pb-8 px-8 flex-grow">
+                        <div class="text-[#9DA3A5] text-xs font-bold uppercase tracking-widest mb-3">Seguridad</div>
+                        <h3 class="text-xl font-extrabold text-[#1a1a1a] mb-3 leading-snug group-hover:text-[#00AEEF] transition-colors">Consejos para evitar fraudes en festividades</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Guía práctica para mantener seguras las transacciones en temporada alta.</p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#00AEEF] transition-colors">Leer más <span>→</span></a>
+                    </div>
+                </article>
+
+                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col reveal delay-1">
+                    <div class="h-[240px] relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#00AEEF]/10 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="absolute top-[200px] left-0 bg-[#00AEEF] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">NOV</span><span class="text-2xl font-extrabold leading-none">25</span>
+                    </div>
+                    <div class="pt-14 pb-8 px-8 flex-grow">
+                        <div class="text-[#00AEEF] text-xs font-bold uppercase tracking-widest mb-3">Corporativo</div>
+                        <h3 class="text-xl font-extrabold text-[#1a1a1a] mb-3 leading-snug group-hover:text-[#00AEEF] transition-colors">Reconocimiento a la Excelencia</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">MiRed recibe premio por su aporte a la inclusión financiera nacional.</p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#00AEEF] transition-colors">Leer más <span>→</span></a>
+                    </div>
+                </article>
+
+                <article class="group bg-white rounded-br-[40px] rounded-tl-[40px] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col reveal delay-2">
+                    <div class="h-[240px] relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#5EBA46]/10 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="absolute top-[200px] left-0 bg-[#5EBA46] text-white w-[90px] h-[80px] flex flex-col justify-center items-center rounded-tr-[20px] shadow-lg z-20">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-90">NOV</span><span class="text-2xl font-extrabold leading-none">12</span>
+                    </div>
+                    <div class="pt-14 pb-8 px-8 flex-grow">
+                        <div class="text-[#5EBA46] text-xs font-bold uppercase tracking-widest mb-3">Sostenibilidad</div>
+                        <h3 class="text-xl font-extrabold text-[#1a1a1a] mb-3 leading-snug group-hover:text-[#5EBA46] transition-colors">Iniciativa Verde MiRed</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Reducimos el uso de papel con nuestros nuevos comprobantes digitales.</p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-[#1a1a1a] group-hover:text-[#5EBA46] transition-colors">Leer más <span>→</span></a>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="mt-20 flex justify-center items-center gap-4">
+                <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-md text-gray-400 hover:text-[#00AEEF] hover:shadow-lg transition-all">←</a>
+                <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-[#00AEEF] text-white shadow-lg font-bold">1</a>
+                <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-gray-600 shadow-md font-bold hover:bg-gray-50">2</a>
+                <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-gray-600 shadow-md font-bold hover:bg-gray-50">3</a>
+                <span class="text-gray-400 font-bold">...</span>
+                <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-md text-gray-400 hover:text-[#00AEEF] hover:shadow-lg transition-all">→</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contacto" class="w-full bg-[#1a1a1a] text-white pt-16 md:pt-24 pb-12">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
+                <div class="lg:col-span-4">
+                    <img src="img/logo-mired.png" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+MiRed'" alt="MiRed" class="w-40 mb-8 brightness-0 invert mx-auto md:mx-0">
+                    <p class="text-gray-400 font-medium text-sm leading-relaxed">La infraestructura tecnológica líder que conecta instituciones financieras con una red nacional de comercios.</p>
+                </div>
+                <div class="lg:col-span-3 text-center md:text-left">
+                    <h4 class="text-lg font-extrabold mb-6 uppercase tracking-tighter">Navegación</h4>
+                    <ul class="space-y-3 font-bold text-gray-400 uppercase text-[11px] tracking-widest">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Inicio</a></li>
+                        <li><a href="index.html#nosotros" class="hover:text-white transition-colors">Nosotros</a></li>
+                        <li><a href="index.html#servicios" class="hover:text-white transition-colors">Servicios</a></li>
+                        <li><a href="noticias.html" class="hover:text-white transition-colors">Noticias</a></li>
+                        <li><a href="empleo.html" class="hover:text-white transition-colors">Empleo</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-5 text-center md:text-left">
+                    <h4 class="text-lg font-extrabold mb-6 uppercase tracking-tighter">Contacto</h4>
+                    <div class="space-y-4 text-gray-400 font-medium text-sm">
+                        <p>servicio@mired.com.do</p>
+                        <p>+1 (809) 530-3995</p>
+                        <p>Av. Tiradentes esq. Gustavo Mejía Ricart, Santo Domingo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/10 text-center">
+                <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">© 2026 MiRed. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animaciones
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Menú Móvil
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('menu-hidden');
+            mobileMenu.classList.toggle('menu-visible');
+        });
+    </script>
+</body>
+</html>
