@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empleo - Trabaja con Nosotros</title>
+    <title>Empleos - MiRed</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -13,159 +14,194 @@
         html { scroll-behavior: smooth; }
         
         /* ANIMACIONES */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 150ms; }
         .delay-2 { transition-delay: 300ms; }
 
-        /* WHATSAPP */
-        .whatsapp-bounce { animation: bounce 2s infinite; }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
+        /* CARDS DE VACANTES */
+        .job-card {
+            transition: all 0.3s ease;
+            border: 1px solid #f3f4f6;
+        }
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #00AEEF;
         }
 
-        /* MENÚ MÓVIL */
-        #mobile-menu { transition: all 0.3s ease-in-out; transform-origin: top; }
-        .menu-hidden { transform: scaleY(0); opacity: 0; height: 0; }
-        .menu-visible { transform: scaleY(1); opacity: 1; height: auto; }
+        /* INPUTS */
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background-color: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        .form-input:focus {
+            background-color: #fff;
+            border-color: #00AEEF;
+            box-shadow: 0 0 0 4px rgba(0, 174, 239, 0.1);
+        }
     </style>
 </head>
-<body class="bg-[#F9FAFB] overflow-x-hidden">
+<body class="bg-white overflow-x-hidden">
 
-    <a href="https://wa.me/18095303995" target="_blank" class="fixed bottom-6 right-6 z-[100] bg-[#25D366] p-4 rounded-full shadow-2xl whatsapp-bounce hover:scale-110 transition-transform">
+    <a href="https://wa.me/18095303995" target="_blank" class="fixed bottom-6 right-6 z-[100] bg-[#25D366] p-4 rounded-full shadow-2xl hover:scale-110 transition-transform">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.555-5.332 11.887-11.888 11.887-2.012 0-3.987-.51-5.742-1.478l-6.142 1.702zm6.108-3.321c1.657.985 3.324 1.482 5.023 1.482 5.462 0 9.904-4.442 9.904-9.904 0-2.645-1.03-5.132-2.901-7.002-1.872-1.871-4.359-2.901-7.004-2.901-5.461 0-9.904 4.443-9.904 9.904 0 1.843.518 3.559 1.498 5.107l-1.002 3.662 3.784-1.048z"/></svg>
     </a>
 
     <header class="w-full bg-white/95 backdrop-blur-sm fixed top-0 z-50 shadow-sm transition-all duration-300">
         <div class="max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex justify-between items-center relative z-50 bg-white/95">
             <div class="w-32 md:w-48">
-                <a href="index.html"><img src="img/logo-mired.png" onerror="this.src='https://via.placeholder.com/150x50?text=MiRed'" alt="MiRed" class="w-full h-auto object-contain"></a>
+                <a href="index.html">
+                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150x50?text=MiRed'" alt="MiRed" class="w-full h-auto object-contain">
+                </a>
             </div>
+
             <button id="menu-btn" class="lg:hidden text-gray-800 focus:outline-none p-2">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
-            <nav class="hidden lg:flex items-center gap-5">
-                <ul class="flex gap-5 font-extrabold text-gray-950 uppercase tracking-tight text-[12px] xl:text-[13px]">
-                    <li><a href="index.html" class="hover:text-[#00AEEF] transition-colors">Inicio</a></li>
-                    <li><a href="index.html#nosotros" class="hover:text-[#00AEEF] transition-colors">Nosotros</a></li>
-                    <li><a href="index.html#servicios" class="hover:text-[#00AEEF] transition-colors">Servicios</a></li>
-                    <li><a href="noticias.html" class="hover:text-[#00AEEF] transition-colors">Noticias</a></li>
-                    <li><a href="empleo.html" class="text-[#00AEEF] transition-colors">Empleo</a></li>
-                    <li><a href="index.html#institucional" class="hover:text-[#00AEEF] transition-colors">Contacto</a></li>
+
+            <nav class="hidden lg:flex items-center gap-4 xl:gap-6">
+                <ul class="flex gap-4 xl:gap-6 font-extrabold text-gray-950 uppercase tracking-tight text-[11px] xl:text-[13px]">
+                    <li><a href="index.html" class="hover:text-[#00AEEF]">Inicio</a></li>
+                    <li><a href="nosotros.html" class="hover:text-[#00AEEF]">Quiénes Somos</a></li>
+                    <li><a href="servicios.html" class="hover:text-[#00AEEF]">Servicios</a></li>
+                    <li><a href="clientes.html" class="hover:text-[#00AEEF]">Clientes</a></li>
+                    <li><a href="noticias.html" class="hover:text-[#00AEEF]">Noticias</a></li>
+                    <li><a href="contactenos.html" class="hover:text-[#00AEEF]">Contáctenos</a></li>
+                    <li><a href="empleo.html" class="text-[#00AEEF]">Empleos</a></li>
                 </ul>
-                <a href="afiliate.html" class="bg-[#00AEEF] text-white px-6 py-2.5 rounded-full font-extrabold shadow-lg uppercase hover:bg-[#008cc0] text-xs transition-all hover:scale-105">Afíliate</a>
+                <a href="afiliate.html" class="bg-[#00AEEF] text-white px-5 py-2.5 rounded-full font-extrabold shadow-lg uppercase hover:bg-[#008cc0] text-xs transition-all hover:scale-105 whitespace-nowrap">Afíliate</a>
             </nav>
         </div>
+
         <div id="mobile-menu" class="lg:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-gray-100 px-6 py-8 flex flex-col gap-4 menu-hidden z-40">
             <a href="index.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Inicio</a>
-            <a href="empleo.html" class="text-lg font-bold text-[#00AEEF] py-2 border-b border-gray-50">Empleo</a>
-            <a href="afiliate.html" class="mt-4 w-full bg-[#00AEEF] text-white py-4 rounded-full font-extrabold uppercase text-center shadow-md">¡Afíliate Ahora!</a>
+            <a href="nosotros.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Quiénes Somos</a>
+            <a href="servicios.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Servicios</a>
+            <a href="clientes.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Clientes</a>
+            <a href="noticias.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Noticias</a>
+            <a href="contactenos.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Contáctenos</a>
+            <a href="empleo.html" class="text-lg font-bold text-[#00AEEF] py-2 border-b border-gray-50">Empleos</a>
+            <a href="afiliate.html" class="mt-4 w-full bg-[#00AEEF] text-white py-4 rounded-full font-extrabold uppercase text-center shadow-md hover:bg-[#008cc0] text-lg">¡Afíliate Ahora!</a>
         </div>
     </header>
 
     <div class="h-20 md:h-28"></div>
 
-    <section class="w-full bg-white pt-16 pb-20 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/3 h-full bg-[#F5F7FA] rounded-l-[100px] z-0"></div>
-        
-        <div class="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="reveal">
-                <span class="text-[#00AEEF] font-bold uppercase tracking-widest text-sm mb-2 block">Únete al equipo</span>
-                <h1 class="text-4xl md:text-6xl font-extrabold text-[#1a1a1a] mb-6 tracking-tighter leading-tight">
-                    Construye el futuro <br>financiero con <span class="text-[#00AEEF]">Nosotros</span>
-                </h1>
-                <p class="text-lg text-gray-500 mb-8 max-w-lg">
-                    Buscamos talento apasionado por la tecnología y la inclusión financiera. Si quieres impactar a miles de comercios y personas, este es tu lugar.
-                </p>
-                <a href="#vacantes" class="inline-block px-8 py-4 bg-[#1a1a1a] text-white font-bold rounded-full hover:bg-gray-800 transition-all shadow-lg">Ver Vacantes Disponibles</a>
-            </div>
-            <div class="relative h-[400px] lg:h-[500px] rounded-[50px] overflow-hidden shadow-2xl reveal delay-1">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800" class="w-full h-full object-cover">
-            </div>
+    <section class="w-full bg-[#f8f9fa] py-16 md:py-20 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-[#1a1a1a] uppercase tracking-tighter mb-4 reveal">Trabaja con <span class="text-[#00AEEF]">Nosotros</span></h1>
+            <p class="text-lg md:text-xl text-gray-600 font-medium reveal delay-1">Únete a un equipo innovador que está transformando el acceso a servicios financieros en el país.</p>
         </div>
+        <div class="absolute top-[-50%] left-[-10%] w-[40%] h-[150%] bg-[#00AEEF]/5 rounded-full blur-[80px]"></div>
     </section>
 
-    <section id="vacantes" class="w-full py-20 bg-[#F9FAFB]">
-        <div class="max-w-[1000px] mx-auto px-6 md:px-12">
-            <h2 class="text-3xl font-extrabold text-[#1a1a1a] mb-12 text-center">Posiciones Abiertas</h2>
-
-            <div class="space-y-6">
+    <section class="w-full bg-white py-16 md:py-24">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16">
+            
+            <div class="lg:col-span-7">
+                <h2 class="text-3xl font-extrabold text-[#1a1a1a] mb-8 uppercase tracking-tight reveal">Vacantes Disponibles</h2>
                 
-                <div class="group bg-white p-8 rounded-[30px] shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 reveal cursor-pointer relative overflow-hidden">
-                    <div class="absolute left-0 top-0 h-full w-2 bg-[#00AEEF] group-hover:w-3 transition-all"></div>
-                    <div>
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="bg-blue-50 text-[#00AEEF] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Tecnología</span>
-                            <span class="text-gray-400 text-sm font-medium">Santo Domingo</span>
+                <div class="space-y-4">
+                    <div class="job-card bg-white p-6 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 reveal delay-1 cursor-pointer group">
+                        <div>
+                            <span class="bg-[#E30613]/10 text-[#E30613] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Tecnología</span>
+                            <h3 class="text-xl font-bold text-[#1a1a1a] group-hover:text-[#00AEEF] transition-colors">Soporte Técnico de Campo</h3>
+                            <p class="text-gray-500 text-sm mt-1">Santo Domingo • Tiempo Completo</p>
                         </div>
-                        <h3 class="text-xl font-bold text-[#1a1a1a] mb-1">Desarrollador Full Stack</h3>
-                        <p class="text-gray-500 text-sm">Experiencia en C++, Python y entornos Cloud.</p>
+                        <a href="#aplicar" class="bg-gray-100 text-gray-700 px-6 py-2 rounded-full font-bold text-sm hover:bg-[#E30613] hover:text-white transition-colors">Aplicar</a>
                     </div>
-                    <button class="px-6 py-2 border-2 border-[#00AEEF] text-[#00AEEF] font-bold rounded-full hover:bg-[#00AEEF] hover:text-white transition-colors">Aplicar</button>
+
+                    <div class="job-card bg-white p-6 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 reveal delay-2 cursor-pointer group">
+                        <div>
+                            <span class="bg-[#5EBA46]/10 text-[#5EBA46] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Comercial</span>
+                            <h3 class="text-xl font-bold text-[#1a1a1a] group-hover:text-[#00AEEF] transition-colors">Ejecutivo de Ventas (Subagentes)</h3>
+                            <p class="text-gray-500 text-sm mt-1">Zona Norte (Santiago) • Tiempo Completo</p>
+                        </div>
+                        <a href="#aplicar" class="bg-gray-100 text-gray-700 px-6 py-2 rounded-full font-bold text-sm hover:bg-[#5EBA46] hover:text-white transition-colors">Aplicar</a>
+                    </div>
+
+                    <div class="job-card bg-white p-6 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 reveal delay-3 cursor-pointer group">
+                        <div>
+                            <span class="bg-[#F39200]/10 text-[#F39200] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Operaciones</span>
+                            <h3 class="text-xl font-bold text-[#1a1a1a] group-hover:text-[#00AEEF] transition-colors">Analista de Monitoreo</h3>
+                            <p class="text-gray-500 text-sm mt-1">Santo Domingo • Turnos Rotativos</p>
+                        </div>
+                        <a href="#aplicar" class="bg-gray-100 text-gray-700 px-6 py-2 rounded-full font-bold text-sm hover:bg-[#F39200] hover:text-white transition-colors">Aplicar</a>
+                    </div>
                 </div>
 
-                <div class="group bg-white p-8 rounded-[30px] shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 reveal delay-1 cursor-pointer relative overflow-hidden">
-                    <div class="absolute left-0 top-0 h-full w-2 bg-[#5EBA46] group-hover:w-3 transition-all"></div>
-                    <div>
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="bg-green-50 text-[#5EBA46] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Ventas</span>
-                            <span class="text-gray-400 text-sm font-medium">Zona Norte (Santiago)</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-[#1a1a1a] mb-1">Ejecutivo de Expansión Comercial</h3>
-                        <p class="text-gray-500 text-sm">Gestión de relaciones con nuevos comercios afiliados.</p>
-                    </div>
-                    <button class="px-6 py-2 border-2 border-[#5EBA46] text-[#5EBA46] font-bold rounded-full hover:bg-[#5EBA46] hover:text-white transition-colors">Aplicar</button>
                 </div>
 
-                <div class="group bg-white p-8 rounded-[30px] shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 reveal delay-2 cursor-pointer relative overflow-hidden">
-                    <div class="absolute left-0 top-0 h-full w-2 bg-[#F39200] group-hover:w-3 transition-all"></div>
-                    <div>
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="bg-orange-50 text-[#F39200] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Operaciones</span>
-                            <span class="text-gray-400 text-sm font-medium">Santo Domingo</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-[#1a1a1a] mb-1">Especialista en Soporte Técnico</h3>
-                        <p class="text-gray-500 text-sm">Atención a incidencias de SubAgentes y POS.</p>
-                    </div>
-                    <button class="px-6 py-2 border-2 border-[#F39200] text-[#F39200] font-bold rounded-full hover:bg-[#F39200] hover:text-white transition-colors">Aplicar</button>
-                </div>
+            <div id="aplicar" class="lg:col-span-5 bg-white p-8 md:p-10 rounded-[30px] shadow-2xl border border-gray-100 h-fit sticky top-28 reveal">
+                <h3 class="text-2xl font-bold text-[#1a1a1a] mb-2">Envíanos tu CV</h3>
+                <p class="text-gray-500 text-sm mb-6">Si no encuentras una vacante que se ajuste a tu perfil, déjanos tus datos para futuras oportunidades.</p>
 
+                <form class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Nombre Completo</label>
+                        <input type="text" class="form-input" placeholder="Tu nombre">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Correo Electrónico</label>
+                        <input type="email" class="form-input" placeholder="tucorreo@ejemplo.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Teléfono</label>
+                        <input type="tel" class="form-input" placeholder="(809) 000-0000">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Área de Interés</label>
+                        <select class="form-input bg-white cursor-pointer">
+                            <option>Selecciona un área</option>
+                            <option>Tecnología / Soporte</option>
+                            <option>Ventas / Comercial</option>
+                            <option>Administración</option>
+                            <option>Operaciones</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Cargar CV (PDF)</label>
+                        <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer hover:bg-gray-50 hover:border-[#00AEEF] transition-colors">
+                            <svg class="w-8 h-8 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                            <span class="text-xs text-gray-500 font-medium">Haz clic para subir archivo</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[#00AEEF] text-white py-3.5 rounded-xl font-extrabold uppercase shadow-md hover:bg-[#008cc0] transition-transform hover:scale-[1.02] mt-4">
+                        Enviar Postulación
+                    </button>
+                </form>
             </div>
+
         </div>
     </section>
 
-    <section class="w-full py-20 bg-white">
-        <div class="max-w-[1000px] mx-auto px-6 md:px-12 text-center reveal">
-            <div class="w-20 h-20 bg-[#0077b5] text-white rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6 shadow-lg rotate-3 hover:rotate-0 transition-transform">
-                in
-            </div>
-            <h2 class="text-3xl font-extrabold text-[#1a1a1a] mb-4">¿No encuentras tu vacante ideal?</h2>
-            <p class="text-gray-500 text-lg mb-8 max-w-xl mx-auto">
-                Siempre estamos buscando talento. Síguenos en LinkedIn para enterarte de nuevas oportunidades y noticias corporativas al instante.
-            </p>
-            <a href="https://do.linkedin.com/in/edward-ricardo-zipamocha-gutierrez-12988370" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-[#0077b5] text-white font-bold rounded-full hover:bg-[#006097] transition-all shadow-xl hover:-translate-y-1">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                Seguir en LinkedIn
-            </a>
-        </div>
-    </section>
-
-    <footer class="w-full bg-[#1a1a1a] text-white pt-16 md:pt-24 pb-12 border-t border-white/10">
+    <footer id="footer" class="w-full bg-[#1a1a1a] text-white pt-16 md:pt-24 pb-12">
         <div class="max-w-[1440px] mx-auto px-6 md:px-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
                 <div class="lg:col-span-4">
-                    <img src="img/logo-mired.png" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+MiRed'" alt="MiRed" class="w-40 mb-8 brightness-0 invert mx-auto md:mx-0">
+                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+MiRed'" alt="MiRed" class="w-40 mb-8 brightness-0 invert mx-auto md:mx-0">
                     <p class="text-gray-400 font-medium text-sm leading-relaxed">La infraestructura tecnológica líder que conecta instituciones financieras con una red nacional de comercios.</p>
                 </div>
                 <div class="lg:col-span-3 text-center md:text-left">
                     <h4 class="text-lg font-extrabold mb-6 uppercase tracking-tighter">Navegación</h4>
                     <ul class="space-y-3 font-bold text-gray-400 uppercase text-[11px] tracking-widest">
                         <li><a href="index.html" class="hover:text-white transition-colors">Inicio</a></li>
-                        <li><a href="index.html#nosotros" class="hover:text-white transition-colors">Nosotros</a></li>
+                        <li><a href="nosotros.html" class="hover:text-white transition-colors">Quiénes Somos</a></li>
                         <li><a href="servicios.html" class="hover:text-white transition-colors">Servicios</a></li>
+                        <li><a href="clientes.html" class="hover:text-white transition-colors">Clientes</a></li>
                         <li><a href="noticias.html" class="hover:text-white transition-colors">Noticias</a></li>
+                        <li><a href="empleo.html" class="text-white">Empleos</a></li>
                     </ul>
                 </div>
                 <div class="lg:col-span-5 text-center md:text-left">
@@ -184,13 +220,16 @@
     </footer>
 
     <script>
+        // Animaciones Reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+        // Toggle Menú Móvil
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('menu-hidden');
             mobileMenu.classList.toggle('menu-visible');
