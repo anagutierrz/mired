@@ -53,17 +53,19 @@
         }
 
         /* GRID PERSONALIZADO PARA SERVICIOS */
+        /* Desktop: 3 columnas IGUALES (1fr 1fr 1fr) para que el centro sea un CUBO */
         @media (min-width: 768px) {
             .grid-servicios {
                 display: grid;
-                grid-template-columns: 2fr 1fr 2fr !important;
-                gap: 0.5rem;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 0px; /* CERO ESPACIO */
             }
         }
+        /* Móvil: 2 columnas */
         @media (max-width: 767px) {
             .grid-servicios {
                 display: grid;
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
                 gap: 0.5rem;
             }
         }
@@ -156,7 +158,7 @@
 
     <section class="w-full bg-white py-16 md:py-24 border-t border-gray-50">
         <div class="max-w-[1000px] mx-auto px-6 md:px-12 text-center reveal">
-            <p class="text-xl md:text-3xl font-medium text-[#1a1a1a] leading-relaxed">
+            <p class="text-lg md:text-2xl font-medium text-[#1a1a1a] leading-relaxed">
                 <span class="text-[#00AEEF] font-extrabold">MiRed</span> facilita la intermediación financiera a través de una robusta infraestructura y soluciones tecnológicas avanzadas. Optimizando la gestión de pagos, transferencias y otros servicios bancarios, garantizando transacciones seguras, eficientes y accesibles en toda la República Dominicana.
             </p>
         </div>
@@ -166,85 +168,78 @@
         <div class="max-w-[1440px] mx-auto px-6 md:px-12">
             <h2 class="reveal text-4xl md:text-6xl font-extrabold text-[#1a1a1a] mb-12 uppercase tracking-tighter text-left">Nuestros Servicios</h2>
             
-            <div class="grid-servicios w-full max-w-2xl mt-12 mx-0">
+            <div class="grid-servicios w-full max-w-[500px] mt-12 mx-0">
                 
-                <a href="movilidad.html" class="reveal bg-[#00AEEF] aspect-square rounded-tl-[30px] p-6 text-white relative transition-all duration-300 hover:scale-105 hover:z-20 hover:shadow-2xl cursor-pointer flex flex-col justify-between group">
-                    <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
+                <a href="movilidad.html" class="reveal bg-[#00AEEF] aspect-square rounded-tl-[30px] p-4 md:p-6 text-white relative transition-all duration-300 hover:scale-105 hover:z-20 hover:shadow-2xl cursor-pointer flex flex-col justify-between group">
+                    <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
                     <h3 class="text-lg md:text-xl font-extrabold uppercase leading-none">Soluciones de <br>Movilidad</h3>
-                    <p class="text-xs md:text-sm font-medium opacity-90 leading-relaxed">Servicios bancarios ágiles mediante dispositivos móviles y soporte.</p>
+                    <p class="text-[10px] md:text-xs font-semibold opacity-100 leading-snug">Servicios bancarios ágiles mediante dispositivos móviles.</p>
                 </a>
 
-                <div class="hidden md:block bg-[#A7A9AC] h-full w-full reveal delay-100"></div>
+                <div class="hidden md:block bg-[#A7A9AC] aspect-square h-full w-full reveal delay-100"></div>
 
-                <a href="tat.html" class="reveal delay-200 bg-[#5EBA46] aspect-square rounded-tr-[30px] p-6 text-white relative transition-all duration-300 hover:scale-105 hover:z-20 hover:shadow-2xl cursor-pointer flex flex-col justify-between group">
-                      <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
+                <a href="tat.html" class="reveal delay-200 bg-[#5EBA46] aspect-square rounded-tr-[30px] p-4 md:p-6 text-white relative transition-all duration-300 hover:scale-105 hover:z-20 hover:shadow-2xl cursor-pointer flex flex-col justify-between group">
+                      <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
                     <h3 class="text-lg md:text-xl font-extrabold uppercase leading-none">Ecosistema <br>TAT</h3>
-                    <p class="text-xs md:text-sm font-medium opacity-90 leading-relaxed">Conectamos proveedores con retail para optimizar inventarios.</p>
+                    <p class="text-[10px] md:text-xs font-semibold opacity-100 leading-snug">Conectamos proveedores con retail para optimizar inventarios.</p>
                 </a>
 
-                <div class="hidden md:block bg-[#A7A9AC] aspect-[10/7] reveal delay-100"></div>
+                <div class="hidden md:block bg-[#A7A9AC] aspect-square reveal delay-100"></div>
                 
-                <div class="hidden md:block bg-transparent h-full w-full"></div>
+                <div class="hidden md:block bg-transparent aspect-square h-full w-full"></div>
                 
-                <div class="hidden md:block bg-[#A7A9AC] aspect-[10/7] relative reveal delay-200">
-                    <div class="absolute left-full top-0 h-full w-[200vw] bg-[#A7A9AC]"></div>
-                </div>
+                <div class="hidden md:block bg-[#A7A9AC] aspect-square reveal delay-200"></div>
 
-                <a href="subagente.html" class="reveal delay-300 bg-[#E30613] aspect-square rounded-bl-[30px] rounded-br-[30px] p-6 text-white relative transition-all duration-300 hover:scale-105 hover:z-20 hover:shadow-2xl cursor-pointer flex flex-col justify-between group">
-                      <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
+                <a href="subagente.html" class="reveal delay-300 bg-[#E30613] aspect-square rounded-bl-[30px] rounded-br-[30px] p-4 md:p-6 text-white relative transition-all duration-300 hover:scale-105 hover:z-20 hover:shadow-2xl cursor-pointer flex flex-col justify-between group">
+                      <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
                     <h3 class="text-lg md:text-xl font-extrabold uppercase leading-none">SubAgente <br>Bancario</h3>
-                    <p class="text-xs md:text-sm font-medium opacity-90 leading-relaxed">Operaciones bancarias a través de nuestra plataforma tecnológica.</p>
+                    <p class="text-[10px] md:text-xs font-semibold opacity-100 leading-snug">Operaciones bancarias a través de nuestra plataforma.</p>
                 </a>
 
-                <div class="hidden md:block bg-transparent h-full w-full"></div>
+                <div class="hidden md:block bg-transparent aspect-square h-full w-full"></div>
 
-                <a href="bancarizacion.html" class="reveal delay-400 bg-[#F39200] aspect-square rounded-bl-[30px] rounded-br-[30px] p-6 text-white relative transition-all duration-300 hover:scale-105 hover:z-20 hover:shadow-2xl cursor-pointer flex flex-col justify-between group z-10">
-                      <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
+                <a href="bancarizacion.html" class="reveal delay-400 bg-[#F39200] aspect-square rounded-bl-[30px] rounded-br-none rounded-tr-none p-4 md:p-6 text-white relative transition-all duration-300 hover:scale-105 hover:z-20 hover:shadow-2xl cursor-pointer flex flex-col justify-between group z-10">
+                      
+                      <div class="hidden md:block absolute left-full top-0 h-full w-[200vw] bg-[#A7A9AC] -z-10"></div>
+
+                      <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
                     <h3 class="text-lg md:text-xl font-extrabold uppercase leading-none">Bancarización <br>Activa</h3>
-                    <p class="text-xs md:text-sm font-medium opacity-90 leading-relaxed">Procesos masivos utilizando nuevos medios de autenticación.</p>
+                    <p class="text-[10px] md:text-xs font-semibold opacity-100 leading-snug">Procesos masivos utilizando nuevos medios de autenticación.</p>
                 </a>
 
             </div>
         </div>
     </section>
 
-    <footer id="footer" class="w-full bg-[#1a1a1a] text-white pt-16 md:pt-24 pb-12">
-        <div class="max-w-[1440px] mx-auto px-6 md:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
+   <footer id="footer" class="w-full bg-[#adafaf] text-gray-900 py-12">
+        <div class="max-w-[1240px] mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-8">
                 <div class="lg:col-span-4 reveal">
-                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+MiRed'" alt="MiRed" class="w-40 mb-8 brightness-0 invert mx-auto md:mx-0">
-                    <p class="text-gray-400 font-medium text-sm leading-relaxed">La infraestructura tecnológica líder que conecta instituciones financieras con una red nacional de comercios.</p>
+                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+MiRed'" alt="MiRed" class="w-32 mb-4 mx-auto md:mx-0">
+                    <p class="text-gray-800 font-bold text-sm leading-relaxed">La infraestructura tecnológica líder que conecta instituciones financieras con una red nacional de comercios.</p>
                 </div>
                 <div class="lg:col-span-3 text-center md:text-left reveal delay-100">
-                    <h4 class="text-lg font-extrabold mb-6 uppercase tracking-tighter">Navegación</h4>
-                    <ul class="space-y-3 font-bold text-gray-400 uppercase text-[11px] tracking-widest">
-                        <li><a href="index.html" class="hover:text-white transition-colors">Inicio</a></li>
-                        <li><a href="nosotros.html" class="hover:text-white transition-colors">Quiénes Somos</a></li>
-                        <li><a href="#servicios" class="hover:text-white transition-colors">Servicios</a></li>
-                        <li><a href="clientes.html" class="hover:text-white transition-colors">Clientes</a></li>
-                        <li><a href="noticias.html" class="hover:text-white transition-colors">Noticias</a></li>
-                        <li><a href="empleo.html" class="hover:text-white transition-colors">Empleos</a></li>
+                    <h4 class="text-base font-extrabold mb-3 uppercase tracking-tighter text-black">Navegación</h4>
+                    <ul class="space-y-2 font-bold text-gray-700 uppercase text-[11px] tracking-widest">
+                        <li><a href="index.html" class="hover:text-black transition-colors">Inicio</a></li>
+                        <li><a href="nosotros.html" class="hover:text-black transition-colors">Quiénes Somos</a></li>
+                        <li><a href="#servicios" class="hover:text-black transition-colors">Servicios</a></li>
+                        <li><a href="clientes.html" class="hover:text-black transition-colors">Clientes</a></li>
+                        <li><a href="noticias.html" class="hover:text-black transition-colors">Noticias</a></li>
+                        <li><a href="empleo.html" class="hover:text-black transition-colors">Empleos</a></li>
                     </ul>
                 </div>
                 <div class="lg:col-span-5 text-center md:text-left reveal delay-200">
-                    <h4 class="text-lg font-extrabold mb-6 uppercase tracking-tighter">Contacto</h4>
-                    <div class="space-y-4 text-gray-400 font-medium text-sm">
+                    <h4 class="text-base font-extrabold mb-3 uppercase tracking-tighter text-black">Contacto</h4>
+                    <div class="space-y-2 text-gray-700 font-bold text-sm">
                         <p>servicio@mired.com.do</p>
                         <p>+1 (809) 530-3995</p>
                         <p>Av. Tiradentes esq. Gustavo Mejía Ricart, Santo Domingo.</p>
                     </div>
                 </div>
             </div>
-            <div class="pt-8 border-t border-white/10 text-center reveal delay-300">
-                <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">© 2026 MiRed. Todos los derechos reservados.</p>
+            <div class="pt-6 border-t border-gray-400 text-center reveal delay-300">
+                <p class="text-xs text-gray-800 font-bold uppercase tracking-widest">© 2026 MiRed. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
