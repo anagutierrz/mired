@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosotros - MiRed</title>
+    <title>Quiénes Somos - MiRed</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -21,6 +22,7 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 150ms; }
         .delay-2 { transition-delay: 300ms; }
+        .delay-3 { transition-delay: 450ms; }
 
         /* WHATSAPP BOUNCE */
         .whatsapp-bounce { animation: bounce 2s infinite; }
@@ -30,184 +32,188 @@
             60% {transform: translateY(-5px);}
         }
 
-        /* FORMA DE PUNTAS (ESTILO SERVICIOS) */
-        .service-shape {
-            border-top-left-radius: 60px;
-            border-bottom-right-radius: 60px;
-            border-top-right-radius: 15px;
-            border-bottom-left-radius: 15px;
-            transition: all 0.4s ease;
-            overflow: hidden;
-            position: relative;
+        /* MENU TRANSITION */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            transform-origin: top;
         }
-        @media (min-width: 768px) {
-            .service-shape { border-top-left-radius: 100px; border-bottom-right-radius: 100px; }
-        }
-        .service-shape:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.2); }
-
-        /* GRADIENTE PARA LEGIBILIDAD EN IMÁGENES */
-        .text-overlay {
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
-        }
+        .menu-hidden { transform: scaleY(0); opacity: 0; height: 0; }
+        .menu-visible { transform: scaleY(1); opacity: 1; height: auto; }
     </style>
 </head>
 <body class="bg-white overflow-x-hidden">
 
-    <a href="https://wa.me/18095303995" target="_blank" class="fixed bottom-6 right-6 z-[100] bg-[#25D366] p-4 rounded-full shadow-2xl whatsapp-bounce">
+    <a href="https://wa.me/18095303995" target="_blank" class="fixed bottom-6 right-6 z-[100] bg-[#25D366] p-4 rounded-full shadow-2xl whatsapp-bounce hover:scale-110 transition-transform">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.555-5.332 11.887-11.888 11.887-2.012 0-3.987-.51-5.742-1.478l-6.142 1.702zm6.108-3.321c1.657.985 3.324 1.482 5.023 1.482 5.462 0 9.904-4.442 9.904-9.904 0-2.645-1.03-5.132-2.901-7.002-1.872-1.871-4.359-2.901-7.004-2.901-5.461 0-9.904 4.443-9.904 9.904 0 1.843.518 3.559 1.498 5.107l-1.002 3.662 3.784-1.048z"/></svg>
     </a>
 
-    <header class="w-full bg-white/95 backdrop-blur-sm fixed top-0 z-50 shadow-sm h-20 flex items-center">
-        <div class="max-w-[1440px] mx-auto px-6 md:px-12 w-full flex justify-between items-center text-[13px]">
-            <img src="logo.png" alt="MiRed" class="w-32 md:w-48 h-auto object-contain">
-            <nav class="hidden lg:flex items-center gap-5">
-                <ul class="flex gap-5 font-extrabold text-gray-950 uppercase tracking-tight">
+    <header class="w-full bg-white/95 backdrop-blur-sm fixed top-0 z-50 shadow-sm transition-all duration-300">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex justify-between items-center relative z-50 bg-white/95">
+            <div class="w-32 md:w-48">
+                <a href="index.html">
+                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150x50?text=MiRed'" alt="MiRed" class="w-full h-auto object-contain">
+                </a>
+            </div>
+
+            <button id="menu-btn" class="lg:hidden text-gray-800 focus:outline-none p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+
+            <nav class="hidden lg:flex items-center gap-4 xl:gap-6">
+                <ul class="flex gap-4 xl:gap-6 font-extrabold text-gray-950 uppercase tracking-tight text-[11px] xl:text-[13px]">
                     <li><a href="index.html" class="hover:text-[#00AEEF]">Inicio</a></li>
-                    <li><a href="nosotros.html" class="text-[#00AEEF]">Nosotros</a></li>
-                    <li><a href="servicios.html" class="hover:text-[#00AEEF]">Servicios</a></li>
-                    <li><a href="index.html#institucional" class="hover:text-[#00AEEF]">Institucional</a></li>
+                    <li><a href="nosotros.html" class="text-[#00AEEF]">Quiénes Somos</a></li>
+                    <li><a href="index.html#servicios" class="hover:text-[#00AEEF]">Servicios</a></li>
+                    <li><a href="clientes.html" class="hover:text-[#00AEEF]">Clientes</a></li>
                     <li><a href="noticias.html" class="hover:text-[#00AEEF]">Noticias</a></li>
-                    <li><a href="empleo.html" class="hover:text-[#00AEEF]">Empleo</a></li>
+                    <li><a href="#footer" class="hover:text-[#00AEEF]">Contáctenos</a></li>
+                    <li><a href="empleo.html" class="hover:text-[#00AEEF]">Empleos</a></li>
                 </ul>
-                <a href="afiliate.html" class="bg-[#00AEEF] text-white px-6 py-2.5 rounded-full font-extrabold shadow-lg uppercase hover:bg-[#008cc0] text-xs transition-all">Afíliate</a>
+                <a href="afiliate.html" class="bg-[#00AEEF] text-white px-5 py-2.5 rounded-full font-extrabold shadow-lg uppercase hover:bg-[#008cc0] text-xs transition-all hover:scale-105 whitespace-nowrap">Afíliate</a>
             </nav>
+        </div>
+
+        <div id="mobile-menu" class="lg:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-gray-100 px-6 py-8 flex flex-col gap-4 menu-hidden z-40">
+            <a href="index.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Inicio</a>
+            <a href="nosotros.html" class="text-lg font-bold text-[#00AEEF] py-2 border-b border-gray-50">Quiénes Somos</a>
+            <a href="index.html#servicios" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Servicios</a>
+            <a href="clientes.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Clientes</a>
+            <a href="noticias.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Noticias</a>
+            <a href="#footer" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Contáctenos</a>
+            <a href="empleo.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Empleos</a>
+            <a href="afiliate.html" class="mt-4 w-full bg-[#00AEEF] text-white py-4 rounded-full font-extrabold uppercase text-center shadow-md hover:bg-[#008cc0] text-lg">¡Afíliate Ahora!</a>
         </div>
     </header>
 
-    <div class="h-28"></div>
+    <div class="h-20 md:h-28"></div>
 
-    <section class="w-full bg-white py-16 md:py-24 overflow-hidden border-b border-gray-50">
-        <div class="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div class="lg:col-span-7">
-                <h1 class="text-5xl md:text-8xl font-extrabold text-[#1a1a1a] mb-8 uppercase tracking-tighter">Sobre <span class="text-[#00AEEF]">Nosotros</span></h1>
-                <p class="text-xl md:text-2xl text-gray-800 font-medium leading-relaxed max-w-2xl">
-                    Somos la infraestructura tecnológica que conecta instituciones financieras con una red nacional de comercios en la República Dominicana.
-                </p>
+    <section class="w-full bg-[#f8f9fa] py-16 md:py-24 relative overflow-hidden">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-[#1a1a1a] uppercase tracking-tighter mb-6 reveal">Quiénes <span class="text-[#00AEEF]">Somos</span></h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-medium reveal delay-1">Somos expertos en la optimización de procesos masivos, proporcionando soluciones innovadoras para aumentar la eficiencia y productividad financiera.</p>
+        </div>
+        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+            <div class="absolute right-[-10%] top-[-10%] w-[50%] h-[50%] bg-[#00AEEF] rounded-full blur-[100px]"></div>
+            <div class="absolute left-[-10%] bottom-[-10%] w-[50%] h-[50%] bg-[#5EBA46] rounded-full blur-[100px]"></div>
+        </div>
+    </section>
+
+    <section class="w-full bg-white py-16 md:py-24">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <div class="relative rounded-[40px] overflow-hidden shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800" alt="Historia MiRed" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-[#00AEEF]/20 mix-blend-multiply"></div>
+                </div>
             </div>
-            <div class="lg:col-span-5">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800" class="w-full h-[400px] object-cover rounded-[50px] shadow-2xl" alt="Oficina MiRed">
+            <div class="reveal delay-1">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-[#1a1a1a] mb-6 uppercase tracking-tight">Nuestra <span class="text-[#00AEEF]">Historia</span></h2>
+                <div class="space-y-6 text-gray-600 text-lg leading-relaxed font-medium">
+                    <p>
+                        MiRed nace con el propósito de transformar el acceso a servicios financieros en la República Dominicana. Nos hemos consolidado como la red de <strong>Subagentes Bancarios</strong> más completa del país, estableciendo puntos de servicio en todas las provincias.
+                    </p>
+                    <p>
+                        A lo largo de nuestra trayectoria, hemos evolucionado para ser más que una red transaccional; somos un aliado estratégico que lleva el banco a donde están los clientes. Nuestra robusta infraestructura tecnológica permite a comercios y entidades financieras conectar de manera ágil, segura y eficiente.
+                    </p>
+                    <p>
+                        Hoy en día, facilitamos la intermediación financiera y servimos a una comunidad de comercios en constante desarrollo, optimizando la gestión de pagos y promoviendo la inclusión financiera real.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="w-full relative bg-white py-24 overflow-hidden">
-        <div class="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 h-[300px] w-[45%] bg-[#adafaf] z-0 rounded-r-[50px]"></div>
-        
+    <section class="w-full bg-[#1a1a1a] text-white py-20 relative overflow-hidden">
         <div class="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
-            <h2 class="text-4xl font-extrabold text-[#1a1a1a] mb-12 uppercase tracking-tighter">Nuestra Historia</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="service-shape bg-[#00AEEF] h-[400px] flex items-end reveal">
-                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800" class="absolute inset-0 w-full h-full object-cover opacity-60">
-                    <div class="p-10 md:p-12 text-overlay w-full relative z-10 text-white">
-                        <span class="text-5xl font-extrabold mb-2 block opacity-30">2013</span>
-                        <h3 class="text-2xl font-extrabold uppercase mb-2">Fundación</h3>
-                        <p class="text-base font-medium opacity-90 leading-relaxed">BHD León y Carvajal Tecnología fundan MiRed, la primera red de Subagentes Bancarios.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <div class="bg-white/5 backdrop-blur-sm p-10 rounded-[40px] border border-white/10 hover:bg-white/10 transition-colors reveal">
+                    <div class="w-16 h-16 bg-[#00AEEF] rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
+                    <h3 class="text-2xl md:text-3xl font-extrabold mb-4 uppercase tracking-tight">Misión</h3>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        Facilitar la intermediación financiera a través de una robusta infraestructura y soluciones tecnológicas avanzadas, optimizando la gestión de pagos y servicios bancarios para garantizar transacciones seguras, eficientes y accesibles en toda la República Dominicana.
+                    </p>
                 </div>
-                <div class="service-shape bg-[#5EBA46] h-[400px] flex items-end reveal delay-1">
-                    <img src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?auto=format&fit=crop&w=800" class="absolute inset-0 w-full h-full object-cover opacity-60">
-                    <div class="p-10 md:p-12 text-overlay w-full relative z-10 text-white">
-                        <span class="text-5xl font-extrabold mb-2 block opacity-30">2015</span>
-                        <h3 class="text-2xl font-extrabold uppercase mb-2">Expansión</h3>
-                        <p class="text-base font-medium opacity-90 leading-relaxed">Banreservas se integra como accionista, logrando cobertura en todas las provincias.</p>
+
+                <div class="bg-white/5 backdrop-blur-sm p-10 rounded-[40px] border border-white/10 hover:bg-white/10 transition-colors reveal delay-1">
+                    <div class="w-16 h-16 bg-[#5EBA46] rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                     </div>
+                    <h3 class="text-2xl md:text-3xl font-extrabold mb-4 uppercase tracking-tight">Visión</h3>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        Ser la red de servicios financieros más completa y confiable del país, reconocida por llevar soluciones innovadoras a donde están los clientes, impulsando el crecimiento de nuestros comercios aliados y la inclusión financiera nacional.
+                    </p>
                 </div>
-                <div class="service-shape bg-[#E30613] h-[400px] flex items-end reveal">
-                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800" class="absolute inset-0 w-full h-full object-cover opacity-60">
-                    <div class="p-10 md:p-12 text-overlay w-full relative z-10 text-white">
-                        <span class="text-5xl font-extrabold mb-2 block opacity-30">Hoy</span>
-                        <h3 class="text-2xl font-extrabold uppercase mb-2">Liderazgo</h3>
-                        <p class="text-base font-medium opacity-90 leading-relaxed">Más de 1,750 Subagentes distribuidos nacionalmente, liderando la inclusión financiera.</p>
-                    </div>
-                </div>
-                <div class="service-shape bg-[#F39200] h-[400px] flex items-end reveal delay-1">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800" class="absolute inset-0 w-full h-full object-cover opacity-60">
-                    <div class="p-10 md:p-12 text-overlay w-full relative z-10 text-white">
-                        <span class="text-5xl font-extrabold mb-2 block opacity-30">Core</span>
-                        <h3 class="text-2xl font-extrabold uppercase mb-2">Experticia</h3>
-                        <p class="text-base font-medium opacity-90 leading-relaxed">Expertos en optimización de procesos masivos y plataformas tecnológicas de vanguardia.</p>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
 
-    <section class="w-full relative bg-[#f8f9fa] py-24 overflow-hidden border-y border-gray-100">
-        <div class="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-[300px] w-[55%] bg-[#adafaf] z-0 rounded-l-[50px]"></div>
-        
-        <div class="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
-            <div class="bg-white p-12 rounded-[50px] shadow-sm border-l-8 border-[#5EBA46] reveal">
-                <h2 class="text-3xl font-extrabold mb-6 uppercase tracking-tighter text-[#1a1a1a]">Misión</h2>
-                <p class="text-lg text-gray-700 leading-relaxed font-medium">Promover ecosistemas de inclusión social y financiera mediante servicios tecnológicos innovadores para incrementar la competitividad nacional.</p>
-            </div>
-            <div class="bg-white p-12 rounded-[50px] shadow-sm border-l-8 border-[#00AEEF] reveal delay-1">
-                <h2 class="text-3xl font-extrabold mb-6 uppercase tracking-tighter text-[#1a1a1a]">Visión</h2>
-                <p class="text-lg text-gray-700 leading-relaxed font-medium">Ser la Red de servicios digitales de última generación para agilizar las necesidades diarias de los dominicanos.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="w-full bg-white py-24">
-        <div class="max-w-[1440px] mx-auto px-6 md:px-12">
-            <h2 class="text-center text-4xl md:text-5xl font-extrabold text-[#1a1a1a] mb-16 uppercase tracking-tighter">Por qué ser parte de MiRed</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-[40px] shadow-sm border-t-8 border-[#00AEEF] overflow-hidden reveal">
-                    <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=600" class="w-full h-48 object-cover">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-extrabold mb-4 uppercase text-[#1a1a1a]">Escala Territorial</h3>
-                        <p class="text-gray-600 font-medium leading-relaxed">Facilitamos la expansión eficiente de las instituciones financieras mediante nuestra red estructurada.</p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-[40px] shadow-sm border-t-8 border-[#5EBA46] overflow-hidden reveal delay-1">
-                    <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=600" class="w-full h-48 object-cover">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-extrabold mb-4 uppercase text-[#1a1a1a]">Nuevos Ingresos</h3>
-                        <p class="text-gray-600 font-medium leading-relaxed">Permitimos que los comercios afiliados generen nuevas fuentes de ingresos y tráfico.</p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-[40px] shadow-sm border-t-8 border-[#F39200] overflow-hidden reveal delay-2">
-                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600" class="w-full h-48 object-cover">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-extrabold mb-4 uppercase text-[#1a1a1a]">Inclusión Real</h3>
-                        <p class="text-gray-600 font-medium leading-relaxed">Llevamos servicios bancarios a donde antes no llegaban, garantizando seguridad técnica.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="w-full bg-[#f8f9fa] py-24">
+    <section class="w-full bg-white py-16 md:py-24">
         <div class="max-w-[1440px] mx-auto px-6 md:px-12 text-center">
-            <h2 class="text-4xl font-extrabold mb-16 uppercase tracking-tighter">Nuestros Valores</h2>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="px-8 py-4 bg-white border border-gray-100 rounded-full font-extrabold uppercase text-[#00AEEF] shadow-sm reveal">Responsabilidad</span>
-                <span class="px-8 py-4 bg-white border border-gray-100 rounded-full font-extrabold uppercase text-[#5EBA46] shadow-sm reveal delay-1">Trabajo en Equipo</span>
-                <span class="px-8 py-4 bg-white border border-gray-100 rounded-full font-extrabold uppercase text-[#E30613] shadow-sm reveal delay-2">Innovación</span>
-                <span class="px-8 py-4 bg-white border border-gray-100 rounded-full font-extrabold uppercase text-[#F39200] shadow-sm reveal delay-1">Liderazgo</span>
-                <span class="px-8 py-4 bg-white border border-gray-100 rounded-full font-extrabold uppercase text-gray-500 shadow-sm reveal delay-2">Transparencia</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-[#1a1a1a] mb-16 uppercase tracking-tighter reveal">Nuestros <span class="text-[#F39200]">Valores</span></h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="group p-6 rounded-[30px] bg-gray-50 hover:bg-[#00AEEF] hover:text-white transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-white rounded-full mx-auto mb-4 flex items-center justify-center shadow-sm text-[#00AEEF] group-hover:text-[#00AEEF]">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg uppercase">Responsabilidad</h3>
+                </div>
+
+                <div class="group p-6 rounded-[30px] bg-gray-50 hover:bg-[#5EBA46] hover:text-white transition-all duration-300 reveal delay-1">
+                    <div class="w-14 h-14 bg-white rounded-full mx-auto mb-4 flex items-center justify-center shadow-sm text-[#5EBA46]">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg uppercase">Trabajo en Equipo</h3>
+                </div>
+
+                <div class="group p-6 rounded-[30px] bg-gray-50 hover:bg-[#F39200] hover:text-white transition-all duration-300 reveal delay-2">
+                    <div class="w-14 h-14 bg-white rounded-full mx-auto mb-4 flex items-center justify-center shadow-sm text-[#F39200]">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg uppercase">Innovación</h3>
+                </div>
+
+                <div class="group p-6 rounded-[30px] bg-gray-50 hover:bg-[#E30613] hover:text-white transition-all duration-300 reveal delay-3">
+                    <div class="w-14 h-14 bg-white rounded-full mx-auto mb-4 flex items-center justify-center shadow-sm text-[#E30613]">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg uppercase">Liderazgo</h3>
+                </div>
+
+                <div class="group p-6 rounded-[30px] bg-gray-50 hover:bg-[#00AEEF] hover:text-white transition-all duration-300 reveal delay-3">
+                    <div class="w-14 h-14 bg-white rounded-full mx-auto mb-4 flex items-center justify-center shadow-sm text-[#00AEEF]">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg uppercase">Transparencia</h3>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="w-full bg-[#1a1a1a] text-white pt-24 pb-12">
+    <footer id="footer" class="w-full bg-[#1a1a1a] text-white pt-16 md:pt-24 pb-12">
         <div class="max-w-[1440px] mx-auto px-6 md:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-20 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
                 <div class="lg:col-span-4">
-                    <img src="logo.png" alt="MiRed" class="w-40 mb-8 brightness-0 invert mx-auto md:mx-0">
+                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+MiRed'" alt="MiRed" class="w-40 mb-8 brightness-0 invert mx-auto md:mx-0">
                     <p class="text-gray-400 font-medium text-sm leading-relaxed">La infraestructura tecnológica líder que conecta instituciones financieras con una red nacional de comercios.</p>
                 </div>
-                <div class="lg:col-span-3">
-                    <h4 class="text-lg font-extrabold mb-8 uppercase tracking-tighter">Navegación</h4>
+                <div class="lg:col-span-3 text-center md:text-left">
+                    <h4 class="text-lg font-extrabold mb-6 uppercase tracking-tighter">Navegación</h4>
                     <ul class="space-y-3 font-bold text-gray-400 uppercase text-[11px] tracking-widest">
                         <li><a href="index.html" class="hover:text-white transition-colors">Inicio</a></li>
-                        <li><a href="nosotros.html" class="text-white">Nosotros</a></li>
-                        <li><a href="servicios.html" class="hover:text-white transition-colors">Servicios</a></li>
-                        <li><a href="index.html#institucional" class="hover:text-white transition-colors">Institucional</a></li>
+                        <li><a href="nosotros.html" class="hover:text-white transition-colors">Quiénes Somos</a></li>
+                        <li><a href="index.html#servicios" class="hover:text-white transition-colors">Servicios</a></li>
+                        <li><a href="clientes.html" class="hover:text-white transition-colors">Clientes</a></li>
                         <li><a href="noticias.html" class="hover:text-white transition-colors">Noticias</a></li>
+                        <li><a href="empleo.html" class="hover:text-white transition-colors">Empleos</a></li>
                     </ul>
                 </div>
                 <div class="lg:col-span-5 text-center md:text-left">
-                    <h4 class="text-lg font-extrabold mb-8 uppercase tracking-tighter text-white">Contacto</h4>
+                    <h4 class="text-lg font-extrabold mb-6 uppercase tracking-tighter">Contacto</h4>
                     <div class="space-y-4 text-gray-400 font-medium text-sm">
                         <p>servicio@mired.com.do</p>
                         <p>+1 (809) 530-3995</p>
@@ -222,10 +228,20 @@
     </footer>
 
     <script>
+        // Animaciones Reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Toggle Menú Móvil
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('menu-hidden');
+            mobileMenu.classList.toggle('menu-visible');
+        });
     </script>
 </body>
 </html>
