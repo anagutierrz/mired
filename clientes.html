@@ -16,35 +16,34 @@
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .delay-1 { transition-delay: 150ms; }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
 
-        /* LOGO GRID ANIMATION */
-        .client-logo {
-            transition: all 0.3s ease;
-            filter: grayscale(100%);
-            opacity: 0.6;
-        }
-        .client-logo:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-            transform: scale(1.05);
+        /* WHATSAPP ANIMATION */
+        .whatsapp-bounce { animation: bounce 2s infinite; }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
         }
     </style>
 </head>
 <body class="bg-white overflow-x-hidden">
 
-    <a href="https://wa.me/18095303995" target="_blank" class="fixed bottom-6 right-6 z-[100] bg-[#25D366] p-4 rounded-full shadow-2xl hover:scale-110 transition-transform">
+    <a href="https://wa.me/18095303995" target="_blank" class="fixed bottom-6 right-6 z-[100] bg-[#25D366] p-4 rounded-full shadow-2xl whatsapp-bounce hover:scale-110 transition-transform">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.555-5.332 11.887-11.888 11.887-2.012 0-3.987-.51-5.742-1.478l-6.142 1.702zm6.108-3.321c1.657.985 3.324 1.482 5.023 1.482 5.462 0 9.904-4.442 9.904-9.904 0-2.645-1.03-5.132-2.901-7.002-1.872-1.871-4.359-2.901-7.004-2.901-5.461 0-9.904 4.443-9.904 9.904 0 1.843.518 3.559 1.498 5.107l-1.002 3.662 3.784-1.048z"/></svg>
     </a>
 
     <header class="w-full bg-white/95 backdrop-blur-sm fixed top-0 z-50 shadow-sm transition-all duration-300">
         <div class="max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex justify-between items-center relative z-50 bg-white/95">
-            <div class="w-32 md:w-48">
+            <div class="w-32 md:w-48 hover:scale-105 transition-transform duration-300">
                 <a href="index.html">
-                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150x50?text=MiRed'" alt="MiRed" class="w-full h-auto object-contain">
+                    <img src="img/logo-mired.png" onerror="this.src='https://via.placeholder.com/150x50?text=MiRed'" alt="MiRed" class="w-full h-auto object-contain">
                 </a>
             </div>
 
@@ -54,27 +53,27 @@
 
             <nav class="hidden lg:flex items-center gap-4 xl:gap-6">
                 <ul class="flex gap-4 xl:gap-6 font-extrabold text-gray-950 uppercase tracking-tight text-[11px] xl:text-[13px]">
-                    <li><a href="index.html" class="hover:text-[#00AEEF]">Inicio</a></li>
-                    <li><a href="nosotros.html" class="hover:text-[#00AEEF]">Quiénes Somos</a></li>
-                    <li><a href="servicios.html" class="hover:text-[#00AEEF]">Servicios</a></li>
-                    <li><a href="clientes.html" class="text-[#00AEEF]">Clientes</a></li>
-                    <li><a href="noticias.html" class="hover:text-[#00AEEF]">Noticias</a></li>
-                    <li><a href="#footer" class="hover:text-[#00AEEF]">Contáctenos</a></li>
-                    <li><a href="empleo.html" class="hover:text-[#00AEEF]">Empleos</a></li>
+                    <li><a href="index.html" class="hover:text-[#00aef0] transition-colors">Inicio</a></li>
+                    <li><a href="nosotros.html" class="hover:text-[#00aef0] transition-colors">Quiénes Somos</a></li>
+                    <li><a href="servicios.html" class="hover:text-[#00aef0] transition-colors">Servicios</a></li>
+                    <li><a href="clientes.html" class="text-[#00aef0]">Clientes</a></li>
+                    <li><a href="noticias.html" class="hover:text-[#00aef0] transition-colors">Noticias</a></li>
+                    <li><a href="#footer" class="hover:text-[#00aef0] transition-colors">Contáctenos</a></li>
+                    <li><a href="empleo.html" class="hover:text-[#00aef0] transition-colors">Empleos</a></li>
                 </ul>
-                <a href="afiliate.html" class="bg-[#00AEEF] text-white px-5 py-2.5 rounded-full font-extrabold shadow-lg uppercase hover:bg-[#008cc0] text-xs transition-all hover:scale-105 whitespace-nowrap">Afíliate</a>
+                <a href="afiliate.html" class="bg-[#00aef0] text-white px-5 py-2.5 rounded-full font-extrabold shadow-lg uppercase hover:bg-[#008bc0] text-xs transition-all hover:scale-105 whitespace-nowrap">Afíliate</a>
             </nav>
         </div>
 
         <div id="mobile-menu" class="lg:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-gray-100 px-6 py-8 flex flex-col gap-4 menu-hidden z-40">
-            <a href="index.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Inicio</a>
-            <a href="nosotros.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Quiénes Somos</a>
-            <a href="servicios.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Servicios</a>
-            <a href="clientes.html" class="text-lg font-bold text-[#00AEEF] py-2 border-b border-gray-50">Clientes</a>
-            <a href="noticias.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Noticias</a>
-            <a href="#footer" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Contáctenos</a>
-            <a href="empleo.html" class="text-lg font-bold text-gray-800 hover:text-[#00AEEF] py-2 border-b border-gray-50">Empleos</a>
-            <a href="afiliate.html" class="mt-4 w-full bg-[#00AEEF] text-white py-4 rounded-full font-extrabold uppercase text-center shadow-md hover:bg-[#008cc0] text-lg">¡Afíliate Ahora!</a>
+            <a href="index.html" class="text-lg font-bold text-gray-800 hover:text-[#00aef0] py-2 border-b border-gray-50">Inicio</a>
+            <a href="nosotros.html" class="text-lg font-bold text-gray-800 hover:text-[#00aef0] py-2 border-b border-gray-50">Quiénes Somos</a>
+            <a href="servicios.html" class="text-lg font-bold text-gray-800 hover:text-[#00aef0] py-2 border-b border-gray-50">Servicios</a>
+            <a href="clientes.html" class="text-lg font-bold text-[#00aef0] py-2 border-b border-gray-50">Clientes</a>
+            <a href="noticias.html" class="text-lg font-bold text-gray-800 hover:text-[#00aef0] py-2 border-b border-gray-50">Noticias</a>
+            <a href="#footer" class="text-lg font-bold text-gray-800 hover:text-[#00aef0] py-2 border-b border-gray-50">Contáctenos</a>
+            <a href="empleo.html" class="text-lg font-bold text-gray-800 hover:text-[#00aef0] py-2 border-b border-gray-50">Empleos</a>
+            <a href="afiliate.html" class="mt-4 w-full bg-[#00aef0] text-white py-4 rounded-full font-extrabold uppercase text-center shadow-md hover:bg-[#008bc0] text-lg">¡Afíliate Ahora!</a>
         </div>
     </header>
 
@@ -82,92 +81,95 @@
 
     <section class="w-full bg-[#f8f9fa] py-16 md:py-24 relative overflow-hidden">
         <div class="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10 text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-[#1a1a1a] uppercase tracking-tighter mb-6 reveal">Nuestros <span class="text-[#00AEEF]">Clientes</span></h1>
-            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-medium reveal delay-1">Damos soporte a los canales transaccionales de las instituciones financieras más importantes del país.</p>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-[#1a1a1a] uppercase tracking-tighter mb-6 reveal">
+                Nuestros <span class="text-[#00aef0]">Clientes</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-medium reveal delay-100">
+                Damos soporte a los canales transaccionales de las instituciones financieras más importantes del país.
+            </p>
+        </div>
+        
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
+            <div class="absolute right-[-5%] top-[-10%] w-64 h-64 bg-[#00aef0] rounded-full blur-[80px]"></div>
+            <div class="absolute left-[-5%] bottom-[-10%] w-64 h-64 bg-[#50B940] rounded-full blur-[80px]"></div>
         </div>
     </section>
-<section class="w-full bg-[#f8f9fa] py-16 md:py-24 border-t border-gray-100">
-        <div class="max-w-[1440px] mx-auto px-6 md:px-12 text-center">
-            
-            <h2 class="text-3xl md:text-5xl font-extrabold text-[#1a1a1a] mb-12 uppercase tracking-tighter reveal">
-                Nuestros <span class="text-[#00aef0]">Aliados</span>
-            </h2>
 
+    <section class="w-full bg-white py-16 md:py-24">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12">
+            
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 items-center justify-center">
                 
-                <div class="group bg-white h-32 md:h-40 rounded-[30px] flex items-center justify-center p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 reveal">
+                <div class="group bg-white h-32 md:h-40 rounded-[30px] border border-gray-50 flex items-center justify-center p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 reveal">
                     <img src="img/Logo Banco 1.png" 
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" 
                          alt="Banco 1" 
                          class="max-h-full max-w-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    <span class="hidden text-gray-400 font-bold text-sm">Logo Banco 1</span>
                 </div>
 
-                <div class="group bg-white h-32 md:h-40 rounded-[30px] flex items-center justify-center p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 reveal delay-100">
+                <div class="group bg-white h-32 md:h-40 rounded-[30px] border border-gray-50 flex items-center justify-center p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 reveal delay-100">
                     <img src="img/Logo Banco 2.png" 
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" 
                          alt="Banco 2" 
                          class="max-h-full max-w-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    <span class="hidden text-gray-400 font-bold text-sm">Logo Banco 2</span>
                 </div>
 
-                <div class="group bg-white h-32 md:h-40 rounded-[30px] flex items-center justify-center p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 reveal delay-200">
+                <div class="group bg-white h-32 md:h-40 rounded-[30px] border border-gray-50 flex items-center justify-center p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 reveal delay-200">
                     <img src="img/Logo Banco 3.png" 
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" 
                          alt="Banco 3" 
                          class="max-h-full max-w-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    <span class="hidden text-gray-400 font-bold text-sm">Logo Banco 3</span>
                 </div>
 
-                <div class="group bg-white h-32 md:h-40 rounded-[30px] flex items-center justify-center p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 reveal delay-300">
+                <div class="group bg-white h-32 md:h-40 rounded-[30px] border border-gray-50 flex items-center justify-center p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 reveal delay-300">
                     <img src="img/Logo Banco 4.png" 
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" 
                          alt="Banco 4" 
                          class="max-h-full max-w-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    <span class="hidden text-gray-400 font-bold text-sm">Logo Banco 4</span>
                 </div>
 
-                <div class="group bg-white h-32 md:h-40 rounded-[30px] flex items-center justify-center p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 reveal delay-400">
+                <div class="group bg-white h-32 md:h-40 rounded-[30px] border border-gray-50 flex items-center justify-center p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 reveal delay-400">
                     <img src="img/Logo Banco 5.png" 
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" 
                          alt="Banco 5" 
                          class="max-h-full max-w-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    <span class="hidden text-gray-400 font-bold text-sm">Logo Banco 5</span>
                 </div>
 
             </div>
+
+            <div class="mt-20 text-center bg-[#F5F7FA] rounded-[40px] p-10 reveal">
+                <h3 class="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-4">¿Quiere formar parte de nuestra red?</h3>
+                <p class="text-gray-600 mb-8 max-w-2xl mx-auto text-lg">Únase a la red de servicios financieros más grande del país y expanda sus posibilidades de negocio.</p>
+                <a href="contactenos.html" class="inline-block bg-[#00aef0] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-[#008bc0] transition-all hover:scale-105">Contáctenos</a>
+            </div>
+
         </div>
     </section>
 
-    <footer id="footer" class="w-full bg-[#1a1a1a] text-white pt-16 md:pt-24 pb-12">
-        <div class="max-w-[1440px] mx-auto px-6 md:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
-                <div class="lg:col-span-4">
-                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+MiRed'" alt="MiRed" class="w-40 mb-8 brightness-0 invert mx-auto md:mx-0">
-                    <p class="text-gray-400 font-medium text-sm leading-relaxed">La infraestructura tecnológica líder que conecta instituciones financieras con una red nacional de comercios.</p>
+    <footer id="footer" class="w-full bg-[#adafaf] text-gray-900 py-12">
+        <div class="max-w-[1240px] mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-8">
+                <div class="lg:col-span-4 reveal">
+                    <img src="img/logo-mired.png" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+MiRed'" alt="MiRed" class="w-32 mb-4 mx-auto md:mx-0">
+                    <p class="text-gray-800 font-bold text-sm leading-relaxed">La infraestructura tecnológica líder que conecta instituciones financieras con una red nacional de comercios.</p>
                 </div>
-                <div class="lg:col-span-3 text-center md:text-left">
-                    <h4 class="text-lg font-extrabold mb-6 uppercase tracking-tighter">Navegación</h4>
-                    <ul class="space-y-3 font-bold text-gray-400 uppercase text-[11px] tracking-widest">
-                        <li><a href="index.html" class="hover:text-white transition-colors">Inicio</a></li>
-                        <li><a href="nosotros.html" class="hover:text-white transition-colors">Quiénes Somos</a></li>
-                        <li><a href="servicios.html" class="hover:text-white transition-colors">Servicios</a></li>
-                        <li><a href="clientes.html" class="text-white">Clientes</a></li>
-                        <li><a href="noticias.html" class="hover:text-white transition-colors">Noticias</a></li>
-                        <li><a href="empleo.html" class="hover:text-white transition-colors">Empleos</a></li>
+                <div class="lg:col-span-3 text-center md:text-left reveal delay-100">
+                    <h4 class="text-base font-extrabold mb-3 uppercase tracking-tighter text-black">Navegación</h4>
+                    <ul class="space-y-2 font-bold text-gray-700 uppercase text-[11px] tracking-widest">
+                        <li><a href="index.html" class="hover:text-black transition-colors">Inicio</a></li>
+                        <li><a href="nosotros.html" class="hover:text-black transition-colors">Quiénes Somos</a></li>
+                        <li><a href="servicios.html" class="hover:text-black transition-colors">Servicios</a></li>
+                        <li><a href="clientes.html" class="hover:text-black transition-colors">Clientes</a></li>
+                        <li><a href="noticias.html" class="hover:text-black transition-colors">Noticias</a></li>
+                        <li><a href="empleo.html" class="hover:text-black transition-colors">Empleos</a></li>
                     </ul>
                 </div>
-                <div class="lg:col-span-5 text-center md:text-left">
-                    <h4 class="text-lg font-extrabold mb-6 uppercase tracking-tighter">Contacto</h4>
-                    <div class="space-y-4 text-gray-400 font-medium text-sm">
+                <div class="lg:col-span-5 text-center md:text-left reveal delay-200">
+                    <h4 class="text-base font-extrabold mb-3 uppercase tracking-tighter text-black">Contacto</h4>
+                    <div class="space-y-2 text-gray-700 font-bold text-sm">
                         <p>servicio@mired.com.do</p>
                         <p>+1 (809) 530-3995</p>
                         <p>Av. Tiradentes esq. Gustavo Mejía Ricart, Santo Domingo.</p>
                     </div>
                 </div>
             </div>
-            <div class="pt-8 border-t border-white/10 text-center">
-                <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">© 2026 MiRed. Todos los derechos reservados.</p>
+            <div class="pt-6 border-t border-gray-400 text-center reveal delay-300">
+                <p class="text-xs text-gray-800 font-bold uppercase tracking-widest">© 2026 MiRed. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -189,5 +191,4 @@
         });
     </script>
 </body>
-
 </html>
